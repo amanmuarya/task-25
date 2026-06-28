@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowApp - Modern SaaS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { dark: '#0f172', darker: 'rgb(1, 15, 15)' },
+                    animation: {
+                        'slide-up': 'slideUp 0.8s ease-out forwards',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.8s ease-out forwards',
+                        'scale-in': 'scaleIn 0.8s ease-out forwards',
+                        'rotate-slow': 'spin 15s linear infinite',
+                        'morph': 'morph 8s ease-in-out infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        slideUp: { '0%': { transform: 'translateY(50px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+                        slideInLeft: { '0%': { transform: 'translateX(-50px)', opacity: '0' }, '100%': { transform: 'translateX(0)', opacity: '1' } },
+                        slideInRight: { '0%': { transform: 'translateX(50px)', opacity: '0' }, '100%': { transform: 'translateX(0)', opacity: '1' } },
+                        scaleIn: { '0%': { transform: 'scale(0.9)', opacity: '0' }, '100%': { transform: 'scale(1)', opacity: '1' } },
+                        morph: { '0%, 100%': { borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' }, '50%': { borderRadius: '30% 60% 70% 40% / 50% 60% 30% 60%' } },
+                        float: { '0%, 110%': { transform: 'translateY(0)' }, '60%': { transform: 'translateY(-20px)' } },
+                        glow: { '0%': { boxShadow: '0 0 10px rgba(168, 85, 247, 0.4)' }, '100%': { boxShadow: '0 0 25px rgba(168, 85, 247, 0.9), 0 0 50px rgba(168, 85, 247, 0.5)' } }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-panel { @apply bg-white/5 backdrop-blur-md border border-white/10; }
+            .text-gradient { @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-400; }
+        }
+    </style>
+</head>
+<body class="bg-darker text-slate-200 font-sans antialiased overflow-x-hidden">
+
+    <!-- Navigation Section (Glassmorphism Navbar) -->
+    <nav class="fixed top-0 w-full z-50 glass-panel shadow-lg">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-2 cursor-pointer">
+                <div
+                    class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-fuchsia-600 flex items-center justify-center">
+                    <span class="text-white font-bold">F</span>
+                </div>
+                <span class="font-bold text-xl">FlowApp.</span>
+            </div>
+
+            <div class="hidden md:flex gap-8 items-center">
+                <a href="#features" class="hover:text-fuchsia-400 transition">Features</a>
+                <a href="#pricing" class="hover:text-fuchsia-400 transition">Pricing</a>
+                <a href="#reviews" class="hover:text-fuchsia-400 transition">Reviews</a>
+                <button
+                    class="px-6 py-2 rounded-full border border-violet-500 hover:bg-violet-600 transition animate-glow">Get
+                    Started</button>
+            </div>
+            <button class="md:hidden text-slate-300">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </nav>
+    <!-- Hero Section (Advanced Animated Layout) -->
+    <section class="relative min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden">
+        <!-- Background Elements -->
+        <div
+            class=" opacity-50 z-0">
+        </div>
+        <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-violet-600/30 rounded-full blur-[80px] animate-float z-0">
+        </div>
+        <div class="absolute bottom-1/4 right-1/4 w-72 h-72 bg-fuchsia-600/30 rounded-full blur-[80px] animate-float z-0"
+            style="animation-delay: 2s;"></div>
+        <!-- Morphing Blob & Rings -->
+        <div class="absolute w-[600px] h-[600px] border border-white/5 rounded-full animate-rotate-slow z-0"></div>
+        <div
+            class="absolute w-64 h-64 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 animate-morph mix-blend-screen blur-xl z-0">
+        </div>
+
+        <div class="relative z-10 text-center max-w-4xl px-6 flex flex-col items-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 opacity-0 animate-slide-up">
+                Build better products <br /> <span class="text-gradient">faster with AI.</span>
+            </h1>
+            <p class="text-xl text-slate-400 mb-10 opacity-0 animate-slide-up" style="animation-delay: 200ms;">
+                FlowApp is a modern SaaS platform designed to help teams build better products faster using AI-powered
+                automation and real-time collaboration.
+            </p>
+            <div class="flex gap-4 opacity-0 animate-slide-up" style="animation-delay: 400ms;">
+                <button
+                    class="px-8 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-full font-bold hover:scale-105 transform transition animate-glow">
+                    Start Free Trial
+                </button>
+                <button
+                    class="px-8 py-4 glass-panel rounded-full font-bold hover:bg-white/10 hover:scale-105 transform transition">
+                    Schedule Demo
+                </button>
+            </div>
+            <!-- 3D Dashboard Preview -->
+            <div class="mt-20 relative w-full max-w-3xl opacity-0 animate-scale-in group perspective"
+                style="animation-delay: 600ms; perspective: 1000px;">
+                <div
+                    class="glass-panel p-2 rounded-xl transition-transform duration-500 group-hover:rotate-x-12 group-hover:rotate-y-[-5deg] group-hover:scale-105 relative z-10 bg-darker/80 h-64 flex items-center justify-center border-t-white/20">
+                    <span class="text-slate-500">Dashboard UI Concept</span>
+                </div>
+                <!-- Floating Glass Cards -->
+                <div
+                    class="absolute -right-8 -top-8 glass-panel p-4 rounded-xl animate-float z-20 shadow-xl border-b-fuchsia-500 border-b-2">
+                    <p class="text-sm font-bold">Revenue: +142%</p>
+                </div>
+                <div class="absolute -left-8 -bottom-8 glass-panel p-4 rounded-xl animate-float z-20 shadow-xl border-t-violet-500 border-t-2"
+                    style="animation-delay: 1s;">
+                    <p class="text-sm font-bold">Users: 24.5k</p>
+                </div>
+            </div>
+    <!-- Features Section (Bento Grid Layout) -->
+    <section id="features" class="py-24 max-w-7xl mx-auto px-6 relative z-10">
+        <h2 class="text-4xl font-bold text-center mb-16 opacity-0 animate-slide-up">Powerful Features</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[200px]">
+            <!-- Large Feature Card -->
+            <div
+                class="md:col-span-2 md:row-span-2 glass-panel rounded-3xl p-8 hover:border-fuchsia-500/50 hover:shadow-[0_0_30px_rgba(217,70,239,0.2)] hover:-translate-y-1 transition-all duration-300 group overflow-hidden relative flex flex-col justify-end">
+                <div
+                    class="absolute top-0 right-0 w-48 h-48 bg-fuchsia-600/20 blur-3xl rounded-full group-hover:scale-150 transition-transform">
+                </div>
+                <h3 class="text-3xl font-bold mb-4 z-10">AI-Powered Automation</h3>
+                <p class="text-slate-400 z-10 max-w-md">Streamline your workflow with intelligent automation that learns
+                    from your team's habits and minimizes repetitive tasks.</p>
+            </div>
+            <!-- Smaller Feature Cards -->
+            <div
+                class="glass-panel rounded-3xl p-6 hover:border-violet-500/50 hover:shadow-[0_0_20px_rgba(139,92,246,0.2)] hover:scale-105 transition-all group">
+                <h3 class="text-xl font-bold mb-2">Lightning Fast</h3>
+                <p class="text-sm text-slate-400">Optimized infrastructure for speed.</p>
+            </div>
+            <div
+                class="glass-panel rounded-3xl p-6 hover:border-blue-500/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] hover:scale-105 transition-all group">
+                <h3 class="text-xl font-bold mb-2">Bank-Level Security</h3>
+                <p class="text-sm text-slate-400">Your data is safe and encrypted.</p>
+            </div>
+            <div
+                class="glass-panel rounded-3xl p-6 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:scale-105 transition-all group">
+                <h3 class="text-xl font-bold mb-2">Advanced Analytics</h3>
+                <p class="text-sm text-slate-400">Deep insights into your operations.</p>
+            </div>
+            <div class="glass-panel rounded-3xl p-6 hover:border-pink-500/50 hover:-rotate-2 transition-all group">
+                <h3 class="text-xl font-bold mb-2">Real-time Sync</h3>
+                <p class="text-sm text-slate-400">Instant updates across devices.</p>
+            </div>
+            <div class="glass-panel rounded-3xl p-6 hover:border-amber-500/50 hover:rotate-2 transition-all group">
+                <h3 class="text-xl font-bold mb-2">Team Collaboration</h3>
+                <p class="text-sm text-slate-400">Built for multiplayer productivity.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section (Glass Cards) -->
+    <section id="reviews" class="py-24 max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold mb-2">Trusted by Teams</h2>
+            <p class="text-slate-400">See what our community is saying.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+            <!-- Card 1 -->
+            <div class="glass-panel p-6 rounded-2xl hover:scale-105 transition-transform duration-300">
+                <div class="text-amber-400 mb-4 text-xl">★★★★★</div>
+                <p class="text-slate-300 mb-6 italic">"This platform revolutionized our daily standups and project
+                    tracking."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-slate-600 flex items-center justify-center font-bold">JD</div>
+                    <div>
+                        <h4 class="font-bold text-sm">John Doe</h4>
+                        <p class="text-xs text-slate-400">CTO, TechCorp</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2 (Middle Offset) -->
+            <div
+                class="glass-panel p-6 rounded-2xl md:-translate-y-8 hover:scale-105 transition-transform duration-300 border-t-fuchsia-500/50">
+                <div class="text-amber-400 mb-4 text-xl">★★★★★</div>
+                <p class="text-slate-300 mb-6 italic">"The AI features saved us countless hours. Absolutely an essential
+                    tool."</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-fuchsia-600 flex items-center justify-center font-bold">SM
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm">Sarah Miller</h4>
+                        <p class="text-xs text-slate-400">Product Manager</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3 -->
+            <div class="glass-panel p-6 rounded-2xl hover:scale-105 transition-transform duration-300">
+                <div class="text-amber-400 mb-4 text-xl">★★★★★</div>
+                <p class="text-slate-300 mb-6 italic">"Beautiful UI, flawless sync, and incredible customer support."
+                </p>
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-violet-600 flex items-center justify-center font-bold">AL
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm">Alex Lee</h4>
+                        <p class="text-xs text-slate-400">Lead Designer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Call-To-Action Section (Animated Gradient Background) -->
+    <section
+        class="py-24 relative overflow-hidden text-center flex flex-col items-center justify-center bg-gradient-to-br from-violet-900/40 via-darker to-fuchsia-900/40">
+        <!-- Floating Blurred Orbs -->
+        <div class="absolute -top-10 -left-10 w-64 h-64 bg-violet-500/30 blur-[80px] rounded-full animate-float"></div>
+        <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-fuchsia-500/30 blur-[80px] rounded-full animate-float"
+            style="animation-delay: 1.5s;"></div>
+        <div class="relative z-10 px-6 max-w-2xl">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">Ready to transform your workflow?</h2>
+            <p class="text-slate-300 mb-8">Join the platform that helps you build better and faster. Start your journey
+                today.</p>
+            <div class="flex justify-center gap-4 flex-wrap">
+                <button
+                    class="px-8 py-3 bg-white text-darker font-bold rounded-full hover:bg-slate-200 transition">Start
+                    Free Trial</button>
+                <button class="px-8 py-3 glass-panel rounded-full hover:bg-white/10 transition">Schedule Demo</button>
+            </div>
+            <p class="mt-4 text-xs text-slate-500">No credit card required. 14-day free trial.</p>
+        </div>
+    </section>
+    <!-- Footer Section (Dark Theme with Glow Effects) -->
+    <footer class="bg-dark border-t border-white/5 relative overflow-hidden py-12">
+        <!-- Subtle Glow -->
+        <div
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-1">
+                <h3 class="font-bold text-xl mb-4">FlowApp.</h3>
+                <p class="text-sm text-slate-400 mb-4">The ultimate platform for modern SaaS teams.</p>
+                <div class="flex gap-4">
+                    <!-- Placeholder Social Icons -->
+                    <div
+                        class="w-8 h-8 rounded-full bg-white/8 hover:bg-fuchsia-500 transition flex items-center justify-center cursor-pointer">
+                        X</div>
+                    <div
+                        class="w-8 h-8 rounded-full bg-white/8 hover:bg-fuchsia-500 transition flex items-center justify-center cursor-pointer">
+                        In</div>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Product</h4>
+                <ul class="space-y-2 text-sm text-slate-400">
+                    <li class="hover:text-white cursor-pointer transition">Features</li>
+                    <li class="hover:text-white cursor-pointer transition">Pricing</li>
+                    <li class="hover:text-white cursor-pointer transition">Integrations</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Company</h4>
+                <ul class="space-y-2 text-sm text-slate-400">
+                    <li class="hover:text-white cursor-pointer transition">About</li>
+                    <li class="hover:text-white cursor-pointer transition">Careers</li>
+                    <li class="hover:text-white cursor-pointer transition">Blog</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Legal</h4>
+                <ul class="space-y-2 text-sm text-slate-400">
+                    <li class="hover:text-white cursor-pointer transition">Privacy Policy</li>
+                    <li class="hover:text-white cursor-pointer transition">Terms of Service</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-6 mt-12 pt-8 border-t border-white/5 text-center text-sm text-slate-500">
+            &copy; 2026 FlowApp. All rights reserved.
+        </div>
+    </footer>
+</body>
+</html>
