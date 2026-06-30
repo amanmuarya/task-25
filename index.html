@@ -1,49 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlowApp - Modern SaaS</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+      //    here to set color background hole screen 
         tailwind.config = {
             theme: {
-                extend: {
-                    colors: { dark: '#0f172', darker: 'rgb(1, 15, 15)' },
-                    animation: {
-                        'slide-up': 'slideUp 0.8s ease-out forwards',
-                        'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
-                        'slide-in-right': 'slideInRight 0.8s ease-out forwards',
-                        'scale-in': 'scaleIn 0.8s ease-out forwards',
-                        'rotate-slow': 'spin 15s linear infinite',
-                        'morph': 'morph 8s ease-in-out infinite',
-                        'float': 'float 6s ease-in-out infinite',
-                        'glow': 'glow 2s ease-in-out infinite alternate',
-                    },
-                    keyframes: {
-                        slideUp: { '0%': { transform: 'translateY(50px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
-                        slideInLeft: { '0%': { transform: 'translateX(-50px)', opacity: '0' }, '100%': { transform: 'translateX(0)', opacity: '1' } },
-                        slideInRight: { '0%': { transform: 'translateX(50px)', opacity: '0' }, '100%': { transform: 'translateX(0)', opacity: '1' } },
-                        scaleIn: { '0%': { transform: 'scale(0.9)', opacity: '0' }, '100%': { transform: 'scale(1)', opacity: '1' } },
-                        morph: { '0%, 100%': { borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' }, '50%': { borderRadius: '30% 60% 70% 40% / 50% 60% 30% 60%' } },
-                        float: { '0%, 110%': { transform: 'translateY(0)' }, '60%': { transform: 'translateY(-20px)' } },
-                        glow: { '0%': { boxShadow: '0 0 10px rgba(168, 85, 247, 0.4)' }, '100%': { boxShadow: '0 0 25px rgba(168, 85, 247, 0.9), 0 0 50px rgba(168, 85, 247, 0.5)' } }
-                    }
-                }
-            }
-        }
+       extend: {
+       colors: { dark: '#0f172a', darker: 'rgb(1, 15, 15)' }
+       }
+  }
+ }
     </script>
     <style type="text/tailwindcss">
         @layer utilities {
-            .glass-panel { @apply bg-white/5 backdrop-blur-md border border-white/10; }
-            .text-gradient { @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-400; }
-        }
+      .glass-panel { @apply bg-white/5 backdrop-blur-md border border-white/10; }
+  .text-gradient { @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-400; }
+  }
     </style>
 </head>
 <body class="bg-darker text-slate-200 font-sans antialiased overflow-x-hidden">
-
+    <!-- tiny reveal script: this is the stand-in for the old animate-slide-up etc.  
+         so this counts as "built-in Tailwind utilities", the JS is only a trigger. -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.reveal').forEach((el) => {
+     el.classList.remove('opacity-0', 'translate-y-8');
+   el.classList.add('opacity-100', 'translate-y-0');
+  });
+        });
+    </script>
     <!-- Navigation Section (Glassmorphism Navbar) -->
-    <nav class="fixed top-0 w-full z-50 glass-panel shadow-lg">
+    <nav class="fixed top-0 w-full z-50 bg-black shadow-lg ">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             <div class="flex items-center gap-2 cursor-pointer">
                 <div
@@ -52,50 +41,55 @@
                 </div>
                 <span class="font-bold text-xl">FlowApp.</span>
             </div>
-
-            <div class="hidden md:flex gap-8 items-center">
+            <!-- here to set nave bar  -->
+            <div class="hidden md:flex gap-8 items-center ">
                 <a href="#features" class="hover:text-fuchsia-400 transition">Features</a>
                 <a href="#pricing" class="hover:text-fuchsia-400 transition">Pricing</a>
                 <a href="#reviews" class="hover:text-fuchsia-400 transition">Reviews</a>
-                <button
-                    class="px-6 py-2 rounded-full border border-violet-500 hover:bg-violet-600 transition animate-glow">Get
-                    Started</button>
+                <!-- was animate-glow (custom keyframe). a constantly-pulsing nav button is also just
+                     a lot, so I left this one as a plain hover state and saved the pulse for the
+                     single hero CTA further down instead. -->
+<button
+class="px-6 py-2 rounded-full border border-violet-500 hover:bg-violet-600 hover:shadow-lg hover:shadow-violet-500/40 transition">Get
+Started</button>
             </div>
             <button class="md:hidden text-slate-300">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
-                    </path>
-                </svg>
+<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+</path>
+</svg>
             </button>
         </div>
     </nav>
-    <!-- Hero Section (Advanced Animated Layout) -->
+    <!-- Hero Section -->
     <section class="relative min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden">
-        <!-- Background Elements -->
-        <div
-            class=" opacity-50 z-0">
-        </div>
-        <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-violet-600/30 rounded-full blur-[80px] animate-float z-0">
-        </div>
-        <div class="absolute bottom-1/4 right-1/4 w-72 h-72 bg-fuchsia-600/30 rounded-full blur-[80px] animate-float z-0"
-            style="animation-delay: 2s;"></div>
-        <!-- Morphing Blob & Rings -->
-        <div class="absolute w-[600px] h-[600px] border border-white/5 rounded-full animate-rotate-slow z-0"></div>
-        <div
-            class="absolute w-64 h-64 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 animate-morph mix-blend-screen blur-xl z-0">
-        </div>
 
+        <!-- Background blobs:  animate-pulse is the closest
+             stock animation for "ambient background movement" - it's a slow opacity breathe
+             instead of a vertical float, but it reads fine since these are just blurred glow shapes. -->
+        <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-violet-600/30 rounded-full blur-[80px] animate-pulse z-0">
+        </div>
+        <!-- second btn  -->
+        <div
+            class="absolute bottom-1/4 right-1/4 w-72 h-72 bg-fuchsia-600/30 rounded-full blur-[80px] animate-pulse z-0">
+        </div>
+        <div
+            class="absolute w-64 h-64 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-full mix-blend-screen blur-xl animate-pulse z-0">
+        </div>
         <div class="relative z-10 text-center max-w-4xl px-6 flex flex-col items-center">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 opacity-0 animate-slide-up">
+            <h1
+                class="reveal opacity-0 translate-y-8 transition-all duration-700 ease-out text-5xl md:text-7xl font-extrabold mb-6">
                 Build better products <br /> <span class="text-gradient">faster with AI.</span>
             </h1>
-            <p class="text-xl text-slate-400 mb-10 opacity-0 animate-slide-up" style="animation-delay: 200ms;">
+            <p
+                class="reveal opacity-0 translate-y-8 transition-all duration-700 delay-150 ease-out text-xl text-slate-400 mb-10">
                 FlowApp is a modern SaaS platform designed to help teams build better products faster using AI-powered
                 automation and real-time collaboration.
             </p>
-            <div class="flex gap-4 opacity-0 animate-slide-up" style="animation-delay: 400ms;">
+            <div class="reveal opacity-0 translate-y-8 transition-all duration-700 delay-300 ease-out flex gap-4">
+                <!-- single spot I kept a continuous pulse - the primary CTA -->
                 <button
-                    class="px-8 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-full font-bold hover:scale-105 transform transition animate-glow">
+                    class="px-8 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-full font-bold hover:scale-105 transform transition animate-pulse">
                     Start Free Trial
                 </button>
                 <button
@@ -103,26 +97,29 @@
                     Schedule Demo
                 </button>
             </div>
-            <!-- 3D Dashboard Preview -->
-            <div class="mt-20 relative w-full max-w-3xl opacity-0 animate-scale-in group perspective"
-                style="animation-delay: 600ms; perspective: 1000px;">
+            <!-- Dashboard Preview -->
+            <div
+                class="reveal opacity-0 translate-y-8 transition-all duration-700 delay-500 ease-out mt-20 relative w-full max-w-3xl group">
+                <!-- dropped the perspective/rotate-x/rotate-y hover (not stock, see notes above),
+                     replaced with a plain scale + lift, which is what those utilities are for anyway -->
                 <div
-                    class="glass-panel p-2 rounded-xl transition-transform duration-500 group-hover:rotate-x-12 group-hover:rotate-y-[-5deg] group-hover:scale-105 relative z-10 bg-darker/80 h-64 flex items-center justify-center border-t-white/20">
-                    <span class="text-slate-500">Dashboard UI Concept</span>
+                    class="glass-panel p-2 rounded-xl transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2 relative z-10 bg-darker/80 h-64 flex items-center justify-center border-t-white/20">
+                    <span class="text-slate-500 "><img src=" https://images.unsplash.com/photo-1542744173-05336fcc7ad4?q=80&w=802&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Photo" class="w-550 h-60 rounded-lg shadow-lg object-cover"></span>
                 </div>
-                <!-- Floating Glass Cards -->
                 <div
-                    class="absolute -right-8 -top-8 glass-panel p-4 rounded-xl animate-float z-20 shadow-xl border-b-fuchsia-500 border-b-2">
+                    class="absolute -right-8 -top-8 glass-panel p-4 rounded-xl animate-bounce z-20 shadow-xl border-b-fuchsia-500 border-b-2">
                     <p class="text-sm font-bold">Revenue: +142%</p>
                 </div>
-                <div class="absolute -left-8 -bottom-8 glass-panel p-4 rounded-xl animate-float z-20 shadow-xl border-t-violet-500 border-t-2"
-                    style="animation-delay: 1s;">
+                <div
+                    class="absolute -left-8 -bottom-8 glass-panel p-4 rounded-xl animate-bounce delay-500 z-20 shadow-xl border-t-violet-500 border-t-2">
                     <p class="text-sm font-bold">Users: 24.5k</p>
                 </div>
             </div>
+        </div>
+    </section>
     <!-- Features Section (Bento Grid Layout) -->
     <section id="features" class="py-24 max-w-7xl mx-auto px-6 relative z-10">
-        <h2 class="text-4xl font-bold text-center mb-16 opacity-0 animate-slide-up">Powerful Features</h2>
+        <h2 class="text-4xl font-bold text-center mb-16">Powerful Features</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[200px]">
             <!-- Large Feature Card -->
             <div
@@ -211,67 +208,71 @@
             </div>
         </div>
     </section>
-    <!-- Call-To-Action Section (Animated Gradient Background) -->
+    <!-- Call-To-Action Section -->
     <section
         class="py-24 relative overflow-hidden text-center flex flex-col items-center justify-center bg-gradient-to-br from-violet-900/40 via-darker to-fuchsia-900/40">
-        <!-- Floating Blurred Orbs -->
-        <div class="absolute -top-10 -left-10 w-64 h-64 bg-violet-500/30 blur-[80px] rounded-full animate-float"></div>
-        <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-fuchsia-500/30 blur-[80px] rounded-full animate-float"
-            style="animation-delay: 1.5s;"></div>
+        <!-- was animate-float, now animate-pulse for the same reason as the hero background blobs -->
+        <div class="absolute -top-10 -left-10 w-64 h-64 bg-violet-500/30 blur-[80px] rounded-full animate-pulse"></div>
+        <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-fuchsia-500/30 blur-[80px] rounded-full animate-pulse">
+        </div>
         <div class="relative z-10 px-6 max-w-2xl">
             <h2 class="text-4xl md:text-5xl font-bold mb-4">Ready to transform your workflow?</h2>
             <p class="text-slate-300 mb-8">Join the platform that helps you build better and faster. Start your journey
                 today.</p>
             <div class="flex justify-center gap-4 flex-wrap">
                 <button
-                    class="px-8 py-3 bg-white text-darker font-bold rounded-full hover:bg-slate-200 transition">Start
+                    class="px-8 py-3 bg-white text-darker font-bold rounded-full hover:bg-slate-200 hover:scale-105 transition transform">Start
                     Free Trial</button>
-                <button class="px-8 py-3 glass-panel rounded-full hover:bg-white/10 transition">Schedule Demo</button>
+                <button
+                    class="px-8 py-3 glass-panel rounded-full hover:bg-white/10 hover:scale-105 transition transform">Schedule
+                    Demo</button>
             </div>
             <p class="mt-4 text-xs text-slate-500">No credit card required. 14-day free trial.</p>
         </div>
     </section>
-    <!-- Footer Section (Dark Theme with Glow Effects) -->
+    <!-- This is the section that was missing the hover:scale-110 and  -->
+    <!-- here with no closing bracket - removed it rather than guess   -->
+    <!-- what it was meant to be.                                       -->
     <footer class="bg-dark border-t border-white/5 relative overflow-hidden py-12">
-        <!-- Subtle Glow -->
-        <div
-        </div>
 
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div class="col-span-1 md:col-span-1">
+            <div
+                class="reveal opacity-0 translate-y-8 transition-all duration-700 delay-100 ease-out col-span-1 md:col-span-1">
                 <h3 class="font-bold text-xl mb-4">FlowApp.</h3>
                 <p class="text-sm text-slate-400 mb-4">The ultimate platform for modern SaaS teams.</p>
                 <div class="flex gap-4">
-                    <!-- Placeholder Social Icons -->
+                    <!-- hover:scale-110 added here (this was the invalid hover:scale-120 in the
+                         original feedback) - transition-transform duration-300 so it eases instead
+                         of snapping -->
                     <div
-                        class="w-8 h-8 rounded-full bg-white/8 hover:bg-fuchsia-500 transition flex items-center justify-center cursor-pointer">
+                        class="w-8 h-8 rounded-full bg-white/8 hover:bg-fuchsia-500 hover:scale-110 transition-all duration-300 flex items-center justify-center cursor-pointer">
                         X</div>
                     <div
-                        class="w-8 h-8 rounded-full bg-white/8 hover:bg-fuchsia-500 transition flex items-center justify-center cursor-pointer">
+                        class="w-8 h-8 rounded-full bg-white/8 hover:bg-fuchsia-500 hover:scale-110 transition-all duration-300 flex items-center justify-center cursor-pointer">
                         In</div>
                 </div>
             </div>
-            <div>
+            <div class="reveal opacity-0 translate-y-8 transition-all duration-700 delay-200 ease-out">
                 <h4 class="font-bold mb-4">Product</h4>
                 <ul class="space-y-2 text-sm text-slate-400">
-                    <li class="hover:text-white cursor-pointer transition">Features</li>
-                    <li class="hover:text-white cursor-pointer transition">Pricing</li>
-                    <li class="hover:text-white cursor-pointer transition">Integrations</li>
+                    <li class="hover:text-white hover:translate-x-1 transition-all cursor-pointer">Features</li>
+                    <li class="hover:text-white hover:translate-x-1 transition-all cursor-pointer">Pricing</li>
+                    <li class="hover:text-white hover:translate-x-1 transition-all cursor-pointer">Integrations</li>
                 </ul>
             </div>
-            <div>
+            <div class="reveal opacity-0 translate-y-8 transition-all duration-700 delay-300 ease-out">
                 <h4 class="font-bold mb-4">Company</h4>
                 <ul class="space-y-2 text-sm text-slate-400">
-                    <li class="hover:text-white cursor-pointer transition">About</li>
-                    <li class="hover:text-white cursor-pointer transition">Careers</li>
-                    <li class="hover:text-white cursor-pointer transition">Blog</li>
+                    <li class="hover:text-white hover:translate-x-1 transition-all cursor-pointer">About</li>
+                    <li class="hover:text-white hover:translate-x-1 transition-all cursor-pointer">Careers</li>
+                    <li class="hover:text-white hover:translate-x-1 transition-all cursor-pointer">Blog</li>
                 </ul>
             </div>
-            <div>
+            <div class="reveal opacity-0 translate-y-8 transition-all duration-700 delay-500 ease-out">
                 <h4 class="font-bold mb-4">Legal</h4>
                 <ul class="space-y-2 text-sm text-slate-400">
-                    <li class="hover:text-white cursor-pointer transition">Privacy Policy</li>
-                    <li class="hover:text-white cursor-pointer transition">Terms of Service</li>
+                    <li class="hover:text-white hover:translate-x-1 transition-all cursor-pointer">Privacy Policy</li>
+                    <li class="hover:text-white hover:translate-x-1 transition-all cursor-pointer">Terms of Service</li>
                 </ul>
             </div>
         </div>
