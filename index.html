@@ -16,13 +16,12 @@
     <style type="text/tailwindcss">
         @layer utilities {
       .glass-panel { @apply bg-white/5 backdrop-blur-md border border-white/10; }
-  .text-gradient { @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-fuchsia-400; }
+  .text-gradient { @apply bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-fuchsia-400; }
   }
     </style>
 </head>
-<body class="bg-darker text-slate-200 font-sans antialiased overflow-x-hidden">
-    <!-- tiny reveal script: this is the stand-in for the old animate-slide-up etc.  
-         so this counts as "built-in Tailwind utilities", the JS is only a trigger. -->
+<body class="bg-darker text-slate-200 font-sans antialiased overflow-x-hidden">  
+         <!--  "built-in Tailwind utilities", the JS is only a trigger. --> -->
     <script>
         window.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('.reveal').forEach((el) => {
@@ -36,7 +35,7 @@
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
             <div class="flex items-center gap-2 cursor-pointer">
                 <div
-                    class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-fuchsia-600 flex items-center justify-center">
+     class="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-fuchsia-600 flex items-center justify-center">
                     <span class="text-white font-bold">F</span>
                 </div>
                 <span class="font-bold text-xl">FlowApp.</span>
@@ -46,11 +45,9 @@
                 <a href="#features" class="hover:text-fuchsia-400 transition">Features</a>
                 <a href="#pricing" class="hover:text-fuchsia-400 transition">Pricing</a>
                 <a href="#reviews" class="hover:text-fuchsia-400 transition">Reviews</a>
-                <!-- was animate-glow (custom keyframe). a constantly-pulsing nav button is also just
-                     a lot, so I left this one as a plain hover state and saved the pulse for the
-                     single hero CTA further down instead. -->
+                <!-- here to set button  to start nave bar  -->
 <button
-class="px-6 py-2 rounded-full border border-violet-500 hover:bg-violet-600 hover:shadow-lg hover:shadow-violet-500/40 transition">Get
+class="px-6 py-2 rounded-full border border-violet-500 hover:bg-green-400 hover:shadow-lg hover:shadow-green-500/40 transition">Get
 Started</button>
             </div>
             <button class="md:hidden text-slate-300">
@@ -67,14 +64,14 @@ Started</button>
         <!-- Background blobs:  animate-pulse is the closest
              stock animation for "ambient background movement" - it's a slow opacity breathe
              instead of a vertical float, but it reads fine since these are just blurred glow shapes. -->
-        <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-violet-600/30 rounded-full blur-[80px] animate-pulse z-0">
+ <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-violet-600/30 rounded-full blur-[80px] animate-pulse z-0">
         </div>
         <!-- second btn  -->
         <div
-            class="absolute bottom-1/4 right-1/4 w-72 h-72 bg-fuchsia-600/30 rounded-full blur-[80px] animate-pulse z-0">
-        </div>
-        <div
-            class="absolute w-64 h-64 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-full mix-blend-screen blur-xl animate-pulse z-0">
+    class="absolute bottom-1/4 right-1/4 w-72 h-72 bg-fuchsia-600/30 rounded-full blur-[80px] animate-pulse z-0">
+  </div>
+<div
+    class="absolute w-64 h-64 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-full mix-blend-screen blur-xl animate-pulse z-0">
         </div>
         <div class="relative z-10 text-center max-w-4xl px-6 flex flex-col items-center">
             <h1
@@ -88,32 +85,37 @@ Started</button>
             </p>
             <div class="reveal opacity-0 translate-y-8 transition-all duration-700 delay-300 ease-out flex gap-4">
                 <!-- single spot I kept a continuous pulse - the primary CTA -->
+ <!-- here to stye first btn  -->
                 <button
-                    class="px-8 py-4 bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-full font-bold hover:scale-105 transform transition animate-pulse">
+                    class="px-8 py-4 bg-gradient-to-r from-green-600 to-fuchsia-600 rounded-full font-bold hover:scale-105 transform transition animate-pulse">
                     Start Free Trial
                 </button>
+     <!-- second btn to set             -->
                 <button
-                    class="px-8 py-4 glass-panel rounded-full font-bold hover:bg-white/10 hover:scale-105 transform transition">
-                    Schedule Demo
-                </button>
+class="px-8 py-4 glass-panel rounded-full font-bold hover:bg-white/10 hover:scale-105 transform transition">
+Schedule Demo
+</button>
             </div>
             <!-- Dashboard Preview -->
             <div
-                class="reveal opacity-0 translate-y-8 transition-all duration-700 delay-500 ease-out mt-20 relative w-full max-w-3xl group">
-                <!-- dropped the perspective/rotate-x/rotate-y hover (not stock, see notes above),
-                     replaced with a plain scale + lift, which is what those utilities are for anyway -->
-                <div
-                    class="glass-panel p-2 rounded-xl transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2 relative z-10 bg-darker/80 h-64 flex items-center justify-center border-t-white/20">
-                    <span class="text-slate-500 "><img src=" https://images.unsplash.com/photo-1542744173-05336fcc7ad4?q=80&w=802&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Photo" class="w-550 h-60 rounded-lg shadow-lg object-cover"></span>
+class="reveal opacity-0 translate-y-8 transition-all duration-700 delay-500 ease-out mt-20 relative w-full max-w-3xl group">
+<!-- dropped the perspective/rotate-x/rotate-y hover (not stock, see notes above),
+replaced with a plain scale + lift, which is what those utilities are for anyway -->
+<div
+class=" p-2 rounded-xl transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-2 relative z-10 bg-darker/80 h-64 flex items-center justify-center border-t-white/20">
+<!-- set img daisbord -->
+<span class="text-slate-500 "><img src=" https://images.unsplash.com/photo-1542744173-05336fcc7ad4?q=80&w=802&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Photo" class="w-550 h-60 rounded-lg shadow-lg object-cover"></span>
+</div>
+    <!-- here to set animation bounce -->
+<div
+           
+   class="absolute -right-8 -top-8 glass-panel p-4 rounded-xl animate-bounce z-20 shadow-xl border-b-fuchsia-500 border-b-2">
+  <p class="text-sm font-bold">Revenue: +142%</p>
                 </div>
-                <div
-                    class="absolute -right-8 -top-8 glass-panel p-4 rounded-xl animate-bounce z-20 shadow-xl border-b-fuchsia-500 border-b-2">
-                    <p class="text-sm font-bold">Revenue: +142%</p>
-                </div>
-                <div
-                    class="absolute -left-8 -bottom-8 glass-panel p-4 rounded-xl animate-bounce delay-500 z-20 shadow-xl border-t-violet-500 border-t-2">
-                    <p class="text-sm font-bold">Users: 24.5k</p>
-                </div>
+     <div
+      class="absolute -left-8 -bottom-8 glass-panel p-4 rounded-xl animate-bounce delay-500 z-20 shadow-xl border-t-violet-500 border-t-2">
+      <p class="text-sm font-bold">Users: 24.5k</p>
+  </div>
             </div>
         </div>
     </section>
@@ -127,6 +129,7 @@ Started</button>
                 <div
                     class="absolute top-0 right-0 w-48 h-48 bg-fuchsia-600/20 blur-3xl rounded-full group-hover:scale-150 transition-transform">
                 </div>
+                <!-- set saido to  and hover -->
                 <h3 class="text-3xl font-bold mb-4 z-10">AI-Powered Automation</h3>
                 <p class="text-slate-400 z-10 max-w-md">Streamline your workflow with intelligent automation that learns
                     from your team's habits and minimizes repetitive tasks.</p>
@@ -135,12 +138,13 @@ Started</button>
             <div
                 class="glass-panel rounded-3xl p-6 hover:border-violet-500/50 hover:shadow-[0_0_20px_rgba(139,92,246,0.2)] hover:scale-105 transition-all group">
                 <h3 class="text-xl font-bold mb-2">Lightning Fast</h3>
-                <p class="text-sm text-slate-400">Optimized infrastructure for speed.</p>
+                <p class="text-sm text-slate-400">Optimized infrastructure for speed. Lorem ipsum dolor sit amet, consectetur adipisicing.</p>
             </div>
+            <!-- third card and set style like saido and hover  -->
             <div
                 class="glass-panel rounded-3xl p-6 hover:border-blue-500/50 hover:shadow-[0_0_20px_rgba(59,130,246,0.2)] hover:scale-105 transition-all group">
                 <h3 class="text-xl font-bold mb-2">Bank-Level Security</h3>
-                <p class="text-sm text-slate-400">Your data is safe and encrypted.</p>
+                <p class="text-sm text-slate-400"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt.Your data is safe and encrypted.</p>
             </div>
             <div
                 class="glass-panel rounded-3xl p-6 hover:border-emerald-500/50 hover:shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:scale-105 transition-all group">
@@ -149,11 +153,11 @@ Started</button>
             </div>
             <div class="glass-panel rounded-3xl p-6 hover:border-pink-500/50 hover:-rotate-2 transition-all group">
                 <h3 class="text-xl font-bold mb-2">Real-time Sync</h3>
-                <p class="text-sm text-slate-400">Instant updates across devices.</p>
+                <p class="text-sm text-slate-400">Instant updates across devices. work and time conjume </p>
             </div>
             <div class="glass-panel rounded-3xl p-6 hover:border-amber-500/50 hover:rotate-2 transition-all group">
-                <h3 class="text-xl font-bold mb-2">Team Collaboration</h3>
-                <p class="text-sm text-slate-400">Built for multiplayer productivity.</p>
+   <h3 class="text-xl font-bold mb-2">Team Collaboration</h3>
+   <p class="text-sm text-slate-400">Built for multiplayer productivity. Lorem ipsum dolor sit amet.</p>
             </div>
         </div>
     </section>
@@ -165,6 +169,7 @@ Started</button>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
             <!-- Card 1 -->
+             <!-- ser card and styel given feedback for user  -->
             <div class="glass-panel p-6 rounded-2xl hover:scale-105 transition-transform duration-300">
                 <div class="text-amber-400 mb-4 text-xl">★★★★★</div>
                 <p class="text-slate-300 mb-6 italic">"This platform revolutionized our daily standups and project
@@ -178,6 +183,7 @@ Started</button>
                 </div>
             </div>
             <!-- Card 2 (Middle Offset) -->
+             <!-- same here to set hover and background color glass-panel  -->
             <div
                 class="glass-panel p-6 rounded-2xl md:-translate-y-8 hover:scale-105 transition-transform duration-300 border-t-fuchsia-500/50">
                 <div class="text-amber-400 mb-4 text-xl">★★★★★</div>
@@ -193,6 +199,7 @@ Started</button>
                 </div>
             </div>
             <!-- Card 3 -->
+             <!-- same thinges to set now  -->
             <div class="glass-panel p-6 rounded-2xl hover:scale-105 transition-transform duration-300">
                 <div class="text-amber-400 mb-4 text-xl">★★★★★</div>
                 <p class="text-slate-300 mb-6 italic">"Beautiful UI, flawless sync, and incredible customer support."
@@ -220,29 +227,27 @@ Started</button>
             <p class="text-slate-300 mb-8">Join the platform that helps you build better and faster. Start your journey
                 today.</p>
             <div class="flex justify-center gap-4 flex-wrap">
+                <!-- set btn and click to start now  -->
                 <button
                     class="px-8 py-3 bg-white text-darker font-bold rounded-full hover:bg-slate-200 hover:scale-105 transition transform">Start
                     Free Trial</button>
                 <button
-                    class="px-8 py-3 glass-panel rounded-full hover:bg-white/10 hover:scale-105 transition transform">Schedule
+                    class="px-8 py-3 glass-panel rounded-full hover:bg-white/8 hover:scale-105 transition transform">Schedule
                     Demo</button>
             </div>
             <p class="mt-4 text-xs text-slate-500">No credit card required. 14-day free trial.</p>
         </div>
     </section>
-    <!-- This is the section that was missing the hover:scale-110 and  -->
     <!-- here with no closing bracket - removed it rather than guess   -->
     <!-- what it was meant to be.                                       -->
     <footer class="bg-dark border-t border-white/5 relative overflow-hidden py-12">
-
         <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
             <div
                 class="reveal opacity-0 translate-y-8 transition-all duration-700 delay-100 ease-out col-span-1 md:col-span-1">
                 <h3 class="font-bold text-xl mb-4">FlowApp.</h3>
                 <p class="text-sm text-slate-400 mb-4">The ultimate platform for modern SaaS teams.</p>
                 <div class="flex gap-4">
-                    <!-- hover:scale-110 added here (this was the invalid hover:scale-120 in the
-                         original feedback) - transition-transform duration-300 so it eases instead
+                    <!--  - transition-transform duration-300 so it eases instead
                          of snapping -->
                     <div
                         class="w-8 h-8 rounded-full bg-white/8 hover:bg-fuchsia-500 hover:scale-110 transition-all duration-300 flex items-center justify-center cursor-pointer">
