@@ -18,7 +18,8 @@
                     animation: {
                         'blob': 'blob 7s infinite',
                         'float': 'float 6s ease-in-out infinite',
-                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'float-delayed': 'float 6s ease-in-out 2s infinite',
+                        'float-delayed-2': 'float 6s ease-in-out 4s infinite',
                         'morph': 'morph 8s ease-in-out infinite',
                         'slide-up': 'slideUp 0.8s ease-out forwards',
                         'slide-up-delayed': 'slideUp 0.8s ease-out 0.2s forwards',
@@ -73,6 +74,7 @@
             }
         }
     </script>
+
     <style type="text/tailwindcss">
         @layer utilities {
             .perspective-1000 { perspective: 1000px; }
@@ -82,17 +84,21 @@
             .rotate-y-12 { transform: rotateY(12deg); }
             .rotate-x-0 { transform: rotateX(0deg); }
             .rotate-y-0 { transform: rotateY(0deg); }
-            
             .bg-grid-pattern {
-                background-image: linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-                                  linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+                /* Hero background is now light (orange -> white), so the grid lines were
+                   switched from white-on-white  to a warm, low-contrast brown
+                   that stays visible without competing with the gradient. */
+                background-image: linear-gradient(to right, rgba(154,52,18,0.06) 1px, transparent 1px),
+                                  linear-gradient(to bottom, rgba(154,52,18,0.06) 1px, transparent 1px);
                 background-size: 40px 40px;
             }
         }
     </style>
 </head>
+
 <body
-    class="bg-slate-950 text-slate-200 font-sans antialiased overflow-x-hidden selection:bg-orange-500 selection:text-white">
+    class="bg-slate-950 text-slate-200 font-sans antialiased overflow-x-hidden selection:bg-blue-500 selection:text-white">
+
     <!-- Navigation Section -->
     <nav
         class="fixed w-full z-50 top-0 transition-all duration-300 bg-slate-950/50 backdrop-blur-lg border-b border-white/10">
@@ -101,14 +107,14 @@
                 <!-- Logo -->
                 <div class="flex items-center gap-2 cursor-pointer group">
                     <div
-                        class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center animate-morph shadow-[0_0_15px_rgba(249,115,22,0.5)] group-hover:shadow-[0_0_25px_rgba(249,115,22,0.7)] transition-all">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center animate-morph shadow-[0_0_15px_rgba(59,130,246,0.5)] group-hover:shadow-[0_0_25px_rgba(168,85,247,0.7)] transition-all">
+                        <!-- <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"> -->
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
                     <span
-                        class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-amber-300">FlowApp</span>
+                        class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">FlowApp</span>
                 </div>
                 <!-- Desktop Menu -->
                 <div class="hidden md:block">
@@ -121,13 +127,13 @@
                             class="text-slate-300 hover:text-white hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.5)] transition-all px-3 py-2 rounded-md text-sm font-medium">Reviews</a>
                     </div>
                 </div>
-                <!-- Header CTA Button (Fixed relative/absolute positioning) -->
+                <!-- CTA Button -->
                 <div class="hidden md:block">
                     <button
-                        class="relative inline-flex items-center justify-center px-6 py-2.5 overflow-hidden font-medium text-white rounded-full group bg-slate-800 border border-white/10 shadow-[0_0_20px_rgba(249,115,22,0.2)] hover:shadow-[0_0_30px_rgba(249,115,22,0.5)] transition-all duration-300 hover:scale-105">
+                        class="relative inline-flex items-center justify-center px-6 py-2.5 overflow-hidden font-medium text-white rounded-full group bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 shadow-[0_0_20px_rgba(59,130,246,0.4)] hover:shadow-[0_0_30px_rgba(168,85,247,0.6)] transition-all duration-300 hover:scale-105">
                         <span
-                            class="absolute inset-0 w-full h-full bg-gradient-to-r from-orange-500 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                        <span class="relative z-10">Get Started</span>
+                            class="absolute w-0 h-0 transition-all duration-500 ease-out bg-white rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
+                        <span class="relative">Get Started</span>
                     </button>
                 </div>
                 <!-- Mobile menu button -->
@@ -143,62 +149,78 @@
         </div>
     </nav>
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        <!-- Light Orange to White Gradient Blobs -->
-        <div class="absolute inset-0 bg-grid-pattern opacity-30 z-0"></div>
-        <div class="absolute inset-0 bg-gradient-to-br from-orange-900/20 via-slate-950 to-amber-900/10 z-0"></div>
+    <section
+        class="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden bg-gradient-to-b from-orange-100 via-orange-50 to-white">
+        <!-- Background Elements -->
+        <!-- Base gradient: light orange -> white, per spec. 
+             -screen only lightens, which washes out to invisible on a light background. -->
+        <div class="absolute inset-0 bg-grid-pattern opacity-40"></div>
         <div
-            class="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-500/30 rounded-full mix-blend-screen filter blur-[100px] animate-blob z-0">
+            class="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-300/50 rounded-full mix-blend-multiply filter blur-[100px] animate-blob">
         </div>
         <div
-            class="absolute top-1/3 right-1/4 w-96 h-96 bg-white/20 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-2000 z-0">
+            class="absolute top-1/3 right-1/4 w-96 h-96 bg-amber-200/60 rounded-full mix-blend-multiply filter blur-[100px] animate-blob animation-delay-2000">
         </div>
         <div
-            class="absolute bottom-1/4 left-1/2 w-96 h-96 bg-amber-400/30 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-4000 z-0">
+            class="absolute bottom-1/4 left-1/2 w-96 h-96 bg-orange-100/70 rounded-full mix-blend-multiply filter blur-[100px] animate-blob animation-delay-4000">
         </div>
+
+        <!-- Rotating Rings (darkened from white/5-10 so they're visible against the light hero) -->
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-orange-900/10 rounded-full animate-spin-slow opacity-50">
+        </div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-orange-900/15 rounded-full animate-spin-slow opacity-50"
+            style="animation-direction: reverse;"></div>
+
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-10">
             <!-- Animated Headline -->
             <div class="opacity-0 animate-slide-up">
                 <span
-                    class="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-orange-400 mb-6 backdrop-blur-sm">
+                    class="inline-block py-1 px-3 rounded-full bg-orange-500/10 border border-orange-500/20 text-sm font-medium text-orange-700 mb-6 backdrop-blur-sm">
                     ✨ Introducing FlowApp 2.0
                 </span>
-                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 text-slate-900">
                     Build Better Products,<br>
                     <span
-                        class="bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-200 animate-gradient-xy">At
+                        class="bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600 animate-gradient-xy">At
                         Lightning Speed</span>
                 </h1>
             </div>
-            <p class="mt-4 text-xl text-slate-400 max-w-2xl mx-auto opacity-0 animate-slide-up-delayed">
+
+            <!-- Description -->
+            <p class="mt-4 text-xl text-slate-600 max-w-2xl mx-auto opacity-0 animate-slide-up-delayed">
                 AI-powered automation, real-time collaboration, and advanced analytics seamlessly integrated into one
                 unified workspace.
             </p>
-            <!-- CTA Buttons (Fixed relative/absolute styling) -->
+            <!-- Both buttons now follow the same relative(parent) + absolute(hover-fill child) pattern
+                 used by the nav "Get Started" button, so the fill/glow effect is consistent site-wide
+                 rather than only implemented on the primary button. -->
             <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center opacity-0 animate-slide-up"
                 style="animation-delay: 0.4s;">
                 <button
-                    class="relative group px-8 py-4 bg-white text-slate-900 font-bold rounded-full overflow-hidden hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+                    class="relative group px-8 py-4 bg-white text-slate-900 font-bold rounded-full overflow-hidden hover:scale-105 transition-all shadow-[0_0_20px_rgba(234,88,12,0.25)]">
                     <span
-                        class="absolute inset-0 w-full h-full bg-gradient-to-r from-orange-400 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                    <span class="relative z-10 group-hover:text-white transition-colors duration-300">Start Free
-                        Trial</span>
+                        class="absolute inset-0 w-full h-full bg-gradient-to-r from-orange-500 to-amber-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    <span class="relative group-hover:text-white transition-colors duration-300">Start Free Trial</span>
                 </button>
                 <button
-                    class="relative group px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-sm text-white font-bold rounded-full hover:scale-105 transition-all overflow-hidden">
+                    class="relative group px-8 py-4 bg-slate-900/5 hover:bg-slate-900/10 border border-slate-900/10 backdrop-blur-sm text-slate-900 font-bold rounded-full overflow-hidden hover:scale-105 transition-all">
                     <span
-                        class="absolute inset-0 w-full h-full bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                    <span class="relative z-10">Book a Demo</span>
+                        class="absolute inset-0 w-full h-full bg-slate-900/5 scale-0 group-hover:scale-100 rounded-full transition-transform duration-500 origin-center"></span>
+                    <span class="relative">Book a Demo</span>
                 </button>
             </div>
-            <!-- Parent Container for Dashboard & Floating Cards -->
-            <div class="relative w-full max-w-5xl mx-auto mt-24 perspective-1000 opacity-0 animate-scale-in"
-                style="animation-delay: 0.6s;">
-                <!-- 3D Dashboard Base -->
+            <!-- 3D Dashboard Preview -->
+            <div class="mt-20 perspective-1000 opacity-0 animate-scale-in" style="animation-delay: 0.6s;">
+                <!--  this is the single anchor that every
+                     absolutely-positioned child below (the glass panel AND all 3 floating cards)
+                     is measured against. `isolate` gives it its own stacking context so the
+                     z-index values on its children can't be fought over by anything outside it. -->
                 <div
-                    class="relative z-10 w-full preserve-3d transition-transform duration-700 ease-out hover:rotate-x-12 hover:-rotate-y-12">
+                    class="relative isolate w-full max-w-5xl mx-auto preserve-3d transition-transform duration-700 ease-out hover:rotate-x-12 hover:-rotate-y-12">
+                    <!-- Glass Panel Base (z-10: sits below the floating cards) -->
                     <div
-                        class="relative bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-2xl shadow-orange-500/10 overflow-hidden">
+                        class="relative z-10 bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-2xl p-4 shadow-2xl shadow-orange-500/10 overflow-hidden">
                         <!-- Header Mock -->
                         <div class="flex items-center gap-2 mb-4 px-2 border-b border-white/10 pb-4">
                             <div class="flex gap-1.5">
@@ -210,25 +232,27 @@
                         </div>
                         <!-- Content Mock -->
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <!-- Sidebar -->
                             <div class="col-span-1 space-y-3">
                                 <div class="h-10 bg-white/5 rounded-lg w-full"></div>
-                                <div class="h-10 bg-orange-500/20 rounded-lg w-full border border-orange-500/30"></div>
+                                <div class="h-10 bg-blue-500/20 rounded-lg w-full border border-blue-500/30"></div>
                                 <div class="h-10 bg-white/5 rounded-lg w-full"></div>
                                 <div class="h-10 bg-white/5 rounded-lg w-full"></div>
                             </div>
+                            <!-- Main Area -->
                             <div class="col-span-2 space-y-4">
                                 <div class="flex gap-4">
                                     <div
-                                        class="h-24 bg-gradient-to-br from-amber-500/20 to-orange-500/20 rounded-xl w-1/2 border border-white/10 flex items-center p-4">
-                                        <div class="w-12 h-12 rounded-full bg-orange-400/20 mr-4 animate-pulse"></div>
+                                        class="h-24 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-xl w-1/2 border border-white/10 flex items-center p-4">
+                                        <div class="w-12 h-12 rounded-full bg-blue-400/20 mr-4 animate-pulse"></div>
                                         <div class="space-y-2 flex-1">
                                             <div class="h-2 bg-white/20 rounded w-1/2"></div>
                                             <div class="h-4 bg-white/40 rounded w-3/4"></div>
                                         </div>
                                     </div>
                                     <div
-                                        class="h-24 bg-gradient-to-br from-yellow-500/20 to-amber-500/20 rounded-xl w-1/2 border border-white/10 flex items-center p-4">
-                                        <div class="w-12 h-12 rounded-full bg-amber-400/20 mr-4 animate-pulse"
+                                        class="h-24 bg-gradient-to-br from-pink-500/20 to-purple-500/20 rounded-xl w-1/2 border border-white/10 flex items-center p-4">
+                                        <div class="w-12 h-12 rounded-full bg-purple-400/20 mr-4 animate-pulse"
                                             style="animation-delay: 0.5s;"></div>
                                         <div class="space-y-2 flex-1">
                                             <div class="h-2 bg-white/20 rounded w-1/2"></div>
@@ -239,94 +263,91 @@
                                 <div
                                     class="h-48 bg-white/5 rounded-xl w-full border border-white/10 relative overflow-hidden">
                                     <div
-                                        class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-orange-500/20 to-transparent">
+                                        class="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-blue-500/20 to-transparent">
                                     </div>
+                                    <!-- Fake Graph Lines -->
                                     <svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none">
                                         <path d="M0,100 C50,80 100,120 150,60 C200,10 250,90 300,40 L300,200 L0,200 Z"
-                                            fill="rgba(249, 115, 22, 0.1)"></path>
+                                            fill="rgba(59, 130, 246, 0.1)"></path>
                                         <path d="M0,100 C50,80 100,120 150,60 C200,10 250,90 300,40" fill="none"
-                                            stroke="rgba(249, 115, 22, 0.5)" stroke-width="3"></path>
+                                            stroke="rgba(59, 130, 246, 0.5)" stroke-width="3"></path>
                                     </svg>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Floating Card 1: Tasks -->
-                <div
-                    class="absolute -left-12 top-8 z-30 bg-slate-800/90 backdrop-blur-xl p-5 rounded-xl border border-white/20 shadow-[0_15px_35px_rgba(0,0,0,0.6)] transform animate-float hover:-translate-y-3 hover:shadow-[0_20px_40px_rgba(249,115,22,0.25)] hover:border-orange-500/50 transition-all duration-300 group cursor-pointer w-56">
-                    <div class="flex items-center gap-3 mb-3">
-                        <div
-                            class="w-10 h-10 bg-orange-500/20 rounded-lg flex items-center justify-center text-orange-400 group-hover:scale-110 transition-transform">
-                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4">
-                                </path>
-                            </svg>
-                        </div>
-                        <div class="text-sm font-semibold text-slate-300 group-hover:text-white transition-colors">Tasks
-                        </div>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold text-white">124</div>
-                        <div class="text-xs text-emerald-400 font-medium mt-1">↑ 12% from last week</div>
-                    </div>
-                </div>
-                <!-- Floating Card 2: Project Status -->
-                <div
-                    class="absolute -right-8 top-1/3 z-20 bg-slate-800/90 backdrop-blur-xl p-5 rounded-xl border border-white/20 shadow-[0_15px_35px_rgba(0,0,0,0.6)] transform animate-float-delayed hover:-translate-y-3 hover:shadow-[0_20px_40px_rgba(59,130,246,0.25)] hover:border-blue-500/50 transition-all duration-300 group cursor-pointer w-56">
-                    <div class="flex items-center gap-3 mb-3">
-                        <div
-                            class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center text-blue-400 group-hover:scale-110 group-hover:rotate-12 transition-transform">
-                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                            </svg>
-                        </div>
-                        <div class="text-sm font-semibold text-slate-300 group-hover:text-white transition-colors">
-                            Project Status</div>
-                    </div>
-                    <div>
-                        <div class="text-2xl font-bold text-white">85%</div>
-                        <div class="w-full bg-slate-700 rounded-full h-1.5 mt-2 overflow-hidden">
+                    <!-- Floating Info Cards (3D Layering)
+                 - Positioned absolute, anchored to the `relative isolate` 
+                       
+            - Each has its own shadow color/hover-intensified shadow .
+    
+     - Three distinct animate-float variants (staggered delays defined in the
+      tailwind config above) so the cards drift out of sync with each other
+     and read as animated rather than static (fix #7) -->
+                    <!-- Card  Tasks -->
+                    <div
+                        class="absolute -left-6 -top-6 md:-left-10 md:-top-8 z-20 bg-slate-800/80 backdrop-blur-md p-4 rounded-xl border border-white/10 shadow-xl shadow-orange-500/10 transform translate-z-12 animate-float transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/30 hover:border-orange-400/40 cursor-default">
+                        <div class="flex items-center gap-3">
                             <div
-                                class="bg-blue-500 h-1.5 rounded-full w-[85%] group-hover:bg-blue-400 transition-colors">
+                                class="w-9 h-9 rounded-lg bg-orange-500/20 text-orange-400 flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400">Tasks</div>
+                                <div class="text-lg font-bold text-orange-400">8 / 12 Done</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 2: Project Status (right, mid-height) -->
+                    <div
+                        class="absolute -right-8 top-1/4 z-20 bg-slate-800/80 backdrop-blur-md p-4 rounded-xl border border-white/10 shadow-xl shadow-green-500/10 transform translate-z-12 animate-float-delayed transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-105 hover:shadow-2xl hover:shadow-green-500/30 hover:border-green-400/40 cursor-default">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-9 h-9 rounded-lg bg-green-500/20 text-green-400 flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400">Project Status</div>
+                                <div class="text-lg font-bold text-green-400 flex items-center gap-1.5">
+                                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                                    On Track
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Card 3: Team Activity (bottom-left) -->
+                    <div
+                        class="absolute -left-8 bottom-1/4 z-20 bg-slate-800/80 backdrop-blur-md p-4 rounded-xl border border-white/10 shadow-xl shadow-blue-500/10 transform translate-z-12 animate-float-delayed-2 transition-all duration-300 ease-out hover:-translate-y-2 hover:scale-105 hover:shadow-2xl hover:shadow-blue-500/30 hover:border-blue-400/40 cursor-default">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-9 h-9 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0">
+                                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400">Team Activity</div>
+                                <div class="text-lg font-bold text-blue-400">24 Online</div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Floating Card 3: Team Activity -->
-                <div class="absolute -left-4 -bottom-10 z-30 bg-slate-800/90 backdrop-blur-xl p-5 rounded-xl border border-white/20 shadow-[0_15px_35px_rgba(0,0,0,0.6)] transform animate-float hover:-translate-y-3 hover:shadow-[0_20px_40px_rgba(168,85,247,0.25)] hover:border-purple-500/50 transition-all duration-300 group cursor-pointer w-64"
-                    style="animation-delay: 1.5s;">
-                    <div class="flex items-center gap-3 mb-3">
-                        <div
-                            class="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center text-purple-400 group-hover:scale-110 transition-transform">
-                            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
-                                </path>
-                            </svg>
-                        </div>
-                        <div class="text-sm font-semibold text-slate-300 group-hover:text-white transition-colors">Team
-                            Activity</div>
-                    </div>
-                    <div class="flex -space-x-2 overflow-hidden">
-                        <div
-                            class="inline-block h-8 w-8 rounded-full ring-2 ring-slate-800 bg-red-400 flex items-center justify-center text-xs font-bold">
-                            AJ</div>
-                        <div
-                            class="inline-block h-8 w-8 rounded-full ring-2 ring-slate-800 bg-yellow-400 flex items-center justify-center text-xs font-bold text-slate-900">
-                            MR</div>
-                        <div
-                            class="inline-block h-8 w-8 rounded-full ring-2 ring-slate-800 bg-green-400 flex items-center justify-center text-xs font-bold text-slate-900">
-                            SK</div>
-                        <div
-                            class="inline-block h-8 w-8 rounded-full ring-2 ring-slate-800 bg-slate-600 flex items-center justify-center text-xs font-bold text-white">
-                            +5</div>
-                    </div>
-                </div>
-
+            </div>
+        </div>
+        <!-- Animated Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce">
+            <span class="text-xs text-slate-500 mb-2">Scroll</span>
+            <div class="w-6 h-10 border-2 border-slate-600 rounded-full flex justify-center p-1">
+                <div class="w-1.5 h-3 bg-blue-500 rounded-full animate-pulse-glow"></div>
             </div>
         </div>
     </section>
@@ -337,6 +358,7 @@
                 <h2 class="text-4xl md:text-5xl font-bold mb-4">Everything you need to scale</h2>
                 <p class="text-xl text-slate-400">Powerful features packed into an intuitive interface.</p>
             </div>
+
             <!-- Bento Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
                 <!-- Large Feature Card -->
@@ -424,6 +446,7 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- Small Card 3 -->
                 <div
                     class="group rounded-3xl bg-white/5 border border-white/10 p-8 hover:bg-white/10 transition-all duration-300">
@@ -448,6 +471,7 @@
                 <h2 class="text-4xl md:text-5xl font-bold mb-4">Loved by innovators</h2>
                 <p class="text-xl text-slate-400">Don't just take our word for it.</p>
             </div>
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Card 1 -->
                 <div
@@ -580,7 +604,6 @@
         <div
             class="absolute inset-0 bg-gradient-to-br from-blue-900 via-purple-900 to-slate-900 animate-gradient-xy opacity-80">
         </div>
-
         <!-- Floating Orbs -->
         <div
             class="absolute top-0 right-1/4 w-72 h-72 bg-blue-500/40 rounded-full mix-blend-screen filter blur-[80px] animate-blob">
@@ -594,21 +617,25 @@
                 workflow?</h2>
             <p class="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">Join thousands of modern teams building the future
                 with FlowApp. Setup takes minutes.</p>
-
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <!-- Same relative(parent)/absolute(hover-fill child) pattern used everywhere else
+                     on the page, for a consistent button language site-wide (fix #5). -->
                 <button
-                    class="px-8 py-4 bg-white text-blue-900 font-bold rounded-full overflow-hidden hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,255,255,0.4)]">
-                    Start Free Trial
+                    class="relative group px-8 py-4 bg-white text-blue-900 font-bold rounded-full overflow-hidden hover:scale-105 transition-all shadow-[0_0_20px_rgba(255,255,255,0.4)]">
+                    <span
+                        class="absolute inset-0 w-full h-full bg-gradient-to-r from-orange-400 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    <span class="relative group-hover:text-white transition-colors duration-300">Start Free Trial</span>
                 </button>
                 <button
-                    class="px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md text-white font-bold rounded-full hover:scale-105 transition-all">
-                    Schedule Demo
+                    class="relative group px-8 py-4 bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md text-white font-bold rounded-full overflow-hidden hover:scale-105 transition-all">
+                    <span
+                        class="absolute inset-0 w-full h-full bg-white/10 scale-0 group-hover:scale-100 rounded-full transition-transform duration-500 origin-center"></span>
+                    <span class="relative">Schedule Demo</span>
                 </button>
             </div>
             <p class="mt-6 text-sm text-blue-200/60">No credit card required. 14-day free trial.</p>
         </div>
     </section>
-
     <!-- Footer Section -->
     <footer class="bg-slate-950 border-t border-white/10 pt-20 pb-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -617,18 +644,17 @@
                 <div class="col-span-1 md:col-span-1">
                     <div class="flex items-center gap-2 mb-4">
                         <div
-                            class="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center">
+                            class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
                             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                             </svg>
                         </div>
                         <span
-                            class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-400 to-amber-300">FlowApp</span>
+                            class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">FlowApp</span>
                     </div>
                     <p class="text-slate-400 text-sm mb-6">Empowering teams to build, ship, and scale better products
                         seamlessly.</p>
-
                     <!-- Social Icons -->
                     <div class="flex space-x-4">
                         <a href="#" class="text-slate-400 hover:text-white hover:scale-110 transition-transform">
@@ -651,7 +677,6 @@
                         </a>
                     </div>
                 </div>
-
                 <!-- Product -->
                 <div>
                     <h4 class="text-white font-bold mb-4">Product</h4>
@@ -664,8 +689,7 @@
                         </li>
                     </ul>
                 </div>
-
-                <!-- Company -->
+                <!-- Company  set and style text hover:underlene -->
                 <div>
                     <h4 class="text-white font-bold mb-4">Company</h4>
                     <ul class="space-y-2 text-sm text-slate-400">
@@ -675,7 +699,6 @@
                         <li><a href="#" class="hover:text-white hover:underline transition-colors">Contact</a></li>
                     </ul>
                 </div>
-
                 <!-- Legal -->
                 <div>
                     <h4 class="text-white font-bold mb-4">Legal</h4>
@@ -689,12 +712,12 @@
                     </ul>
                 </div>
             </div>
-
+            <!-- footer here set and style  -->
             <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                 <p class="text-slate-500 text-sm">© 2026 FlowApp. All rights reserved.</p>
                 <div class="flex items-center gap-2 text-sm text-slate-500">
                     <span>Status:</span>
-                    <span class="flex items-center gap-1"><span
+                    <!-- <span class="flex items-center gap-1"><span -->
                             class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> All systems
                         operational</span>
                 </div>
