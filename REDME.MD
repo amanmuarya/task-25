@@ -1,8 +1,7 @@
 # FlowApp Hero Section — Fix Notes
 
-This document explains the changes made to `flowapp.html`, mapped to the 7 issues that were flagged.
-
-## 1. Hero background: light orange → white
+This document explains the changes made to `flowapp.html`, mapped to the 7 issues that were flagged. 
+## 1. Hero background: light orange   →  white
 
 **Before:** hero `<section>` had no background of its own — it only showed three large blurred circles (`bg-blue-600/30`, `bg-purple-600/30`, `bg-pink-600/30`) using `mix-blend-screen`, floating over the page's default dark navy.
 
@@ -12,11 +11,11 @@ This document explains the changes made to `flowapp.html`, mapped to the 7 issue
 
 A few other elements existed only because the old background was dark, and needed matching updates so they didn't disappear:
 - **Grid pattern** — was `rgb` lines (invisible on white); now a warm low-contrast brown (rgba)
-- **Rotating rings** — were `border-white/5` / `border-white/10`; now `border-orange-900/10` / `border-orange-900/15`
+- **Rotating rings** — were `border-white/5` / `border-white/10`; now border-orange-900/10  / `border-orange-900/15`
 - **Badge, heading, paragraph text** — were tuned for a dark background (`text-blue-400`, default light body text); now text-orange, text-slate.
 - **"Book a Demo" button** — was `text-white` on `bg-white/5` (invisible on light bg); now `text-slate-900` on `bg-slate-900/5`
 
-> **Note:** the rest of the page (nav, features, footer) is still dark (`bg-slate-950`). Only the hero section is light now. That's a deliberate reading of "hero section gradient background" rather than a full site re-theme — say the word if you actually want the whole page switched to a light theme, that's a bigger follow-up.
+**Note:** the rest of the page (nav, features, footer) is still dark (`bg-slate-950`). Only the hero section is light now. That's a deliberate reading of "hero section gradient background" rather than a full site re-theme — say the word if you actually want the whole page switched to a light theme, that's a bigger follow-up.
 
 ## 2–4. Floating cards: positioning, layering, and the relative container
 
@@ -30,12 +29,11 @@ A few other elements existed only because the old background was dark, and neede
 - Each card now has a colored shadow that matches its content (`shadow-orange-500/10`, `shadow-green-500/10`, `shadow-blue-500/10`) instead of a flat generic shadow.
 
 **Card layout (a triangle around the dashboard, so nothing overlaps):**
-- **Tasks** — top-left corner
-- **Project Status** — right edge, mid-height
-- **Team Activity** — left edge, lower third
+- **Tasks**              — top-left corner
+- **Project Status**   — right edge, mid-height
+- **Team Activity**     — left edge, lower third
 
 ## 5. Buttons: relative/absolute consistency
-
 The nav's "Get Started" button already used a `relative` parent with an `absolute` hover-fill `<span>` inside it (a circular fill that expands on hover). "Start Free Trial" copied that pattern. But **"Book a Demo"** and **"Schedule Demo"** (bottom CTA section) were plain buttons with only `hover:scale-105` — no relative/absolute relationship at all, so their hover feedback was noticeably weaker/inconsistent with the rest of the page.
 
 **Fix:** both buttons now follow the same structure:
@@ -60,5 +58,5 @@ On hover, a card lifts up, scales up slightly, its shadow intensifies and picks 
 Each of the 3 cards uses a different one (`animate-float`, `animate-float-delayed`, `animate-float-delayed-2`), so they drift up and down out of sync with each other — the staggering is what makes the motion actually read as "alive" rather than all three cards bobbing in lockstep.
 
 ## Files
-- `flowapp.html` — the updated page
-- `README.md` — this file
+-        flowapp.html — the updated page
+-        README.md — this file
