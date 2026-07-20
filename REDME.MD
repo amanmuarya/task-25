@@ -9,7 +9,6 @@ This document explains the changes made to `flowapp.html`, mapped to the 7 issue
 - recolored to `orange-300` / `amber-200` / `orange-100`
 - switched to `mix-blend-multiply`, which darkens instead of lightens and reads correctly on a light backdrop
 
-A few other elements existed only because the old background was dark, and needed matching updates so they didn't disappear:
 - **Grid pattern** — was `rgb` lines (invisible on white); now a warm low-contrast brown (rgba)
 - **Rotating rings** — were `border-white/5` / `border-white/10`; now border-orange-900/10  / `border-orange-900/15`
 - **Badge, heading, paragraph text** — were tuned for a dark background (`text-blue-400`, default light body text); now text-orange, text-slate.
@@ -39,11 +38,9 @@ The nav's "Get Started" button already used a `relative` parent with an `absolut
 **Fix:** both buttons now follow the same structure:
 `relative` on the button + `absolute` on the inner fill span + `overflow-hidden` to clip it = the same interactive language across all 4 buttons on the page (nav, hero primary, hero secondary, CTA primary, CTA secondary).
 
-
 ## Hover effects on cards
 
 **Before:** cards had no hover state at all — they looked identical whether you were hovering them or not.
-
 **After:** each card has:
 transition-all duration-300 ease-out
 hover:-translate-y-2 hover:scale-105
