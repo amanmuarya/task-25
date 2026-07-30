@@ -1,59 +1,52 @@
-# FlowApp Hero Section — Fix Notes
+#  Greenwood Library Website - Student Project
 
-This document explains the changes made to `flowapp.html`, mapped to the 7 issues that were flagged. 
-## 1. Hero background: light orange   →  white
+##  Overview
+This project is a modern, minimal, editorial-style landing page built for the fictional **Greenwood Public Library**. I created this project to practice advanced UI/UX design patterns, complex grid structures, and interactive animations using pure **HTML5** and **Tailwind CSS**.
 
-**Before:** hero `<section>` had no background of its own — it only showed three large blurred circles (`bg-blue-600/30`, `bg-purple-600/30`, `bg-pink-600/30`) using `mix-blend-screen`, floating over the page's default dark navy.
+##  Learning Process & What I Mastered
 
-**Why the blobs and other elements also changed:** `mix-blend-screen` only *lightens* colors underneath it — it's built for dark backgrounds. On a light background it just washes out to invisible. So the blobs were:
-- recolored to `orange-300` / `amber-200` / `orange-100`
-- switched to `mix-blend-multiply`, which darkens instead of lightens and reads correctly on a light backdrop
+During the development of this project, I focused on moving beyond basic layouts and challenged myself with modern web design trends:
 
-- **Grid pattern** — was `rgb` lines (invisible on white); now a warm low-contrast brown (rgba)
-- **Rotating rings** — were `border-white/5` / `border-white/10`; now border-orange-900/10  / `border-orange-900/15`
-- **Badge, heading, paragraph text** — were tuned for a dark background (`text-blue-400`, default light body text); now text-orange, text-slate.
-- **"Book a Demo" button** — was `text-white` on `bg-white/5` (invisible on light bg); now `text-slate-900` on `bg-slate-900/5`
+### 1. Advanced Grid Layouts (Bento Grid)
+- Learned how to build an **asymmetrical Bento-style grid** using Tailwind's `col-span` and `row-span` utilities.
+- Implemented responsive column shifting from 1 column on mobile to 2, 3, and 4 columns on larger screens (`grid-cols-1 md:grid-cols-2 lg:grid-cols-4`).
 
-**Note:** the rest of the page (nav, features, footer) is still dark (`bg-slate-950`). Only the hero section is light now. That's a deliberate reading of "hero section gradient background" rather than a full site re-theme — say the word if you actually want the whole page switched to a light theme, that's a bigger follow-up.
+### 2. Custom Tailwind Configurations via CDN
+- Figured out how to extend the default Tailwind theme directly in the HTML `<head>`.
+- Wrote custom keyframes (`fadeUp`) and animation classes to create a **staggered entry animation** when the page loads.
 
-## 2–4. Floating cards: positioning, layering, and the relative container
+### 3. Interactive Hover Effects & Pseudo-elements
+- **Animated Underlines:** Used pseudo-elements (`after:absolute after:bottom-0 after:w-0 hover:after:w-full`) for smooth navbar link hovers.
+- **Image Zoom:** Wrapped images in `overflow-hidden` containers and applied `group-hover:scale-105` with a long transition duration (`duration-700`) to create premium, cinematic image scaling.
+- **Grayscale Transitions:** Used `grayscale hover:grayscale-0` on the testimonial avatar.
 
-**The core problem:** for `position: absolute` to work predictably, every absolutely-positioned element needs an ancestor with `position: relative` (or similar) that it's measured against — and every layered element needs an explicit `z-index` so stacking order isn't left to source order accidents.
+### 4. Editorial Typography & Layout
+- Applied `text-balance` and tight tracking (`tracking-tighter`) to large hero headers to mimic newspaper and magazine aesthetics.
+- Used Tailwind's CSS column utilities (`columns-1 sm:columns-2`) in the About section to create a multi-column reading experience without needing flexbox or grid.
 
-**Before:** there was a `relative` div wrapping the dashboard, but it wasn't distinguished from anything else, had no explicit z-index scheme, and only had 2 cards.
+##  Project Structure (Step-by-Step Build)
 
-- positioning anchor** for everything inside it — the glass panel and all three cards are positioned relative to it, not to the page.
-- `isolate` creates a new stacking context, so this component's z-index values can never be overridden or fought over by something elsewhere on the page.
-- The glass panel (`z-10`) sits below the cards (`z-20`), so cards always render on top of the dashboard mockup, even during the hover 3D-tilt.
-- Each card now has a colored shadow that matches its content (`shadow-orange-500/10`, `shadow-green-500/10`, `shadow-blue-500/10`) instead of a flat generic shadow.
+1. **Navigation:** Sticky top bar with backdrop blur (`backdrop-blur-md`).
+2. **Hero Section:** Large typography, staggered text fade-in, and a 4-column data stats row.
+3. **Collections Grid:** Interactive cards with subtle, distinct pastel background changes on hover (`hover:bg-emerald-50`, `hover:bg-amber-50`).
+4. **Gallery Spaces:** Image grid with gradients and bottom-left caption tags.
+5. **Values Bento Grid:** Complex spanned layout highlighting library perks.
+6. **Membership Tiers:** Responsive pricing cards featuring an absolute positioned "Popular" badge and list items.
+7. **Testimonial:** Centered layout emphasizing the grayscale-to-color transition.
+8. **Contact Block:** A rounded, tinted CTA container for address and hours.
+9. **Events:** Blog-style card grid for upcoming workshops.
+10. **Footer:** Clean 4-column link structure with social SVGs.
 
-**Card layout (a triangle around the dashboard, so nothing overlaps):**
-- **Tasks**              — top-left corner
-- **Project Status**   — right edge, mid-height
-- **Team Activity**     — left edge, lower third
+## 🚀 How to Run
 
-## 5. Buttons: relative/absolute consistency
-The nav's "Get Started" button already used a `relative` parent with an `absolute` hover-fill `<span>` inside it (a circular fill that expands on hover). "Start Free Trial" copied that pattern. But **"Book a Demo"** and **"Schedule Demo"** (bottom CTA section) were plain buttons with only `hover:scale-105` — no relative/absolute relationship at all, so their hover feedback was noticeably weaker/inconsistent with the rest of the page.
+Since this project relies entirely on HTML and the Tailwind CSS CDN, there is no build step required!
 
-**Fix:** both buttons now follow the same structure:
-`relative` on the button + `absolute` on the inner fill span + `overflow-hidden` to clip it = the same interactive language across all 4 buttons on the page (nav, hero primary, hero secondary, CTA primary, CTA secondary).
+1. Download or clone this repository.
+2. Open the `index.html` file directly in any modern web browser.
+3. Ensure you have an active internet connection so the Tailwind CDN script and Unsplash images can load.
 
-## Hover effects on cards
-
-**Before:** cards had no hover state at all — they looked identical whether you were hovering them or not.
-**After:** each card has:
-transition-all duration-300 ease-out
-hover:-translate-y-2 hover:scale-105
-hover:shadow-2xl hover:shadow-{color}-500/30
-hover:border-{color}-400/40
-On hover, a card lifts up, scales up slightly, its shadow intensifies and picks up its accent color, and its border brightens — a clear, deliberate response instead of a passive element.
-
-## Animations on cards
-
-**Before:** only two float timings existed in the Tailwind config (`float` and `float-delayed`, offset by 3s), and only two cards used them — so with two cards, the effect could still look synced/subtle depending on scroll position.
-
-Each of the 3 cards uses a different one (`animate-float`, `animate-float-delayed`, `animate-float-delayed-2`), so they drift up and down out of sync with each other — the staggering is what makes the motion actually read as "alive" rather than all three cards bobbing in lockstep.
-
-## Files
--        flowapp.html — the updated page
--        README.md — this file
+## 🛠️ Tech Stack
+- **HTML5**
+- **Tailwind CSS (CDN)**
+- Google Fonts (System UI fonts fallback)
+- Unsplash (Placeholder imagery)
