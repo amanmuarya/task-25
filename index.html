@@ -1,606 +1,860 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greenwood Public Library</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FlowApp — Build better products, faster</title>
+    <meta name="description"
+        content="FlowApp helps teams build better products faster with AI-powered automation, real-time collaboration, and advanced analytics." />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    colors: {
+                        space: {
+                            950: '#07070d',
+                            900: '#0c0c16',
+                            850: '#111120',
+                            800: '#151526',
+                            700: '#1c1c30',
+                        },
+                        violet: {
+                            450: '#8b5cf6',
+                        },
+                    },
                     fontFamily: {
-sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
                     },
                     keyframes: {
-                        fadeUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                        'slide-up': {
+                            '0%': { opacity: '0', transform: 'translateY(36px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
-                        }
+                        },
+                        'slide-in-left': {
+                            '0%': { opacity: '0', transform: 'translateX(-48px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        'slide-in-right': {
+                            '0%': { opacity: '0', transform: 'translateX(48px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        'scale-in': {
+                            '0%': { opacity: '0', transform: 'scale(0.9)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        'rotate-slow': {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' },
+                        },
+                        'morph': {
+                            '0%, 100%': { borderRadius: '42% 58% 65% 35% / 45% 45% 55% 55%', transform: 'rotate(0deg) scale(1)' },
+                            '25%': { borderRadius: '58% 42% 35% 65% / 55% 62% 38% 45%', transform: 'rotate(8deg) scale(1.03)' },
+                            '50%': { borderRadius: '50% 50% 33% 67% / 55% 27% 73% 45%', transform: 'rotate(-4deg) scale(0.98)' },
+                            '75%': { borderRadius: '33% 67% 58% 42% / 63% 40% 60% 37%', transform: 'rotate(4deg) scale(1.02)' },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-18px)' },
+                        },
+                        'glow-pulse': {
+                            '0%, 100%': { opacity: '0.55' },
+                            '50%': { opacity: '1' },
+                        },
+                        'gradient-move': {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        },
+                        'orb-drift': {
+                            '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
+                            '33%': { transform: 'translate(30px, -40px) scale(1.08)' },
+                            '66%': { transform: 'translate(-24px, 20px) scale(0.95)' },
+                        },
                     },
                     animation: {
-                        'fade-up': 'fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
-                    }
-                }
+                        'slide-up': 'slide-up 0.8s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'slide-in-left': 'slide-in-left 0.8s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'slide-in-right': 'slide-in-right 0.8s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'scale-in': 'scale-in 0.7s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'rotate-slow': 'rotate-slow 22s linear infinite',
+                        'rotate-slow-rev': 'rotate-slow 30s linear infinite reverse',
+                        'morph': 'morph 9s ease-in-out infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 7s ease-in-out infinite 1.5s',
+                        'float-slow': 'float 9s ease-in-out infinite 0.5s',
+                        'glow-pulse': 'glow-pulse 4s ease-in-out infinite',
+                        'gradient-move': 'gradient-move 6s ease infinite',
+                        'orb-drift': 'orb-drift 14s ease-in-out infinite',
+                        'orb-drift-slow': 'orb-drift 20s ease-in-out infinite',
+                    },
+                },
+            },
+        };
+    </script>
+
+    <style>
+        html {
+            background: #07070d;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #07070d;
+            color: #e8e8f0;
+        }
+
+        .font-display {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.045);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+        }
+
+        .glass-strong {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        /* Gradient text */
+        .text-gradient {
+            background: linear-gradient(90deg, #a78bfa, #f472b6, #22d3ee, #a78bfa);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Grid background */
+        .bg-grid {
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 56px 56px;
+            mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 40%, transparent 100%);
+        }
+
+        /* Perspective for dashboard */
+        .perspective-container {
+            perspective: 1600px;
+        }
+
+        .dashboard-tilt {
+            transform: rotateX(10deg) rotateY(-12deg) rotateZ(1deg);
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .perspective-container:hover .dashboard-tilt {
+            transform: rotateX(4deg) rotateY(-4deg) rotateZ(0.5deg) scale(1.02);
+        }
+
+        /* Reveal on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* CTA animated gradient background */
+        .cta-gradient-bg {
+            background: linear-gradient(115deg, #6d28d9, #a21caf, #0891b2, #7c3aed);
+            background-size: 300% 300%;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #07070d;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #2a2a42;
+            border-radius: 8px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
             }
         }
-    </script>
-    <style>
-        /* Base utility for staggered animation delays */
-        .delay-100 {
-            animation-delay: 100ms;
-        }
-        .delay-200 {
-            animation-delay: 200ms;
-        }
 
-        .delay-300 {
-            animation-delay: 300ms;
-        }
-
-        .delay-400 {
-            animation-delay: 400ms;
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid #a78bfa;
+            outline-offset: 3px;
         }
     </style>
 </head>
 
-<body class="bg-slate-50 text-slate-900 antialiased selection:bg-emerald-200 selection:text-emerald-950">
-    <!-- 1. Navigation Section -->
-    <nav class="sticky top-0 z-50 w-full backdrop-blur-md bg-white/70 border-b border-gray-200/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <!-- Logo & Badge -->
-                <div class="flex items-center gap-3">
-                    <a href="#" class="text-2xl font-light tracking-tight text-slate-900">Greenwood</a>
+<body class="antialiased overflow-x-hidden">
+
+    <!-- ============ NAVBAR ============ -->
+    <header class="fixed top-0 inset-x-0 z-50">
+        <nav class="mx-auto max-w-7xl px-6 mt-4">
+            <div
+                class="glass rounded-2xl px-5 py-3.5 flex items-center justify-between shadow-[0_8px_32px_rgba(0,0,0,0.35)]">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2.5 group">
                     <span
-                        class="hidden sm:inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 text-emerald-800">
-                        Open Sat
+                        class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 flex items-center justify-center shadow-[0_0_20px_rgba(139,92,246,0.55)] group-hover:shadow-[0_0_28px_rgba(139,92,246,0.8)] transition-shadow duration-300">
+                        <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5 text-white">
+                            <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" fill="currentColor" />
+                        </svg>
                     </span>
+                    <span class="font-display font-bold text-lg tracking-tight text-white">FlowApp</span>
+                </a>
+
+                <!-- Desktop links -->
+                <div class="hidden md:flex items-center gap-8 font-medium text-sm text-white/70">
+                    <a href="#features" class="hover:text-white transition-colors duration-200">Features</a>
+                    <a href="#pricing" class="hover:text-white transition-colors duration-200">Pricing</a>
+                    <a href="#testimonials" class="hover:text-white transition-colors duration-200">Reviews</a>
                 </div>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#sections"
-                        class="text-sm font-medium text-slate-600 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 hover:after:w-full after:bg-slate-900 after:transition-all after:duration-300 py-1">Sections</a>
-                    <a href="#gallery"
-                        class="text-sm font-medium text-slate-600 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 hover:after:w-full after:bg-slate-900 after:transition-all after:duration-300 py-1">Gallery</a>
-                    <a href="#membership"
-                        class="text-sm font-medium text-slate-600 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 hover:after:w-full after:bg-slate-900 after:transition-all after:duration-300 py-1">Membership</a>
-                    <a href="#events"
-                        class="text-sm font-medium text-slate-600 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 hover:after:w-full after:bg-slate-900 after:transition-all after:duration-300 py-1">Events</a>
-                </div>
-                <!-- CTA Button -->
-                <div>
-<a href="#contact"
-class="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-medium bg-slate-900 text-white transition-colors duration-300 hover:bg-emerald-600 hover:text-white">
-Visit Us
+                <!-- CTA + mobile toggle -->
+                <div class="flex items-center gap-3">
+                    <a href="#cta"
+                        class="hidden md:inline-flex relative items-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 shadow-[0_0_16px_rgba(168,85,247,0.5)] hover:shadow-[0_0_28px_rgba(168,85,247,0.85)] hover:scale-[1.04] active:scale-[0.98] transition-all duration-300">
+                        Get Started
                     </a>
+                    <button id="menuBtn" aria-label="Toggle menu" aria-expanded="false"
+                        class="md:hidden w-9 h-9 flex items-center justify-center rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors">
+                        <svg id="iconOpen" viewBox="0 0 24 24" fill="none" class="w-5 h-5">
+                            <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                        <svg id="iconClose" viewBox="0 0 24 24" fill="none" class="w-5 h-5 hidden">
+                            <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile menu -->
+            <div id="mobileMenu"
+                class="hidden md:hidden glass rounded-2xl mt-2 px-5 py-4 flex flex-col gap-4 text-white/80 font-medium text-sm">
+                <a href="#features" class="hover:text-white transition-colors">Features</a>
+                <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+                <a href="#testimonials" class="hover:text-white transition-colors">Reviews</a>
+                <a href="#cta"
+                    class="inline-flex justify-center items-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 shadow-[0_0_16px_rgba(168,85,247,0.5)]">Get
+                    Started</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ============ HERO ============ -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20">
+
+        <!-- grid background -->
+        <div class="absolute inset-0 bg-grid pointer-events-none"></div>
+
+        <!-- floating gradient orbs -->
+        <div class="absolute -top-20 -left-24 w-96 h-96 rounded-full bg-violet-600/30 blur-[100px] animate-orb-drift">
+        </div>
+        <div
+            class="absolute top-40 -right-24 w-[28rem] h-[28rem] rounded-full bg-cyan-500/20 blur-[110px] animate-orb-drift-slow">
+        </div>
+        <div class="absolute bottom-0 left-1/3 w-80 h-80 rounded-full bg-fuchsia-600/20 blur-[100px] animate-orb-drift">
+        </div>
+
+        <!-- morphing blob -->
+        <div
+            class="absolute top-24 right-10 md:right-24 w-72 h-72 md:w-96 md:h-96 bg-gradient-to-br from-violet-500/25 via-fuchsia-500/20 to-cyan-400/25 animate-morph blur-2xl pointer-events-none">
+        </div>
+
+        <!-- rotating rings -->
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[36rem] h-[36rem] rounded-full border border-white/[0.06] animate-rotate-slow pointer-events-none">
+        </div>
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[26rem] h-[26rem] rounded-full border border-dashed border-white/[0.08] animate-rotate-slow-rev pointer-events-none">
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+            <div class="flex flex-col items-center text-center max-w-4xl mx-auto">
+
+                <!-- eyebrow -->
+                <div
+                    class="opacity-0 animate-slide-up [animation-delay:0ms] inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass text-xs font-semibold text-white/70 mb-7">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-glow-pulse"></span>
+                    Now with AI workflow automation
+                </div>
+
+                <!-- headline -->
+                <h1
+                    class="font-display font-bold text-[2.6rem] leading-[1.08] sm:text-6xl md:text-7xl tracking-tight text-white">
+                    <span class="block opacity-0 animate-slide-up [animation-delay:80ms]">Build better products,</span>
+                    <span
+                        class="block opacity-0 animate-slide-up [animation-delay:220ms] text-gradient animate-gradient-move">faster
+                        than ever.</span>
+                </h1>
+
+                <!-- subtext -->
+                <p
+                    class="opacity-0 animate-slide-up [animation-delay:380ms] mt-6 text-base sm:text-lg text-white/60 max-w-xl leading-relaxed">
+                    FlowApp brings AI-powered automation, real-time collaboration, and advanced analytics into one
+                    workspace — so your team can ship faster, together.
+                </p>
+
+                <!-- CTAs -->
+                <div
+                    class="opacity-0 animate-slide-up [animation-delay:520ms] mt-9 flex flex-col sm:flex-row items-center gap-4">
+                    <a href="#cta"
+                        class="group relative inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white overflow-hidden bg-gradient-to-r from-violet-500 to-fuchsia-500 shadow-[0_0_24px_rgba(168,85,247,0.5)] hover:shadow-[0_0_38px_rgba(168,85,247,0.85)] transition-all duration-300 hover:-translate-y-0.5">
+                        <span
+                            class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                        <span class="relative">Start Free Trial</span>
+                        <svg class="relative w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                            viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <a href="#"
+                        class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white/85 glass hover:bg-white/[0.09] hover:text-white transition-all duration-300 hover:-translate-y-0.5">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7-11-7Z" />
+                        </svg>
+                        Watch Demo
+                    </a>
+                </div>
+
+                <!-- 3D dashboard preview -->
+                <div
+                    class="opacity-0 animate-scale-in [animation-delay:700ms] mt-20 w-full max-w-4xl perspective-container">
+                    <div
+                        class="dashboard-tilt relative rounded-2xl glass-strong shadow-[0_30px_80px_rgba(0,0,0,0.55)] p-4 sm:p-6">
+
+                        <!-- fake window chrome -->
+                        <div class="flex items-center gap-1.5 mb-4">
+                            <span class="w-2.5 h-2.5 rounded-full bg-red-400/70"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-yellow-400/70"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-green-400/70"></span>
+                        </div>
+
+                        <!-- mock dashboard body -->
+                        <div class="grid grid-cols-3 gap-4">
+                            <div
+                                class="col-span-2 rounded-xl bg-white/[0.04] border border-white/10 p-4 h-48 flex items-end gap-2">
+                                <div
+                                    class="w-1/6 bg-gradient-to-t from-violet-500 to-violet-400/40 rounded-t-md h-[40%]">
+                                </div>
+                                <div
+                                    class="w-1/6 bg-gradient-to-t from-fuchsia-500 to-fuchsia-400/40 rounded-t-md h-[65%]">
+                                </div>
+                                <div class="w-1/6 bg-gradient-to-t from-cyan-400 to-cyan-300/40 rounded-t-md h-[50%]">
+                                </div>
+                                <div
+                                    class="w-1/6 bg-gradient-to-t from-violet-500 to-violet-400/40 rounded-t-md h-[85%]">
+                                </div>
+                                <div
+                                    class="w-1/6 bg-gradient-to-t from-fuchsia-500 to-fuchsia-400/40 rounded-t-md h-[60%]">
+                                </div>
+                                <div class="w-1/6 bg-gradient-to-t from-cyan-400 to-cyan-300/40 rounded-t-md h-[95%]">
+                                </div>
+                            </div>
+                            <div
+                                class="rounded-xl bg-white/[0.04] border border-white/10 p-4 flex flex-col justify-between">
+                                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-violet-500"></div>
+                                <div>
+                                    <div class="h-2 w-3/4 bg-white/20 rounded-full mb-2"></div>
+                                    <div class="h-2 w-1/2 bg-white/10 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 mt-4">
+                            <div class="rounded-xl bg-white/[0.04] border border-white/10 p-3 h-16"></div>
+                            <div class="rounded-xl bg-white/[0.04] border border-white/10 p-3 h-16"></div>
+                            <div class="rounded-xl bg-white/[0.04] border border-white/10 p-3 h-16"></div>
+                        </div>
+
+                        <!-- floating glass stat cards -->
+                        <div
+                            class="hidden sm:block absolute -left-10 top-10 glass-strong rounded-xl px-4 py-3 shadow-[0_10px_40px_rgba(0,0,0,0.5)] animate-float">
+                            <p class="text-[11px] text-white/50 font-medium">Team velocity</p>
+                            <p class="text-lg font-bold font-display text-white">+247%</p>
+                        </div>
+                        <div
+                            class="hidden sm:block absolute -right-8 top-1/3 glass-strong rounded-xl px-4 py-3 shadow-[0_10px_40px_rgba(0,0,0,0.5)] animate-float-delayed">
+                            <p class="text-[11px] text-white/50 font-medium">Uptime</p>
+                            <p class="text-lg font-bold font-display text-white">99.98%</p>
+                        </div>
+                        <div
+                            class="hidden sm:block absolute -bottom-8 left-1/4 glass-strong rounded-xl px-4 py-3 shadow-[0_10px_40px_rgba(0,0,0,0.5)] animate-float-slow">
+                            <p class="text-[11px] text-white/50 font-medium">Tasks automated</p>
+                            <p class="text-lg font-bold font-display text-white">12.4k</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </nav>
-    <main>
-        <!-- 2. Hero Section -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
-            <div class="max-w-4xl opacity-0 animate-fade-up">
-                <h1
-                    class="text-5xl sm:text-6xl lg:text-8xl font-light tracking-tighter leading-none text-slate-900 mb-8 text-balance">
-                    A quiet space for loud minds.
-                </h1>
-                <div class="flex flex-col sm:flex-row gap-4 mb-16">
-                    <a href="#sections"
-                        class="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-medium bg-slate-900 text-white transition-all duration-300 hover:bg-slate-800">
-                        Explore Collection
-                    </a>
-                    <a href="#membership"
-                        class="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-medium border border-slate-300 text-slate-900 transition-all duration-300 hover:border-slate-900 hover:bg-slate-50">
-                        Join Free
-                    </a>
-                </div>
+
+        <!-- scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60">
+            <span class="text-[11px] tracking-widest uppercase text-white/50">Scroll</span>
+            <div class="w-5 h-9 rounded-full border border-white/25 flex justify-center pt-2">
+                <span class="w-1 h-1.5 rounded-full bg-white/70 animate-float"></span>
             </div>
-            <div
-                class="relative w-full h-[400px] lg:h-[600px] rounded-3xl overflow-hidden group opacity-0 animate-fade-up delay-200">
-                <img src="https://images.unsplash.com/photo-1549675584-91f19337af3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
-                    alt="Modern Library Interior"
-                    class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
-            </div>
-            <!-- Stats Row -->
-            <div
-                class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-8 border-t border-slate-200 opacity-0 animate-fade-up delay-300">
-                <div>
-                    <p class="text-3xl lg:text-4xl font-light tracking-tight text-slate-900">12,000+</p>
-                    <p class="text-sm font-medium text-slate-500 mt-1 uppercase tracking-wider">Books & Media</p>
-                </div>
-                <div>
-                    <p class="text-3xl lg:text-4xl font-light tracking-tight text-slate-900">40+</p>
-                    <p class="text-sm font-medium text-slate-500 mt-1 uppercase tracking-wider">Years Serving</p>
-                </div>
-                <div>
-                    <p class="text-3xl lg:text-4xl font-light tracking-tight text-slate-900">100%</p>
-                    <p class="text-sm font-medium text-slate-500 mt-1 uppercase tracking-wider">Free Wi-Fi</p>
-                </div>
-                <div>
-                    <p class="text-3xl lg:text-4xl font-light tracking-tight text-slate-900">6</p>
-                    <p class="text-sm font-medium text-slate-500 mt-1 uppercase tracking-wider">Dedicated Sections</p>
-                </div>
-            </div>
-        </section>
-        <!-- 3. Sections (Interactive Grid Layout) -->
-        <section id="sections" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-t border-slate-200">
-            <h2 class="text-3xl font-light tracking-tight mb-12">Discover Collections</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div
-                    class="group p-8 sm:p-12 rounded-3xl bg-white border border-slate-100 transition-colors duration-500 hover:bg-emerald-50 cursor-pointer">
-                    <h3 class="text-2xl font-light mb-2 transition-colors duration-300 group-hover:text-emerald-900">
-                        Classic Fiction</h3>
-                    <p class="text-slate-500 transition-colors duration-300 group-hover:text-emerald-700">Immerse
-                        yourself in timeless stories from global authors spanning three centuries.</p>
-                </div>
-                <div
-                    class="group p-8 sm:p-12 rounded-3xl bg-white border border-slate-100 transition-colors duration-500 hover:bg-amber-50 cursor-pointer">
-                    <h3 class="text-2xl font-light mb-2 transition-colors duration-300 group-hover:text-amber-900">
-                        Children's Corner</h3>
-                    <p class="text-slate-500 transition-colors duration-300 group-hover:text-amber-700">Interactive
-                        picture books, early readers, and weekend storytelling sessions.</p>
-                </div>
-                <div
-                    class="group p-8 sm:p-12 rounded-3xl bg-white border border-slate-100 transition-colors duration-500 hover:bg-indigo-50 cursor-pointer">
-                    <h3 class="text-2xl font-light mb-2 transition-colors duration-300 group-hover:text-indigo-900">
-                        Science & Tech</h3>
-                    <p class="text-slate-500 transition-colors duration-300 group-hover:text-indigo-700">Journals,
-                        encyclopedias, and modern programming literature for curious minds.</p>
-                </div>
-                <div
-                    class="group p-8 sm:p-12 rounded-3xl bg-white border border-slate-100 transition-colors duration-500 hover:bg-rose-50 cursor-pointer">
-                    <h3 class="text-2xl font-light mb-2 transition-colors duration-300 group-hover:text-rose-900">Art &
-                        Architecture</h3>
-                    <p class="text-slate-500 transition-colors duration-300 group-hover:text-rose-700">Oversized visual
-                        volumes exploring history's greatest movements and structures.</p>
-                </div>
-                <div
-                    class="group p-8 sm:p-12 rounded-3xl bg-white border border-slate-100 transition-colors duration-500 hover:bg-violet-50 cursor-pointer">
-                    <h3 class="text-2xl font-light mb-2 transition-colors duration-300 group-hover:text-violet-900">
-                        Local Archives</h3>
-                    <p class="text-slate-500 transition-colors duration-300 group-hover:text-violet-700">Newspapers,
-                        microfilms, and historical documents preserving our city's heritage.</p>
-                </div>
+        </div>
+    </section>
 
-                <div
-                    class="group p-8 sm:p-12 rounded-3xl bg-white border border-slate-100 transition-colors duration-500 hover:bg-zinc-100 cursor-pointer">
-                    <h3 class="text-2xl font-light mb-2 transition-colors duration-300 group-hover:text-zinc-900">
-                        Digital Media</h3>
-                    <p class="text-slate-500 transition-colors duration-300 group-hover:text-zinc-700">Audiobooks,
-                        e-readers, and multimedia stations available for in-house use.</p>
-                </div>
-            </div>
-        </section>
-        <!-- 4. Gallery Section (Image Grid with Zoom) -->
-        <section id="gallery" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-            <h2 class="text-3xl font-light tracking-tight mb-12">Spaces</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-                <div class="relative overflow-hidden rounded-2xl group aspect-[4/3] bg-slate-200">
-                    <img src="https://images.unsplash.com/photo-1568667256549-094345857637?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                        alt="Reading Room"
-                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none">
-                    </div>
-                    <div class="absolute bottom-6 left-6 right-6 flex justify-between items-end">
-                        <h3 class="text-2xl font-light text-white">The Great Reading Room</h3>
-                        <span
-                            class="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs text-white font-medium">Floor
-                            2</span>
-                    </div>
-                </div>
-                <div class="relative overflow-hidden rounded-2xl group aspect-[4/3] bg-slate-200">
-                    <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                        alt="Quiet Pods"
-                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none">
-                    </div>
-                    <div class="absolute bottom-6 left-6 right-6 flex justify-between items-end">
-                        <h3 class="text-2xl font-light text-white">Quiet Study Pods</h3>
-                        <span
-                            class="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs text-white font-medium">Floor
-                            3</span>
-                    </div>
-                </div>
-
-                <div class="relative overflow-hidden rounded-2xl group aspect-[4/3] bg-slate-200">
-                    <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
-                        alt="Archives"
-                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none">
-                    </div>
-                    <div class="absolute bottom-6 left-6 right-6 flex justify-between items-end">
-                        <h3 class="text-2xl font-light text-white">Historical Archives</h3>
-                        <span
-                            class="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs text-white font-medium">Basement</span>
-                    </div>
-                </div>
-
-                <div class="relative overflow-hidden rounded-2xl group aspect-[4/3] bg-slate-200">
-                    <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI9KGi7zljIHplafOgqQ2_ICiGMhNwGp7jqYAxaHiM5t5NLDhv3s_mz4Pk&s=10 "
-                        alt="Cafe"
-                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none">
-                    </div>
-                    <div class="absolute bottom-6 left-6 right-6 flex justify-between items-end">
-                        <h3 class="text-2xl font-light text-white">Courtyard Cafe</h3>
-                        <span
-                            class="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs text-white font-medium">Ground</span>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- 5. Values Section (Bento Grid Layout) & 6. About (Text Columns) -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-t border-slate-200">
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-
-                <!-- Large Span Card (About Intro & Columns) -->
-                <div
-                    class="md:col-span-2 lg:col-span-2 md:row-span-2 bg-white rounded-3xl p-8 lg:p-12 border border-slate-100 transition-colors duration-500 hover:bg-slate-50">
-                    <h2 class="text-4xl font-light tracking-tight mb-8">More than just books. A community cornerstone.
-                    </h2>
-                    <div class="columns-1 sm:columns-2 gap-8 text-slate-600 text-sm leading-relaxed text-justify">
-                        <p class="mb-4">Founded in 1982, Greenwood Public Library has evolved from a small neighborhood
-                            repository into a modern hub for learning, creation, and connection. Our philosophy centers
-                            on open access to information and fostering an environment where curiosity thrives
-                            unhindered.</p>
-                        <p class="mb-4">The architectural redesign in 2020 opened up our spaces to natural light,
-                            breaking down traditional barriers. We believe the modern library is a dynamic ecosystem.
-                            It's a place where digital innovation meets classic literature, and where community dialog
-                            is just as important as silent reading.</p>
-                        <p>Whether you're researching a thesis, bringing your toddler to their first storytelling
-                            session, or just looking for a quiet corner to escape the city noise, Greenwood welcomes
-                            you. Our doors remain a portal to infinite worlds.</p>
-                    </div>
-                </div>
-
-                <!-- Smaller Values Cards -->
-                <div
-                    class="bg-slate-100 rounded-3xl p-6 lg:p-8 transition-colors duration-300 hover:bg-emerald-100 flex flex-col justify-end min-h-[200px]">
-                    <h3 class="text-xl font-medium mb-1">Community</h3>
-                    <p class="text-sm text-slate-600">Hosting over 200 local groups annually.</p>
-                </div>
-
-                <div
-                    class="bg-slate-100 rounded-3xl p-6 lg:p-8 transition-colors duration-300 hover:bg-amber-100 flex flex-col justify-end min-h-[200px]">
-                    <h3 class="text-xl font-medium mb-1">40+ Years</h3>
-                    <p class="text-sm text-slate-600">A legacy of literacy and public service.</p>
-                </div>
-
-                <div
-                    class="bg-slate-100 rounded-3xl p-6 lg:p-8 transition-colors duration-300 hover:bg-rose-200 flex flex-col justify-end min-h-[200px]">
-                    <h3 class="text-xl font-medium mb-1">Events</h3>
-                    <p class="text-sm text-slate-600">Workshops, author talks, and seminars.</p>
-                </div>
-
-                <div
-                    class="bg-slate-100 rounded-3xl p-6 lg:p-8 transition-colors duration-300 hover:bg-violet-200 flex flex-col justify-end min-h-[200px]">
-                    <h3 class="text-xl font-medium mb-1">Digital</h3>
-                    <p class="text-sm text-slate-600">Extensive cloud-based media libraries.</p>
-                </div>
-
-                <!-- Spanning across remaining space on large screens -->
-                <div
-                    class="md:col-span-3 lg:col-span-4 bg-slate-900 rounded-3xl p-6 lg:p-8 text-white transition-colors duration-300 hover:bg-slate-800 flex flex-col justify-center items-center text-center">
-                    <h3 class="text-2xl font-light mb-2">Universal Access</h3>
-                    <p class="text-sm text-slate-300 max-w-lg">We are completely wheelchair accessible and provide
-                        braille, large-print texts, and audio descriptive services to ensure reading is for everyone.
-                    </p>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- 7. Membership Section (Image Header Cards) -->
-        <section id="membership" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-t border-slate-200">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
-
-                <!-- Intro Card -->
-                <div class="p-8 flex flex-col justify-center">
-                    <h2 class="text-4xl font-light tracking-tight mb-4">Library Cards</h2>
-                    <p class="text-slate-500 mb-8">Access physical books, digital media, study spaces, and exclusive
-                        events. Choose the tier that fits your needs.</p>
-                    <a href="#"
-                        class="inline-flex items-center text-sm font-medium text-slate-900 hover:text-emerald-700 transition-colors group">
-                        Compare full benefits
-                        <span class="ml-2 transition-transform group-hover:translate-x-1">&rarr;</span>
-                    </a>
-                </div>
-
-                <!-- Basic Tier -->
-                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 flex flex-col group">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                            alt="Books"
-                            class="w-full h-full object-cover brightness-95 transition-transform duration-700 group-hover:scale-105">
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="text-xl font-medium mb-1">Basic</h3>
-                        <div class="mb-4">
-                            <span class="text-3xl font-light">Free</span>
-                        </div>
-                        <ul class="text-sm text-slate-600 space-y-3 mb-8 flex-grow">
-                            <li class="flex items-center gap-2"><span
-                                    class="w-1.5 h-1.5 rounded-full bg-slate-300"></span> 5 Books at a time</li>
-                            <li class="flex items-center gap-2"><span
-                                    class="w-1.5 h-1.5 rounded-full bg-slate-300"></span> Standard Wi-Fi access</li>
-                            <li class="flex items-center gap-2"><span
-                                    class="w-1.5 h-1.5 rounded-full bg-slate-300"></span> 1 Hour PC usage</li>
-                        </ul>
-                        <button
-                            class="w-full py-3 rounded-full bg-slate-100 text-slate-900 font-medium text-sm transition-colors hover:bg-slate-200">Register</button>
-                    </div>
-                </div>
-
-                <!-- Student Tier (Popular) -->
-                <div
-                    class="bg-white rounded-3xl overflow-hidden border border-emerald-200 shadow-xl shadow-emerald-900/5 flex flex-col group relative">
-                    <span
-                        class="absolute top-4 right-4 z-10 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Popular</span>
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                            alt="Students studying"
-                            class="w-full h-full object-cover brightness-95 transition-transform duration-700 group-hover:scale-105">
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="text-xl font-medium mb-1">Student</h3>
-                        <div class="mb-4">
-                            <span class="text-3xl font-light">Free</span>
-                            <span class="text-sm text-slate-500">/w valid ID</span>
-                        </div>
-                        <ul class="text-sm text-slate-600 space-y-3 mb-8 flex-grow">
-                            <li class="flex items-center gap-2"><span
-                                    class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> 15 Books at a time</li>
-                            <li class="flex items-center gap-2"><span
-                                    class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Premium fast Wi-Fi</li>
-                            <li class="flex items-center gap-2"><span
-                                    class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Unlimited PC usage</li>
-                            <li class="flex items-center gap-2"><span
-                                    class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Study room booking</li>
-                        </ul>
-                        <button
-                            class="w-full py-3 rounded-full bg-slate-900 text-white font-medium text-sm transition-colors hover:bg-emerald-600">Register</button>
-                    </div>
-                </div>
-
-                <!-- Family Tier -->
-                <div class="bg-white rounded-3xl overflow-hidden border border-slate-200 flex flex-col group">
-                    <div class="h-40 overflow-hidden relative">
-                        <img src="https://images.unsplash.com/photo-1491841550275-ad7854e35ca6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                            alt="Family reading"
-                            class="w-full h-full object-cover brightness-95 transition-transform duration-700 group-hover:scale-105">
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="text-xl font-medium mb-1">Family</h3>
-                        <div class="mb-4">
-                            <span class="text-3xl font-light">$25</span>
-                            <span class="text-sm text-slate-500">/year</span>
-                        </div>
-                        <ul class="text-sm text-slate-600 space-y-3 mb-8 flex-grow">
-                            <li class="flex items-center gap-2"><span
-                                    class="w-1.5 h-1.5 rounded-full bg-slate-300"></span> Up to 5 linked accounts</li>
-                            <li class="flex items-center gap-2"><span
-                                    class="w-1.5 h-1.5 rounded-full bg-slate-300"></span> 30 Books shared limit</li>
-                            <li class="flex items-center gap-2"><span
-                                    class="w-1.5 h-1.5 rounded-full bg-slate-300"></span> Priority event tickets</li>
-                            <li class="flex items-center gap-2"><span
-                                    class="w-1.5 h-1.5 rounded-full bg-slate-300"></span> Free multimedia rentals</li>
-                        </ul>
-                        <button
-                            class="w-full py-3 rounded-full bg-slate-100 text-slate-900 font-medium text-sm transition-colors hover:bg-slate-200">Subscribe</button>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- 8. Testimonial Section -->
-        <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-            <div class="mb-8 flex justify-center">
-                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80"
-                    alt="Portrait of Sarah Jenks"
-                    class="w-20 h-20 rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-500 cursor-pointer shadow-lg">
-            </div>
-            <blockquote class="text-2xl sm:text-4xl font-light text-slate-900 leading-tight mb-8">
-                "Greenwood isn't just a building with books. It's a sanctuary. Writing my first novel would have been
-                impossible without the quiet corners and endless resources available here."
-            </blockquote>
-            <cite class="not-italic block">
-                <span class="block font-medium text-slate-900">Sarah Jenks</span>
-                <span class="block text-sm text-slate-500 mt-1">Local Author & Long-time Member</span>
-            </cite>
-        </section>
-
-        <!-- 10. Events Section (Blog Style Grid) -->
-        <section id="events" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-t border-slate-200">
-            <div class="flex justify-between items-end mb-12">
-                <h2 class="text-3xl font-light tracking-tight">Upcoming Events</h2>
-                <a href="#"
-                    class="hidden sm:inline-flex text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">View
-                    Calendar &rarr;</a>
+    <!-- ============ FEATURES (BENTO GRID) ============ -->
+    <section id="features" class="relative py-28 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="reveal max-w-2xl mx-auto text-center mb-16">
+                <p class="text-xs font-semibold tracking-widest uppercase text-violet-400 mb-3">Features</p>
+                <h2 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-white tracking-tight">Everything
+                    your team needs, in one place</h2>
+                <p class="mt-4 text-white/55 leading-relaxed">A workspace built to remove busywork, surface insight, and
+                    keep everyone moving in the same direction.</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-5 auto-rows-[minmax(140px,auto)]">
 
-                <div class="group cursor-pointer">
-                    <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-slate-200">
-                        <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="Book reading"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                <!-- Large card: AI-Powered Automation -->
+                <div
+                    class="reveal group relative md:col-span-2 md:row-span-2 rounded-2xl p-8 flex flex-col justify-between overflow-hidden bg-gradient-to-br from-violet-600/25 via-space-800 to-space-800 border border-white/10 hover:border-violet-400/40 shadow-[0_0_0_rgba(0,0,0,0)] hover:shadow-[0_0_50px_rgba(139,92,246,0.25)] transition-all duration-500 hover:-translate-y-1">
+                    <div
+                        class="absolute -right-16 -top-16 w-56 h-56 rounded-full bg-violet-500/20 blur-3xl group-hover:bg-violet-500/30 transition-colors duration-500">
                     </div>
-                    <p class="text-xs font-bold tracking-wider text-emerald-600 uppercase mb-2">Oct 12 &bull; 6:00 PM
-                    </p>
-                    <h3 class="text-lg font-medium text-slate-900 group-hover:text-emerald-700 transition-colors">An
-                        Evening with Margaret Atwood</h3>
-                </div>
-
-                <div class="group cursor-pointer">
-                    <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-slate-200">
-                        <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="Kids crafting"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    </div>
-                    <p class="text-xs font-bold tracking-wider text-emerald-600 uppercase mb-2">Oct 15 &bull; 10:00 AM
-                    </p>
-                    <h3 class="text-lg font-medium text-slate-900 group-hover:text-emerald-700 transition-colors">
-                        Weekend Toddler Story & Craft</h3>
-                </div>
-
-                <div class="group cursor-pointer">
-                    <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-slate-200">
-                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="Coding workshop"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    </div>
-                    <p class="text-xs font-bold tracking-wider text-emerald-600 uppercase mb-2">Oct 18 &bull; 4:00 PM
-                    </p>
-                    <h3 class="text-lg font-medium text-slate-900 group-hover:text-emerald-700 transition-colors">Intro
-                        to Python for Teens</h3>
-                </div>
-
-                <div class="group cursor-pointer">
-                    <div class="w-full aspect-[4/3] rounded-2xl overflow-hidden mb-4 bg-slate-200">
-                        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                            alt="Group discussion"
-                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    </div>
-                    <p class="text-xs font-bold tracking-wider text-emerald-600 uppercase mb-2">Oct 22 &bull; 7:00 PM
-                    </p>
-                    <h3 class="text-lg font-medium text-slate-900 group-hover:text-emerald-700 transition-colors">Local
-                        History Roundtable</h3>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- 9. Contact Call-To-Action (Tinted Block) -->
-        <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mb-24">
-            <div
-                class="bg-emerald-50 rounded-[3rem] p-8 sm:p-12 lg:p-20 text-center sm:text-left flex flex-col lg:flex-row items-center justify-between gap-12">
-
-                <div class="max-w-2xl">
-                    <h2 class="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight text-emerald-950 mb-6">
-                        1420 Heritage Drive,<br>Greenwood District
-                    </h2>
-                    <p class="text-emerald-800 font-medium">
-                        Mon-Fri: 8AM - 8PM <span class="mx-2 text-emerald-300">|</span>
-                        Sat: 9AM - 5PM <span class="mx-2 text-emerald-300">|</span>
-                        Sun: Closed
-                    </p>
-                </div>
-
-                <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-                    <a href="#"
-                        class="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-medium bg-emerald-900 text-white transition-all duration-300 hover:bg-emerald-800 shadow-lg shadow-emerald-900/20 whitespace-nowrap">
-                        Get Directions
-                    </a>
-                    <a href="mailto:hello@greenwoodlib.org"
-                        class="inline-flex items-center justify-center px-8 py-4 rounded-full text-base font-medium border border-emerald-200 bg-white text-emerald-900 transition-all duration-300 hover:border-emerald-900 whitespace-nowrap">
-                        Email Us
-                    </a>
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-
-    <!-- 11. Footer Section -->
-    <footer class="border-t border-slate-200 bg-white pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8 mb-16">
-
-                <!-- Brand Column -->
-                <div class="md:col-span-1">
-                    <a href="#" class="text-2xl font-light tracking-tight text-slate-900 mb-6 block">Greenwood</a>
-                    <p class="text-sm text-slate-500 mb-6">Cultivating curiosity and preserving knowledge for
-                        generations.</p>
-
-                    <!-- Social Circles -->
-                    <div class="flex gap-3">
-                        <a href="#"
-                            class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-slate-200 hover:text-slate-900 transition-colors">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path fill-rule="evenodd"
-                                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                                    clip-rule="evenodd" />
+                    <div class="relative">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(139,92,246,0.5)] group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
+                            <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none">
+                                <path
+                                    d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"
+                                    stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                                <circle cx="12" cy="12" r="3.2" fill="currentColor" />
                             </svg>
+                        </div>
+                        <h3 class="font-display font-semibold text-2xl text-white mb-3">AI-Powered Automation</h3>
+                        <p class="text-white/60 leading-relaxed max-w-sm">Let AI handle repetitive workflows — from
+                            triaging tasks to drafting updates — so your team can focus on the work that actually
+                            matters.</p>
+                    </div>
+                    <div class="relative mt-8 flex gap-2">
+                        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white/70">Smart
+                            triage</span>
+                        <span class="px-3 py-1 rounded-full text-xs font-medium bg-white/10 text-white/70">Auto
+                            workflows</span>
+                    </div>
+                </div>
+
+                <!-- Lightning Fast -->
+                <div
+                    class="reveal group relative rounded-2xl p-6 bg-space-800 border border-white/10 hover:border-cyan-400/40 hover:shadow-[0_0_40px_rgba(34,211,238,0.2)] transition-all duration-500 hover:-translate-y-1 hover:scale-[1.02]">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500 shadow-[0_0_16px_rgba(34,211,238,0.5)]">
+                        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-semibold text-white mb-1.5">Lightning Fast</h3>
+                    <p class="text-sm text-white/55 leading-relaxed">Sub-second load times, everywhere your team works.
+                    </p>
+                </div>
+
+                <!-- Bank-Level Security -->
+                <div
+                    class="reveal group relative rounded-2xl p-6 bg-space-800 border border-white/10 hover:border-emerald-400/40 hover:shadow-[0_0_40px_rgba(52,211,153,0.2)] transition-all duration-500 hover:-translate-y-1 hover:scale-[1.02]">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500 shadow-[0_0_16px_rgba(52,211,153,0.5)]">
+                        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2 4 5v6c0 5 3.4 8.5 8 9 4.6-.5 8-4 8-9V5l-8-3Z" stroke="currentColor"
+                                stroke-width="1.8" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-semibold text-white mb-1.5">Bank-Level Security</h3>
+                    <p class="text-sm text-white/55 leading-relaxed">End-to-end encryption and SOC 2 Type II compliance.
+                    </p>
+                </div>
+
+                <!-- Advanced Analytics -->
+                <div
+                    class="reveal group relative rounded-2xl p-6 bg-space-800 border border-white/10 hover:border-fuchsia-400/40 hover:shadow-[0_0_40px_rgba(232,121,249,0.2)] transition-all duration-500 hover:-translate-y-1 hover:scale-[1.02]">
+                    <div
+                        class="w-10 h-10 rounded-lg bg-gradient-to-br from-fuchsia-400 to-fuchsia-600 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500 shadow-[0_0_16px_rgba(232,121,249,0.5)]">
+                        <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none">
+                            <path d="M4 20V10M12 20V4M20 20v-7" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <h3 class="font-display font-semibold text-white mb-1.5">Advanced Analytics</h3>
+                    <p class="text-sm text-white/55 leading-relaxed">Real-time dashboards that surface what matters.</p>
+                </div>
+
+                <!-- Real-time Sync + Team Collaboration (wide row) -->
+                <div
+                    class="reveal group relative md:col-span-2 rounded-2xl p-6 bg-space-800 border border-white/10 hover:border-violet-400/40 hover:shadow-[0_0_40px_rgba(139,92,246,0.2)] transition-all duration-500 hover:-translate-y-1 flex items-center gap-5">
+                    <div
+                        class="w-12 h-12 flex-shrink-0 rounded-lg bg-gradient-to-br from-violet-400 to-violet-600 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 shadow-[0_0_16px_rgba(139,92,246,0.5)]">
+                        <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none">
+                            <path d="M17 2.1 21 6l-4 3.9M3 12h18M7 21.9 3 18l4-3.9M21 12H3" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-display font-semibold text-white mb-1">Real-time Sync</h3>
+                        <p class="text-sm text-white/55 leading-relaxed">Every change, everywhere, instantly — no
+                            refresh needed.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="reveal group relative md:col-span-2 rounded-2xl p-6 bg-space-800 border border-white/10 hover:border-cyan-400/40 hover:shadow-[0_0_40px_rgba(34,211,238,0.2)] transition-all duration-500 hover:-translate-y-1 flex items-center gap-5">
+                    <div
+                        class="w-12 h-12 flex-shrink-0 rounded-lg bg-gradient-to-br from-cyan-400 to-violet-500 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 shadow-[0_0_16px_rgba(34,211,238,0.5)]">
+                        <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none">
+                            <circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="1.8" />
+                            <path d="M2 20c0-3.3 3.1-6 7-6s7 2.7 7 6" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" />
+                            <circle cx="17" cy="7" r="2.4" stroke="currentColor" stroke-width="1.8" />
+                            <path d="M15.5 13.3c2.9.5 5.5 2.7 5.5 5.7" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-display font-semibold text-white mb-1">Team Collaboration</h3>
+                        <p class="text-sm text-white/55 leading-relaxed">Comment, co-edit, and review — without leaving
+                            the flow.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section id="testimonials" class="relative py-28 px-6 overflow-hidden">
+        <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full bg-violet-600/10 blur-[120px] pointer-events-none">
+        </div>
+
+        <div class="relative max-w-6xl mx-auto">
+            <div class="reveal max-w-2xl mx-auto text-center mb-16">
+                <p class="text-xs font-semibold tracking-widest uppercase text-cyan-400 mb-3">Reviews</p>
+                <h2 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-white tracking-tight">Loved by
+                    teams that ship</h2>
+                <p class="mt-4 text-white/55 leading-relaxed">Product, engineering, and ops teams use FlowApp to move
+                    faster without losing alignment.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+
+                <!-- Card 1 -->
+                <div
+                    class="reveal group glass rounded-2xl p-7 hover:scale-[1.03] hover:bg-white/[0.07] transition-all duration-500 shadow-[0_10px_40px_rgba(0,0,0,0.3)]">
+                    <div class="flex gap-1 mb-4 text-amber-400">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="m12 2 3.1 6.5 7.1.9-5.2 4.9 1.4 7-6.4-3.5L5.6 21l1.4-7-5.2-4.9 7.1-.9L12 2Z" />
+                        </svg>
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="m12 2 3.1 6.5 7.1.9-5.2 4.9 1.4 7-6.4-3.5L5.6 21l1.4-7-5.2-4.9 7.1-.9L12 2Z" />
+                        </svg>
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="m12 2 3.1 6.5 7.1.9-5.2 4.9 1.4 7-6.4-3.5L5.6 21l1.4-7-5.2-4.9 7.1-.9L12 2Z" />
+                        </svg>
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="m12 2 3.1 6.5 7.1.9-5.2 4.9 1.4 7-6.4-3.5L5.6 21l1.4-7-5.2-4.9 7.1-.9L12 2Z" />
+                        </svg>
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="m12 2 3.1 6.5 7.1.9-5.2 4.9 1.4 7-6.4-3.5L5.6 21l1.4-7-5.2-4.9 7.1-.9L12 2Z" />
+                        </svg>
+                    </div>
+                    <p class="text-white/75 leading-relaxed mb-6">"We cut our sprint planning time in half. The
+                        automation quietly does the busywork so standups are actually useful again."</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center text-sm font-semibold text-white">
+                            MR</div>
+                        <div>
+                            <p class="text-sm font-semibold text-white">Maya Reyes</p>
+                            <p class="text-xs text-white/50">Head of Product, Norrit</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 (offset) -->
+                <div
+                    class="reveal group glass rounded-2xl p-7 md:-translate-y-6 hover:scale-[1.03] hover:bg-white/[0.07] transition-all duration-500 shadow-[0_10px_40px_rgba(0,0,0,0.3)]">
+                    <div class="flex gap-1 mb-4 text-amber-400">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="m12 2 3.1 6.5 7.1.9-5.2 4.9 1.4 7-6.4-3.5L5.6 21l1.4-7-5.2-4.9 7.1-.9L12 2Z" />
+                        </svg>
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="m12 2 3.1 6.5 7.1.9-5.2 4.9 1.4 7-6.4-3.5L5.6 21l1.4-7-5.2-4.9 7.1-.9L12 2Z" />
+                        </svg>
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="m12 2 3.1 6.5 7.1.9-5.2 4.9 1.4 7-6.4-3.5L5.6 21l1.4-7-5.2-4.9 7.1-.9L12 2Z" />
+                        </svg>
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="m12 2 3.1 6.5 7.1.9-5.2 4.9 1.4 7-6.4-3.5L5.6 21l1.4-7-5.2-4.9 7.1-.9L12 2Z" />
+                        </svg>
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="m12 2 3.1 6.5 7.1.9-5.2 4.9 1.4 7-6.4-3.5L5.6 21l1.4-7-5.2-4.9 7.1-.9L12 2Z" />
+                        </svg>
+                    </div>
+                    <p class="text-white/75 leading-relaxed mb-6">"The real-time sync means our distributed team never
+                        steps on each other. It genuinely feels like everyone's in the same room."</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-400 to-violet-500 flex items-center justify-center text-sm font-semibold text-white">
+                            DK</div>
+                        <div>
+                            <p class="text-sm font-semibold text-white">Daniel Kwon</p>
+                            <p class="text-xs text-white/50">Engineering Lead, Fablehouse</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="reveal group glass rounded-2xl p-7 hover:scale-[1.03] hover:bg-white/[0.07] transition-all duration-500 shadow-[0_10px_40px_rgba(0,0,0,0.3)]">
+                    <div class="flex gap-1 mb-4 text-amber-400">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="m12 2 3.1 6.5 7.1.9-5.2 4.9 1.4 7-6.4-3.5L5.6 21l1.4-7-5.2-4.9 7.1-.9L12 2Z" />
+                        </svg>
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="m12 2 3.1 6.5 7.1.9-5.2 4.9 1.4 7-6.4-3.5L5.6 21l1.4-7-5.2-4.9 7.1-.9L12 2Z" />
+                        </svg>
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="m12 2 3.1 6.5 7.1.9-5.2 4.9 1.4 7-6.4-3.5L5.6 21l1.4-7-5.2-4.9 7.1-.9L12 2Z" />
+                        </svg>
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="m12 2 3.1 6.5 7.1.9-5.2 4.9 1.4 7-6.4-3.5L5.6 21l1.4-7-5.2-4.9 7.1-.9L12 2Z" />
+                        </svg>
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="m12 2 3.1 6.5 7.1.9-5.2 4.9 1.4 7-6.4-3.5L5.6 21l1.4-7-5.2-4.9 7.1-.9L12 2Z" />
+                        </svg>
+                    </div>
+                    <p class="text-white/75 leading-relaxed mb-6">"Security review took a single afternoon. Between the
+                        compliance docs and audit logs, our infosec team had zero follow-up questions."</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gradient-to-br from-fuchsia-500 to-amber-400 flex items-center justify-center text-sm font-semibold text-white">
+                            SP</div>
+                        <div>
+                            <p class="text-sm font-semibold text-white">Sara Patel</p>
+                            <p class="text-xs text-white/50">VP Operations, Ledgerline</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section id="cta" class="relative py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div
+                class="relative rounded-3xl overflow-hidden cta-gradient-bg animate-gradient-move px-8 py-20 sm:px-16 text-center">
+
+                <!-- floating blurred orbs -->
+                <div class="absolute -top-16 -left-10 w-64 h-64 rounded-full bg-white/10 blur-3xl animate-float"></div>
+                <div
+                    class="absolute -bottom-20 -right-10 w-72 h-72 rounded-full bg-white/10 blur-3xl animate-float-delayed">
+                </div>
+                <div
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-white/5 blur-3xl">
+                </div>
+
+                <div class="relative reveal">
+                    <h2
+                        class="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-white tracking-tight max-w-2xl mx-auto">
+                        Ready to transform your workflow?</h2>
+                    <p class="mt-5 text-white/85 max-w-xl mx-auto leading-relaxed">Join thousands of teams already
+                        building faster with FlowApp. Set up takes minutes, not weeks.</p>
+
+                    <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <a href="#"
+                            class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-violet-700 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.45)] hover:-translate-y-0.5 hover:scale-[1.03] transition-all duration-300">
+                            Start Free Trial
                         </a>
                         <a href="#"
-                            class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-slate-200 hover:text-slate-900 transition-colors">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path fill-rule="evenodd"
-                                    d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.858-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
-                                    clip-rule="evenodd" />
+                            class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white border border-white/40 hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300">
+                            Schedule Demo
+                        </a>
+                    </div>
+
+                    <p class="mt-6 text-sm text-white/70">No credit card required · Free 14-day trial · Cancel anytime
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="relative bg-space-950 border-t border-white/10 pt-16 pb-8 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-10 pb-12">
+
+                <!-- Brand -->
+                <div class="col-span-2">
+                    <a href="#" class="flex items-center gap-2.5 mb-4">
+                        <span
+                            class="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 flex items-center justify-center shadow-[0_0_20px_rgba(139,92,246,0.4)]">
+                            <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5 text-white">
+                                <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" fill="currentColor" />
+                            </svg>
+                        </span>
+                        <span class="font-display font-bold text-lg text-white">FlowApp</span>
+                    </a>
+                    <p class="text-sm text-white/50 leading-relaxed max-w-xs mb-6">AI-powered automation, real-time
+                        collaboration, and advanced analytics — built for teams that ship.</p>
+                    <div class="flex items-center gap-3">
+                        <a href="#" aria-label="X / Twitter"
+                            class="w-9 h-9 rounded-lg glass flex items-center justify-center text-white/60 hover:text-white hover:shadow-[0_0_16px_rgba(139,92,246,0.5)] hover:-translate-y-0.5 transition-all duration-300">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.9L4.4 22H1.3l8.1-9.3L1 2h7.1l4.9 6.3L18.9 2Zm-1.2 18h1.9L7.4 3.9H5.4L17.7 20Z" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn"
+                            class="w-9 h-9 rounded-lg glass flex items-center justify-center text-white/60 hover:text-white hover:shadow-[0_0_16px_rgba(139,92,246,0.5)] hover:-translate-y-0.5 transition-all duration-300">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M6.94 5a2 2 0 1 1-4-.02 2 2 0 0 1 4 .02ZM3.3 8.6h3.6V21H3.3V8.6Zm6.35 0h3.45v1.7h.05c.48-.9 1.66-1.86 3.42-1.86 3.66 0 4.33 2.41 4.33 5.55V21h-3.6v-6.3c0-1.5-.03-3.44-2.1-3.44-2.1 0-2.42 1.64-2.42 3.33V21H9.65V8.6Z" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="GitHub"
+                            class="w-9 h-9 rounded-lg glass flex items-center justify-center text-white/60 hover:text-white hover:shadow-[0_0_16px_rgba(139,92,246,0.5)] hover:-translate-y-0.5 transition-all duration-300">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.15-1.11-1.46-1.11-1.46-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.1.39-1.99 1.03-2.7-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03a9.6 9.6 0 0 1 5 0c1.9-1.3 2.74-1.03 2.74-1.03.56 1.38.2 2.4.1 2.65.65.71 1.03 1.6 1.03 2.7 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube"
+                            class="w-9 h-9 rounded-lg glass flex items-center justify-center text-white/60 hover:text-white hover:shadow-[0_0_16px_rgba(139,92,246,0.5)] hover:-translate-y-0.5 transition-all duration-300">
+                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M23 12s0-3.4-.43-5a3 3 0 0 0-2.1-2.1C18.9 4.5 12 4.5 12 4.5s-6.9 0-8.47.4A3 3 0 0 0 1.43 7C1 8.6 1 12 1 12s0 3.4.43 5a3 3 0 0 0 2.1 2.1C5.1 19.5 12 19.5 12 19.5s6.9 0 8.47-.4a3 3 0 0 0 2.1-2.1c.43-1.6.43-5 .43-5ZM9.75 15.4V8.6L15.75 12l-6 3.4Z" />
                             </svg>
                         </a>
                     </div>
                 </div>
 
-                <!-- Pages Column -->
+                <!-- Product -->
                 <div>
-                    <h4 class="font-medium text-slate-900 mb-4">Pages</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-sm text-slate-500 hover:text-slate-900 transition-colors">About
-                                Us</a></li>
-                        <li><a href="#"
-                                class="text-sm text-slate-500 hover:text-slate-900 transition-colors">Membership</a>
+                    <h4 class="font-display font-semibold text-white text-sm mb-4">Product</h4>
+                    <ul class="space-y-3 text-sm text-white/50">
+                        <li><a href="#features" class="hover:text-white transition-colors duration-200">Features</a>
                         </li>
-                        <li><a href="#" class="text-sm text-slate-500 hover:text-slate-900 transition-colors">Catalog
-                                Search</a></li>
-                        <li><a href="#" class="text-sm text-slate-500 hover:text-slate-900 transition-colors">Venue
-                                Rental</a></li>
+                        <li><a href="#pricing" class="hover:text-white transition-colors duration-200">Pricing</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Integrations</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Changelog</a></li>
                     </ul>
                 </div>
 
-                <!-- Sections Column -->
+                <!-- Company -->
                 <div>
-                    <h4 class="font-medium text-slate-900 mb-4">Sections</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-sm text-slate-500 hover:text-slate-900 transition-colors">Children's
-                                Library</a></li>
-                        <li><a href="#" class="text-sm text-slate-500 hover:text-slate-900 transition-colors">Teen
-                                Center</a></li>
-                        <li><a href="#" class="text-sm text-slate-500 hover:text-slate-900 transition-colors">Local
-                                Archives</a></li>
-                        <li><a href="#" class="text-sm text-slate-500 hover:text-slate-900 transition-colors">Digital
-                                Media Lab</a></li>
+                    <h4 class="font-display font-semibold text-white text-sm mb-4">Company</h4>
+                    <ul class="space-y-3 text-sm text-white/50">
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">About</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Blog</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Contact</a></li>
                     </ul>
                 </div>
 
-                <!-- Details Column -->
+                <!-- Legal -->
                 <div>
-                    <h4 class="font-medium text-slate-900 mb-4">Support</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="text-sm text-slate-500 hover:text-slate-900 transition-colors">FAQ</a>
-                        </li>
-                        <li><a href="#" class="text-sm text-slate-500 hover:text-slate-900 transition-colors">Donate</a>
-                        </li>
-                        <li><a href="#"
-                                class="text-sm text-slate-500 hover:text-slate-900 transition-colors">Volunteer</a></li>
-                        <li><a href="#"
-                                class="text-sm text-slate-500 hover:text-slate-900 transition-colors">Contact</a></li>
+                    <h4 class="font-display font-semibold text-white text-sm mb-4">Legal</h4>
+                    <ul class="space-y-3 text-sm text-white/50">
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Privacy</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Terms</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Security</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors duration-200">Cookies</a></li>
                     </ul>
                 </div>
-
             </div>
 
-            <!-- Copyright -->
-            <div class="pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-xs text-slate-400">&copy; 2026 Greenwood Public Library. All rights reserved.</p>
-                <div class="flex gap-6">
-                    <a href="#" class="text-xs text-slate-400 hover:text-slate-900 transition-colors">Privacy Policy</a>
-                    <a href="#" class="text-xs text-slate-400 hover:text-slate-900 transition-colors">Terms of
-                        Service</a>
-                </div>
+            <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
+                <p class="text-xs text-white/40">© 2026 FlowApp. All rights reserved.</p>
+                <p class="text-xs text-white/40">Built for teams that ship.</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const iconOpen = document.getElementById('iconOpen');
+        const iconClose = document.getElementById('iconClose');
+
+        menuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            mobileMenu.classList.toggle('hidden');
+            iconOpen.classList.toggle('hidden');
+            iconClose.classList.toggle('hidden');
+            menuBtn.setAttribute('aria-expanded', String(isHidden));
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                iconOpen.classList.remove('hidden');
+                iconClose.classList.add('hidden');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Scroll reveal
+        const revealEls = document.querySelectorAll('.reveal');
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    io.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+        revealEls.forEach(el => io.observe(el));
+
+        // Stagger reveal delays within bento grid / testimonials
+        document.querySelectorAll('#features .grid > div').forEach((el, i) => {
+            el.style.transitionDelay = `${Math.min(i * 80, 320)}ms`;
+        });
+        document.querySelectorAll('#testimonials .grid > div').forEach((el, i) => {
+            el.style.transitionDelay = `${i * 100}ms`;
+        });
+    </script>
 
 </body>
 

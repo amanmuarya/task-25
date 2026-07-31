@@ -1,52 +1,51 @@
-#  Greenwood Library Website - Student Project
 
-##  Overview
-This project is a modern, minimal, editorial-style landing page built for the fictional **Greenwood Public Library**. I created this project to practice advanced UI/UX design patterns, complex grid structures, and interactive animations using pure **HTML5** and **Tailwind CSS**.
+Readme · MD
+# FlowApp — Animated SaaS Landing Page
+ 
+A single-file, animation-rich landing page for **FlowApp**, a fictional SaaS platform for AI-powered automation, real-time collaboration, and analytics. Built with plain HTML and Tailwind CSS (via CDN) — no build step, no external CSS frameworks, no dependencies to install.
+ 
+There is nothing to install — Tailwind CSS and the Google Fonts (`Outfit`, `Inter`) load from CDN at runtime, so an internet connection is required the first time the page loads.
+ 
+## File structure
 
-##  Learning Process & What I Mastered
-
-During the development of this project, I focused on moving beyond basic layouts and challenged myself with modern web design trends:
-
-### 1. Advanced Grid Layouts (Bento Grid)
-- Learned how to build an **asymmetrical Bento-style grid** using Tailwind's `col-span` and `row-span` utilities.
-- Implemented responsive column shifting from 1 column on mobile to 2, 3, and 4 columns on larger screens (`grid-cols-1 md:grid-cols-2 lg:grid-cols-4`).
-
-### 2. Custom Tailwind Configurations via CDN
-- Figured out how to extend the default Tailwind theme directly in the HTML `<head>`.
-- Wrote custom keyframes (`fadeUp`) and animation classes to create a **staggered entry animation** when the page loads.
-
-### 3. Interactive Hover Effects & Pseudo-elements
-- **Animated Underlines:** Used pseudo-elements (`after:absolute after:bottom-0 after:w-0 hover:after:w-full`) for smooth navbar link hovers.
-- **Image Zoom:** Wrapped images in `overflow-hidden` containers and applied `group-hover:scale-105` with a long transition duration (`duration-700`) to create premium, cinematic image scaling.
-- **Grayscale Transitions:** Used `grayscale hover:grayscale-0` on the testimonial avatar.
-
-### 4. Editorial Typography & Layout
-- Applied `text-balance` and tight tracking (`tracking-tighter`) to large hero headers to mimic newspaper and magazine aesthetics.
-- Used Tailwind's CSS column utilities (`columns-1 sm:columns-2`) in the About section to create a multi-column reading experience without needing flexbox or grid.
-
-##  Project Structure (Step-by-Step Build)
-
-1. **Navigation:** Sticky top bar with backdrop blur (`backdrop-blur-md`).
-2. **Hero Section:** Large typography, staggered text fade-in, and a 4-column data stats row.
-3. **Collections Grid:** Interactive cards with subtle, distinct pastel background changes on hover (`hover:bg-emerald-50`, `hover:bg-amber-50`).
-4. **Gallery Spaces:** Image grid with gradients and bottom-left caption tags.
-5. **Values Bento Grid:** Complex spanned layout highlighting library perks.
-6. **Membership Tiers:** Responsive pricing cards featuring an absolute positioned "Popular" badge and list items.
-7. **Testimonial:** Centered layout emphasizing the grayscale-to-color transition.
-8. **Contact Block:** A rounded, tinted CTA container for address and hours.
-9. **Events:** Blog-style card grid for upcoming workshops.
-10. **Footer:** Clean 4-column link structure with social SVGs.
-
-## 🚀 How to Run
-
-Since this project relies entirely on HTML and the Tailwind CSS CDN, there is no build step required!
-
-1. Download or clone this repository.
-2. Open the `index.html` file directly in any modern web browser.
-3. Ensure you have an active internet connection so the Tailwind CDN script and Unsplash images can load.
-
-## 🛠️ Tech Stack
-- **HTML5**
-- **Tailwind CSS (CDN)**
-- Google Fonts (System UI fonts fallback)
-- Unsplash (Placeholder imagery)
+index.html   →  everything: markup, Tailwind config, custom CSS, and JS all in one file
+ 
+Keeping it single-file makes the page trivially portable — drop it on any static host (Netlify, Vercel, GitHub Pages, S3) with zero configuration.
+ 
+ 
+## Custom animation system
+ 
+All keyframes and animation utilities are declared in the inline `tailwind.config` `theme.extend` block at the top of `index.html`
+ 
+Stagger timing (e.g. the hero headline lines appearing in sequence) is done with Tailwind's arbitrary-value syntax directly in the markup, e.g.:
+ 
+```html
+<span class="animate-slide-up [animation-delay:220ms]">...</span>
+ 
+Scroll-triggered reveals for the features, testimonials, and CTA sections are handled by a small `IntersectionObserver` script near the end of the file — elements start with the `.reveal` class (`opacity: 0`, translated down) and get `.in-view` added once they enter the viewport.
+ 
+ 
+## Customization guide
+ 
+**Colors / gradients** — the core palette (violet → fuchsia → cyan) is applied directly via Tailwind gradient utilities (`from-violet-500 via-fuchsia-500 to-cyan-400`, etc.) rather than custom color tokens, so you can restyle by swapping those class names throughout. The dark background scale (`space-950` → `space-700`) is defined in `tailwind.config.theme.extend.colors`.
+ 
+**Fonts** — `Outfit` (display/headings) and `Inter` (body) are loaded from Google Fonts in the `<head>` and mapped to `font-display` / `font-body`(default) via `tailwind.config.theme.extend.fontFamily`.
+ 
+**Copy** — all headline, body, and testimonial text is plain fictional placeholder content; search-and-replace directly in the markup.
+ 
+**Sections** — each section is a clearly commented ` so you can reorder, duplicate, or remove sections independently.
+ 
+**Pricing section** — a "Pricing" nav link is included but currently points to an empty `#pricing` anchor, since no pricing section content was part of the original spec. Add a `<section id="pricing">` block following the same pattern as the others to wire it up.
+ 
+ 
+## Accessibility & performance notes
+ 
+- Respects `prefers-reduced-motion`: animation and transition durations collapse to near-zero for users who have that OS/browser setting enabled.
+- Visible focus rings (`:focus-visible`) on interactive elements for keyboard navigation.
+- Semantic landmarks (`<header>`, `<nav>`, `<section>`, `<footer>`) throughout.
+- No images are loaded from external sources — the dashboard mockup and avatars are built with CSS/SVG, keeping the page fast and license-free.
+ 
+## Browser support
+ 
+Uses modern CSS (`backdrop-filter`, CSS `mask-image`, CSS `perspective`) — best viewed in a recent version of Chrome, Edge, Safari, or Firefox. `backdrop-filter` (used for the glassmorphism effect) requires Safari 9+/iOS 9+ or Chrome/Edge 76+.
+ 
