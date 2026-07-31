@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +10,7 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
                     },
                     keyframes: {
                         fadeUp: {
@@ -31,7 +30,6 @@
         .delay-100 {
             animation-delay: 100ms;
         }
-
         .delay-200 {
             animation-delay: 200ms;
         }
@@ -47,7 +45,6 @@
 </head>
 
 <body class="bg-slate-50 text-slate-900 antialiased selection:bg-emerald-200 selection:text-emerald-950">
-
     <!-- 1. Navigation Section -->
     <nav class="sticky top-0 z-50 w-full backdrop-blur-md bg-white/70 border-b border-gray-200/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -72,18 +69,16 @@
                     <a href="#events"
                         class="text-sm font-medium text-slate-600 relative after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-0 hover:after:w-full after:bg-slate-900 after:transition-all after:duration-300 py-1">Events</a>
                 </div>
-
                 <!-- CTA Button -->
                 <div>
-                    <a href="#contact"
-                        class="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-medium bg-slate-900 text-white transition-colors duration-300 hover:bg-emerald-600 hover:text-white">
-                        Visit Us
+<a href="#contact"
+class="inline-flex items-center justify-center px-6 py-2.5 rounded-full text-sm font-medium bg-slate-900 text-white transition-colors duration-300 hover:bg-emerald-600 hover:text-white">
+Visit Us
                     </a>
                 </div>
             </div>
         </div>
     </nav>
-
     <main>
         <!-- 2. Hero Section -->
         <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 lg:pt-32 lg:pb-24 overflow-hidden">
@@ -103,14 +98,12 @@
                     </a>
                 </div>
             </div>
-
             <div
                 class="relative w-full h-[400px] lg:h-[600px] rounded-3xl overflow-hidden group opacity-0 animate-fade-up delay-200">
                 <img src="https://images.unsplash.com/photo-1549675584-91f19337af3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80"
                     alt="Modern Library Interior"
                     class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
             </div>
-
             <!-- Stats Row -->
             <div
                 class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16 pt-8 border-t border-slate-200 opacity-0 animate-fade-up delay-300">
@@ -132,12 +125,10 @@
                 </div>
             </div>
         </section>
-
         <!-- 3. Sections (Interactive Grid Layout) -->
         <section id="sections" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 border-t border-slate-200">
             <h2 class="text-3xl font-light tracking-tight mb-12">Discover Collections</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-
                 <div
                     class="group p-8 sm:p-12 rounded-3xl bg-white border border-slate-100 transition-colors duration-500 hover:bg-emerald-50 cursor-pointer">
                     <h3 class="text-2xl font-light mb-2 transition-colors duration-300 group-hover:text-emerald-900">
@@ -145,7 +136,6 @@
                     <p class="text-slate-500 transition-colors duration-300 group-hover:text-emerald-700">Immerse
                         yourself in timeless stories from global authors spanning three centuries.</p>
                 </div>
-
                 <div
                     class="group p-8 sm:p-12 rounded-3xl bg-white border border-slate-100 transition-colors duration-500 hover:bg-amber-50 cursor-pointer">
                     <h3 class="text-2xl font-light mb-2 transition-colors duration-300 group-hover:text-amber-900">
@@ -153,7 +143,6 @@
                     <p class="text-slate-500 transition-colors duration-300 group-hover:text-amber-700">Interactive
                         picture books, early readers, and weekend storytelling sessions.</p>
                 </div>
-
                 <div
                     class="group p-8 sm:p-12 rounded-3xl bg-white border border-slate-100 transition-colors duration-500 hover:bg-indigo-50 cursor-pointer">
                     <h3 class="text-2xl font-light mb-2 transition-colors duration-300 group-hover:text-indigo-900">
@@ -161,7 +150,6 @@
                     <p class="text-slate-500 transition-colors duration-300 group-hover:text-indigo-700">Journals,
                         encyclopedias, and modern programming literature for curious minds.</p>
                 </div>
-
                 <div
                     class="group p-8 sm:p-12 rounded-3xl bg-white border border-slate-100 transition-colors duration-500 hover:bg-rose-50 cursor-pointer">
                     <h3 class="text-2xl font-light mb-2 transition-colors duration-300 group-hover:text-rose-900">Art &
@@ -169,7 +157,6 @@
                     <p class="text-slate-500 transition-colors duration-300 group-hover:text-rose-700">Oversized visual
                         volumes exploring history's greatest movements and structures.</p>
                 </div>
-
                 <div
                     class="group p-8 sm:p-12 rounded-3xl bg-white border border-slate-100 transition-colors duration-500 hover:bg-violet-50 cursor-pointer">
                     <h3 class="text-2xl font-light mb-2 transition-colors duration-300 group-hover:text-violet-900">
@@ -185,10 +172,8 @@
                     <p class="text-slate-500 transition-colors duration-300 group-hover:text-zinc-700">Audiobooks,
                         e-readers, and multimedia stations available for in-house use.</p>
                 </div>
-
             </div>
         </section>
-
         <!-- 4. Gallery Section (Image Grid with Zoom) -->
         <section id="gallery" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
             <h2 class="text-3xl font-light tracking-tight mb-12">Spaces</h2>
@@ -207,7 +192,6 @@
                             2</span>
                     </div>
                 </div>
-
                 <div class="relative overflow-hidden rounded-2xl group aspect-[4/3] bg-slate-200">
                     <img src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
                         alt="Quiet Pods"
@@ -236,7 +220,7 @@
                 </div>
 
                 <div class="relative overflow-hidden rounded-2xl group aspect-[4/3] bg-slate-200">
-                    <img src="https://images.unsplash.com/photo-1604869515875-8450dde17b16?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                    <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI9KGi7zljIHplafOgqQ2_ICiGMhNwGp7jqYAxaHiM5t5NLDhv3s_mz4Pk&s=10 "
                         alt="Cafe"
                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none">
@@ -289,13 +273,13 @@
                 </div>
 
                 <div
-                    class="bg-slate-100 rounded-3xl p-6 lg:p-8 transition-colors duration-300 hover:bg-rose-100 flex flex-col justify-end min-h-[200px]">
+                    class="bg-slate-100 rounded-3xl p-6 lg:p-8 transition-colors duration-300 hover:bg-rose-200 flex flex-col justify-end min-h-[200px]">
                     <h3 class="text-xl font-medium mb-1">Events</h3>
                     <p class="text-sm text-slate-600">Workshops, author talks, and seminars.</p>
                 </div>
 
                 <div
-                    class="bg-slate-100 rounded-3xl p-6 lg:p-8 transition-colors duration-300 hover:bg-violet-100 flex flex-col justify-end min-h-[200px]">
+                    class="bg-slate-100 rounded-3xl p-6 lg:p-8 transition-colors duration-300 hover:bg-violet-200 flex flex-col justify-end min-h-[200px]">
                     <h3 class="text-xl font-medium mb-1">Digital</h3>
                     <p class="text-sm text-slate-600">Extensive cloud-based media libraries.</p>
                 </div>
