@@ -1,20 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FlowApp — Build better products, faster</title>
     <meta name="description"
         content="FlowApp helps teams build better products faster with AI-powered automation, real-time collaboration, and advanced analytics." />
-
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -102,22 +99,18 @@
             },
         };
     </script>
-
     <style>
         html {
             background: #07070d;
         }
-
         body {
             font-family: 'Inter', sans-serif;
             background-color: #07070d;
             color: #e8e8f0;
         }
-
         .font-display {
             font-family: 'Outfit', sans-serif;
         }
-
         /* Glassmorphism */
         .glass {
             background: rgba(255, 255, 255, 0.045);
@@ -125,14 +118,12 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.09);
         }
-
         .glass-strong {
             background: rgba(255, 255, 255, 0.07);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             border: 1px solid rgba(255, 255, 255, 0.12);
         }
-
         /* Gradient text */
         .text-gradient {
             background: linear-gradient(90deg, #a78bfa, #f472b6, #22d3ee, #a78bfa);
@@ -141,7 +132,6 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
         /* Grid background */
         .bg-grid {
             background-image:
@@ -151,18 +141,15 @@
             mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 40%, transparent 100%);
             -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 40%, transparent 100%);
         }
-
         /* Perspective for dashboard */
         .perspective-container {
             perspective: 1600px;
         }
-
         .dashboard-tilt {
             transform: rotateX(10deg) rotateY(-12deg) rotateZ(1deg);
             transform-style: preserve-3d;
             transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         .perspective-container:hover .dashboard-tilt {
             transform: rotateX(4deg) rotateY(-4deg) rotateZ(0.5deg) scale(1.02);
         }
@@ -173,18 +160,15 @@
             transform: translateY(32px);
             transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
-
         .reveal.in-view {
             opacity: 1;
             transform: translateY(0);
         }
-
         /* CTA animated gradient background */
         .cta-gradient-bg {
             background: linear-gradient(115deg, #6d28d9, #a21caf, #0891b2, #7c3aed);
             background-size: 300% 300%;
         }
-
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
@@ -200,7 +184,6 @@
         }
 
         @media (prefers-reduced-motion: reduce) {
-
             *,
             *::before,
             *::after {
@@ -218,10 +201,9 @@
         }
     </style>
 </head>
-
 <body class="antialiased overflow-x-hidden">
 
-    <!-- ============ NAVBAR ============ -->
+    <!-- NAVBAR  set inset-x-0 , z-50  --> 
     <header class="fixed top-0 inset-x-0 z-50">
         <nav class="mx-auto max-w-7xl px-6 mt-4">
             <div
@@ -229,21 +211,19 @@
                 <!-- Logo -->
                 <a href="#" class="flex items-center gap-2.5 group">
                     <span
-                        class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 flex items-center justify-center shadow-[0_0_20px_rgba(139,92,246,0.55)] group-hover:shadow-[0_0_28px_rgba(139,92,246,0.8)] transition-shadow duration-300">
-                        <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5 text-white">
-                            <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" fill="currentColor" />
-                        </svg>
+class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 flex items-center justify-center shadow-[0_0_20px_rgba(139,92,246,0.55)] group-hover:shadow-[0_0_28px_rgba(139,92,246,0.8)] transition-shadow duration-300">
+<svg viewBox="0 0 24 24" fill="none" class="w-5 h-5 text-white">
+<path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" fill="currentColor" />
+</svg>
                     </span>
                     <span class="font-display font-bold text-lg tracking-tight text-white">FlowApp</span>
                 </a>
-
                 <!-- Desktop links -->
                 <div class="hidden md:flex items-center gap-8 font-medium text-sm text-white/70">
                     <a href="#features" class="hover:text-white transition-colors duration-200">Features</a>
                     <a href="#pricing" class="hover:text-white transition-colors duration-200">Pricing</a>
                     <a href="#testimonials" class="hover:text-white transition-colors duration-200">Reviews</a>
                 </div>
-
                 <!-- CTA + mobile toggle -->
                 <div class="flex items-center gap-3">
                     <a href="#cta"
@@ -254,16 +234,15 @@
                         class="md:hidden w-9 h-9 flex items-center justify-center rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors">
                         <svg id="iconOpen" viewBox="0 0 24 24" fill="none" class="w-5 h-5">
                             <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" />
-                        </svg>
-                        <svg id="iconClose" viewBox="0 0 24 24" fill="none" class="w-5 h-5 hidden">
-                            <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
+   stroke-linecap="round" />
+      </svg>
+    <svg id="iconClose" viewBox="0 0 24 24" fill="none" class="w-5 h-5 hidden">
+     <path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" />
+     </svg>
+     </button>
+     </div>
+ </div>
             <!-- Mobile menu -->
             <div id="mobileMenu"
                 class="hidden md:hidden glass rounded-2xl mt-2 px-5 py-4 flex flex-col gap-4 text-white/80 font-medium text-sm">
@@ -276,10 +255,8 @@
             </div>
         </nav>
     </header>
-
-    <!-- ============ HERO ============ -->
+    <!--  HERO section  -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 pb-20">
-
         <!-- grid background -->
         <div class="absolute inset-0 bg-grid pointer-events-none"></div>
 
@@ -291,12 +268,10 @@
         </div>
         <div class="absolute bottom-0 left-1/3 w-80 h-80 rounded-full bg-fuchsia-600/20 blur-[100px] animate-orb-drift">
         </div>
-
         <!-- morphing blob -->
         <div
             class="absolute top-24 right-10 md:right-24 w-72 h-72 md:w-96 md:h-96 bg-gradient-to-br from-violet-500/25 via-fuchsia-500/20 to-cyan-400/25 animate-morph blur-2xl pointer-events-none">
         </div>
-
         <!-- rotating rings -->
         <div
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[36rem] h-[36rem] rounded-full border border-white/[0.06] animate-rotate-slow pointer-events-none">
@@ -314,7 +289,6 @@
                     <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-glow-pulse"></span>
                     Now with AI workflow automation
                 </div>
-
                 <!-- headline -->
                 <h1
                     class="font-display font-bold text-[2.6rem] leading-[1.08] sm:text-6xl md:text-7xl tracking-tight text-white">
@@ -323,7 +297,6 @@
                         class="block opacity-0 animate-slide-up [animation-delay:220ms] text-gradient animate-gradient-move">faster
                         than ever.</span>
                 </h1>
-
                 <!-- subtext -->
                 <p
                     class="opacity-0 animate-slide-up [animation-delay:380ms] mt-6 text-base sm:text-lg text-white/60 max-w-xl leading-relaxed">
@@ -353,7 +326,6 @@
                         Watch Demo
                     </a>
                 </div>
-
                 <!-- 3D dashboard preview -->
                 <div
                     class="opacity-0 animate-scale-in [animation-delay:700ms] mt-20 w-full max-w-4xl perspective-container">
@@ -402,7 +374,6 @@
                             <div class="rounded-xl bg-white/[0.04] border border-white/10 p-3 h-16"></div>
                             <div class="rounded-xl bg-white/[0.04] border border-white/10 p-3 h-16"></div>
                         </div>
-
                         <!-- floating glass stat cards -->
                         <div
                             class="hidden sm:block absolute -left-10 top-10 glass-strong rounded-xl px-4 py-3 shadow-[0_10px_40px_rgba(0,0,0,0.5)] animate-float">
@@ -423,7 +394,6 @@
                 </div>
             </div>
         </div>
-
         <!-- scroll indicator -->
         <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60">
             <span class="text-[11px] tracking-widest uppercase text-white/50">Scroll</span>
@@ -432,8 +402,7 @@
             </div>
         </div>
     </section>
-
-    <!-- ============ FEATURES (BENTO GRID) ============ -->
+    <!-- FEATURES (BENTO GRID)  -->
     <section id="features" class="relative py-28 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="reveal max-w-2xl mx-auto text-center mb-16">
@@ -474,7 +443,6 @@
                             workflows</span>
                     </div>
                 </div>
-
                 <!-- Lightning Fast -->
                 <div
                     class="reveal group relative rounded-2xl p-6 bg-space-800 border border-white/10 hover:border-cyan-400/40 hover:shadow-[0_0_40px_rgba(34,211,238,0.2)] transition-all duration-500 hover:-translate-y-1 hover:scale-[1.02]">
@@ -503,7 +471,6 @@
                     <p class="text-sm text-white/55 leading-relaxed">End-to-end encryption and SOC 2 Type II compliance.
                     </p>
                 </div>
-
                 <!-- Advanced Analytics -->
                 <div
                     class="reveal group relative rounded-2xl p-6 bg-space-800 border border-white/10 hover:border-fuchsia-400/40 hover:shadow-[0_0_40px_rgba(232,121,249,0.2)] transition-all duration-500 hover:-translate-y-1 hover:scale-[1.02]">
@@ -534,7 +501,6 @@
                             refresh needed.</p>
                     </div>
                 </div>
-
                 <div
                     class="reveal group relative md:col-span-2 rounded-2xl p-6 bg-space-800 border border-white/10 hover:border-cyan-400/40 hover:shadow-[0_0_40px_rgba(34,211,238,0.2)] transition-all duration-500 hover:-translate-y-1 flex items-center gap-5">
                     <div
@@ -559,12 +525,11 @@
         </div>
     </section>
 
-    <!-- ============ TESTIMONIALS ============ -->
+    <!--  TESTIMONIALS -->
     <section id="testimonials" class="relative py-28 px-6 overflow-hidden">
         <div
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full bg-violet-600/10 blur-[120px] pointer-events-none">
         </div>
-
         <div class="relative max-w-6xl mx-auto">
             <div class="reveal max-w-2xl mx-auto text-center mb-16">
                 <p class="text-xs font-semibold tracking-widest uppercase text-cyan-400 mb-3">Reviews</p>
@@ -573,9 +538,7 @@
                 <p class="mt-4 text-white/55 leading-relaxed">Product, engineering, and ops teams use FlowApp to move
                     faster without losing alignment.</p>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-
                 <!-- Card 1 -->
                 <div
                     class="reveal group glass rounded-2xl p-7 hover:scale-[1.03] hover:bg-white/[0.07] transition-all duration-500 shadow-[0_10px_40px_rgba(0,0,0,0.3)]">
@@ -608,7 +571,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Card 2 (offset) -->
                 <div
                     class="reveal group glass rounded-2xl p-7 md:-translate-y-6 hover:scale-[1.03] hover:bg-white/[0.07] transition-all duration-500 shadow-[0_10px_40px_rgba(0,0,0,0.3)]">
@@ -674,17 +636,14 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
-
-    <!-- ============ CTA ============ -->
+    <!-- cat  creat class  -->
     <section id="cta" class="relative py-24 px-6">
         <div class="max-w-6xl mx-auto">
             <div
                 class="relative rounded-3xl overflow-hidden cta-gradient-bg animate-gradient-move px-8 py-20 sm:px-16 text-center">
-
                 <!-- floating blurred orbs -->
                 <div class="absolute -top-16 -left-10 w-64 h-64 rounded-full bg-white/10 blur-3xl animate-float"></div>
                 <div
@@ -718,57 +677,54 @@
             </div>
         </div>
     </section>
-
-    <!-- ============ FOOTER ============ -->
+    <!-- footer here -->
     <footer class="relative bg-space-950 border-t border-white/10 pt-16 pb-8 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-2 md:grid-cols-5 gap-10 pb-12">
-
                 <!-- Brand -->
                 <div class="col-span-2">
                     <a href="#" class="flex items-center gap-2.5 mb-4">
-                        <span
-                            class="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 flex items-center justify-center shadow-[0_0_20px_rgba(139,92,246,0.4)]">
-                            <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5 text-white">
-                                <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" fill="currentColor" />
-                            </svg>
-                        </span>
-                        <span class="font-display font-bold text-lg text-white">FlowApp</span>
-                    </a>
-                    <p class="text-sm text-white/50 leading-relaxed max-w-xs mb-6">AI-powered automation, real-time
-                        collaboration, and advanced analytics — built for teams that ship.</p>
-                    <div class="flex items-center gap-3">
-                        <a href="#" aria-label="X / Twitter"
-                            class="w-9 h-9 rounded-lg glass flex items-center justify-center text-white/60 hover:text-white hover:shadow-[0_0_16px_rgba(139,92,246,0.5)] hover:-translate-y-0.5 transition-all duration-300">
-                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.9L4.4 22H1.3l8.1-9.3L1 2h7.1l4.9 6.3L18.9 2Zm-1.2 18h1.9L7.4 3.9H5.4L17.7 20Z" />
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="LinkedIn"
-                            class="w-9 h-9 rounded-lg glass flex items-center justify-center text-white/60 hover:text-white hover:shadow-[0_0_16px_rgba(139,92,246,0.5)] hover:-translate-y-0.5 transition-all duration-300">
-                            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M6.94 5a2 2 0 1 1-4-.02 2 2 0 0 1 4 .02ZM3.3 8.6h3.6V21H3.3V8.6Zm6.35 0h3.45v1.7h.05c.48-.9 1.66-1.86 3.42-1.86 3.66 0 4.33 2.41 4.33 5.55V21h-3.6v-6.3c0-1.5-.03-3.44-2.1-3.44-2.1 0-2.42 1.64-2.42 3.33V21H9.65V8.6Z" />
-                            </svg>
-                        </a>
+      <span
+     class="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 flex items-center justify-center shadow-[0_0_20px_rgba(139,92,246,0.4)]">
+     <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5 text-white">
+ <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" fill="currentColor" />
+ </svg>
+     </span>
+     <span class="font-display font-bold text-lg text-white">FlowApp</span>
+     </a>
+      <p class="text-sm text-white/50 leading-relaxed max-w-xs mb-6">AI-powered automation, real-time
+       collaboration, and advanced analytics — built for teams that ship.</p>
+     <div class="flex items-center gap-3">
+      <a href="#" aria-label="X / Twitter"
+   class="w-9 h-9 rounded-lg glass flex items-center justify-center text-white/60 hover:text-white hover:shadow-[0_0_16px_rgba(139,92,246,0.5)] hover:-translate-y-0.5 transition-all duration-300">
+     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+   <path
+   d="M18.9 2H22l-7.6 8.7L23 22h-6.9l-5.4-6.9L4.4 22H1.3l8.1-9.3L1 2h7.1l4.9 6.3L18.9 2Zm-1.2 18h1.9L7.4 3.9H5.4L17.7 20Z" />
+  </svg>
+      </a>
+ <a href="#" aria-label="LinkedIn"
+      class="w-9 h-9 rounded-lg glass flex items-center justify-center text-white/60 hover:text-white hover:shadow-[0_0_16px_rgba(139,92,246,0.5)] hover:-translate-y-0.5 transition-all duration-300">
+      <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+       <path
+      d="M6.94 5a2 2 0 1 1-4-.02 2 2 0 0 1 4 .02ZM3.3 8.6h3.6V21H3.3V8.6Zm6.35 0h3.45v1.7h.05c.48-.9 1.66-1.86 3.42-1.86 3.66 0 4.33 2.41 4.33 5.55V21h-3.6v-6.3c0-1.5-.03-3.44-2.1-3.44-2.1 0-2.42 1.64-2.42 3.33V21H9.65V8.6Z" />
+     </svg>
+          </a>
                         <a href="#" aria-label="GitHub"
                             class="w-9 h-9 rounded-lg glass flex items-center justify-center text-white/60 hover:text-white hover:shadow-[0_0_16px_rgba(139,92,246,0.5)] hover:-translate-y-0.5 transition-all duration-300">
                             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.15-1.11-1.46-1.11-1.46-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.1.39-1.99 1.03-2.7-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03a9.6 9.6 0 0 1 5 0c1.9-1.3 2.74-1.03 2.74-1.03.56 1.38.2 2.4.1 2.65.65.71 1.03 1.6 1.03 2.7 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" />
-                            </svg>
+                   <path
+              d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.15-1.11-1.46-1.11-1.46-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.1.39-1.99 1.03-2.7-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03a9.6 9.6 0 0 1 5 0c1.9-1.3 2.74-1.03 2.74-1.03.56 1.38.2 2.4.1 2.65.65.71 1.03 1.6 1.03 2.7 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z" />
+                </svg>
                         </a>
                         <a href="#" aria-label="YouTube"
                             class="w-9 h-9 rounded-lg glass flex items-center justify-center text-white/60 hover:text-white hover:shadow-[0_0_16px_rgba(139,92,246,0.5)] hover:-translate-y-0.5 transition-all duration-300">
                             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M23 12s0-3.4-.43-5a3 3 0 0 0-2.1-2.1C18.9 4.5 12 4.5 12 4.5s-6.9 0-8.47.4A3 3 0 0 0 1.43 7C1 8.6 1 12 1 12s0 3.4.43 5a3 3 0 0 0 2.1 2.1C5.1 19.5 12 19.5 12 19.5s6.9 0 8.47-.4a3 3 0 0 0 2.1-2.1c.43-1.6.43-5 .43-5ZM9.75 15.4V8.6L15.75 12l-6 3.4Z" />
-                            </svg>
-                        </a>
+                <path
+                  d="M23 12s0-3.4-.43-5a3 3 0 0 0-2.1-2.1C18.9 4.5 12 4.5 12 4.5s-6.9 0-8.47.4A3 3 0 0 0 1.43 7C1 8.6 1 12 1 12s0 3.4.43 5a3 3 0 0 0 2.1 2.1C5.1 19.5 12 19.5 12 19.5s6.9 0 8.47-.4a3 3 0 0 0 2.1-2.1c.43-1.6.43-5 .43-5ZM9.75 15.4V8.6L15.75 12l-6 3.4Z" />
+                  </svg>
+             </a>
                     </div>
                 </div>
-
                 <!-- Product -->
                 <div>
                     <h4 class="font-display font-semibold text-white text-sm mb-4">Product</h4>
@@ -780,7 +736,6 @@
                         <li><a href="#" class="hover:text-white transition-colors duration-200">Changelog</a></li>
                     </ul>
                 </div>
-
                 <!-- Company -->
                 <div>
                     <h4 class="font-display font-semibold text-white text-sm mb-4">Company</h4>
@@ -791,7 +746,6 @@
                         <li><a href="#" class="hover:text-white transition-colors duration-200">Contact</a></li>
                     </ul>
                 </div>
-
                 <!-- Legal -->
                 <div>
                     <h4 class="font-display font-semibold text-white text-sm mb-4">Legal</h4>
@@ -803,14 +757,12 @@
                     </ul>
                 </div>
             </div>
-
             <div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3">
                 <p class="text-xs text-white/40">© 2026 FlowApp. All rights reserved.</p>
                 <p class="text-xs text-white/40">Built for teams that ship.</p>
             </div>
         </div>
     </footer>
-
     <script>
         // Mobile menu toggle
         const menuBtn = document.getElementById('menuBtn');
@@ -855,7 +807,5 @@
             el.style.transitionDelay = `${i * 100}ms`;
         });
     </script>
-
 </body>
-
 </html>

@@ -1,5 +1,4 @@
 
-Readme · MD
 # FlowApp — Animated SaaS Landing Page
  
 A single-file, animation-rich landing page for **FlowApp**, a fictional SaaS platform for AI-powered automation, real-time collaboration, and analytics. Built with plain HTML and Tailwind CSS (via CDN) — no build step, no external CSS frameworks, no dependencies to install.
@@ -19,12 +18,10 @@ All keyframes and animation utilities are declared in the inline `tailwind.confi
  
 Stagger timing (e.g. the hero headline lines appearing in sequence) is done with Tailwind's arbitrary-value syntax directly in the markup, e.g.:
  
-```html
 <span class="animate-slide-up [animation-delay:220ms]">...</span>
  
 Scroll-triggered reveals for the features, testimonials, and CTA sections are handled by a small `IntersectionObserver` script near the end of the file — elements start with the `.reveal` class (`opacity: 0`, translated down) and get `.in-view` added once they enter the viewport.
- 
- 
+
 ## Customization guide
  
 **Colors / gradients** — the core palette (violet → fuchsia → cyan) is applied directly via Tailwind gradient utilities (`from-violet-500 via-fuchsia-500 to-cyan-400`, etc.) rather than custom color tokens, so you can restyle by swapping those class names throughout. The dark background scale (`space-950` → `space-700`) is defined in `tailwind.config.theme.extend.colors`.
@@ -37,7 +34,6 @@ Scroll-triggered reveals for the features, testimonials, and CTA sections are ha
  
 **Pricing section** — a "Pricing" nav link is included but currently points to an empty `#pricing` anchor, since no pricing section content was part of the original spec. Add a `<section id="pricing">` block following the same pattern as the others to wire it up.
  
- 
 ## Accessibility & performance notes
  
 - Respects `prefers-reduced-motion`: animation and transition durations collapse to near-zero for users who have that OS/browser setting enabled.
@@ -47,5 +43,5 @@ Scroll-triggered reveals for the features, testimonials, and CTA sections are ha
  
 ## Browser support
  
-Uses modern CSS (`backdrop-filter`, CSS `mask-image`, CSS `perspective`) — best viewed in a recent version of Chrome, Edge, Safari, or Firefox. `backdrop-filter` (used for the glassmorphism effect) requires Safari 9+/iOS 9+ or Chrome/Edge 76+.
+Uses modern CSS (`backdrop-filter`, CSS `mask-image`, CSS `perspective`) — best viewed in a recent version of Chrome, Edge, Safari, or Firefox. `backdrop-filter` (used for the glassmorphism effect) require.
  
