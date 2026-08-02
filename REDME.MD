@@ -18,8 +18,6 @@ All keyframes and animation utilities are declared in the inline `tailwind.confi
  
 Stagger timing (e.g. the hero headline lines appearing in sequence) is done with Tailwind's arbitrary-value syntax directly in the markup, e.g.:
  
-<span class="animate-slide-up [animation-delay:220ms]">...</span>
- 
 Scroll-triggered reveals for the features, testimonials, and CTA sections are handled by a small `IntersectionObserver` script near the end of the file — elements start with the `.reveal` class (`opacity: 0`, translated down) and get `.in-view` added once they enter the viewport.
 
 ## Customization guide
