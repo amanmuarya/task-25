@@ -5,28 +5,29 @@
     <title>FlowApp — Build better products, faster</title>
     <meta name="description"
         content="FlowApp helps teams build better products faster with AI-powered automation, real-time collaboration, and advanced analytics." />
-    <!-- Fonts -->
+    <!-- Fonts here set  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <!-- Tailwind CDN -->
+    <!-- Tailwind CDN link  -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- here write javascript  -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         space: {
-                            950: '#07070d',
-                            900: '#0c0c16',
+                            950: '#0770d',
+                            900: '#0c0c6',
                             850: '#111120',
-                            800: '#151526',
-                            700: '#1c1c30',
+                            800: '#15126',
+                            700: '#1cc30',
                         },
                         violet: {
-                            450: '#8b5cf6',
+                            450: '#8b56',
                         },
                     },
                     fontFamily: {
@@ -79,18 +80,18 @@
                         },
                     },
                     animation: {
-                        'slide-up': 'slide-up 0.8s cubic-bezier(0.16,1,0.3,1) forwards',
-                        'slide-in-left': 'slide-in-left 0.8s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'slide-up': 'slide-up   0.8s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'slide-in-left': 'slide-in-left   0.8s cubic-bezier(0.16,1,0.3,1) forwards',
                         'slide-in-right': 'slide-in-right 0.8s cubic-bezier(0.16,1,0.3,1) forwards',
-                        'scale-in': 'scale-in 0.7s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'scale-in': 'scale-in 0.7s cubic-bezier(0.16,1,0.3,1)    forwards',
                         'rotate-slow': 'rotate-slow 22s linear infinite',
                         'rotate-slow-rev': 'rotate-slow 30s linear infinite reverse',
                         'morph': 'morph 9s ease-in-out infinite',
                         'float': 'float 6s ease-in-out infinite',
-                        'float-delayed': 'float 7s ease-in-out infinite 1.5s',
+                        'float-delayed': 'float 7s ease-in-out    infinite 1.5s',
                         'float-slow': 'float 9s ease-in-out infinite 0.5s',
                         'glow-pulse': 'glow-pulse 4s ease-in-out infinite',
-                        'gradient-move': 'gradient-move 6s ease infinite',
+                        'gradient-move': 'gradient-move 4s ease infinite',
                         'orb-drift': 'orb-drift 14s ease-in-out infinite',
                         'orb-drift-slow': 'orb-drift 20s ease-in-out infinite',
                     },
@@ -100,7 +101,7 @@
     </script>
     <style>
         html {
-            background: #07070d;
+            background: #131322;
         }
         body {
             font-family: 'Inter', sans-serif;
@@ -204,7 +205,7 @@
         <nav class="mx-auto max-w-7xl px-6 mt-4">
             <div
                 class="glass rounded-2xl px-5 py-3.5 flex items-center justify-between shadow-[0_8px_32px_rgba(0,0,0,0.35)]">
-                <!-- Logo -->
+                <!-- Logo  set items-center gap-2.5 -->
                 <a href="#" class="flex items-center gap-2.5 group">
                     <span
 class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 flex items-center justify-center shadow-[0_0_20px_rgba(139,92,246,0.55)] group-hover:shadow-[0_0_28px_rgba(139,92,246,0.8)] transition-shadow duration-300">
@@ -226,10 +227,10 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
                         class="hidden md:inline-flex relative items-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 shadow-[0_0_16px_rgba(168,85,247,0.5)] hover:shadow-[0_0_28px_rgba(168,85,247,0.85)] hover:scale-[1.04] active:scale-[0.98] transition-all duration-300">
                         Get Started
                     </a>
-                    <button id="menuBtn" aria-label="Toggle menu" aria-expanded="false"
-                        class="md:hidden w-9 h-9 flex items-center justify-center rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors">
-                        <svg id="iconOpen" viewBox="0 0 24 24" fill="none" class="w-5 h-5">
-                            <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2"
+         <button id="menuBtn" aria-label="Toggle menu" aria-expanded="false"
+      class="md:hidden w-9 h-9 flex items-center justify-center rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors">
+     <svg id="iconOpen" viewBox="0 0 24 24" fill="none" class="w-5 h-5">
+         <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2"
    stroke-linecap="round" />
       </svg>
     <svg id="iconClose" viewBox="0 0 24 24" fill="none" class="w-5 h-5 hidden">
@@ -308,31 +309,30 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
                         <svg class="relative w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
                             viewBox="0 0 24 24" fill="none">
                             <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
+               stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
                     </a>
                     <a href="#"
-                        class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white/85 glass hover:bg-white/[0.09] hover:text-white transition-all duration-300 hover:-translate-y-0.5">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M8 5v14l11-7-11-7Z" />
-                        </svg>
-                        Watch Demo
+         class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white/85 glass hover:bg-white/[0.09] hover:text-white transition-all duration-300 hover:-translate-y-0.5">
+             <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+           <path d="M8 5v14l11-7-11-7Z" />
+               </svg>
+           Watch Demo
                     </a>
                 </div>
-                <!-- 3D dashboard preview -->
+                <!-- 3D dashboard preview  w-full max-w-4xl   opacity-0 -->
                 <div
                     class="opacity-0 animate-scale-in [animation-delay:700ms] mt-20 w-full max-w-4xl perspective-container">
                     <div
                         class="dashboard-tilt relative rounded-2xl glass-strong shadow-[0_30px_80px_rgba(0,0,0,0.55)] p-4 sm:p-6">
                         <!-- fake window chrome -->
                         <div class="flex items-center gap-1.5 mb-4">
-
                             <!-- hii -->
                             <span class="w-2.5 h-2.5 rounded-full bg-red-400/70"></span>
                             <span class="w-2.5 h-2.5 rounded-full bg-yellow-400/70"></span>
                             <span class="w-2.5 h-2.5 rounded-full bg-green-400/70"></span>
                         </div>
-                        <!-- mock dashboard body -->
+                        <!-- mock dashboard body  grid-cols-3 -->
                         <div class="grid grid-cols-3 gap-4">
                             <div
                                 class="col-span-2 rounded-xl bg-white/[0.04] border border-white/10 p-4 h-48 flex items-end gap-2">
@@ -346,20 +346,20 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
              </div>
               <div
                    class="w-1/6 bg-gradient-to-t from-violet-500 to-violet-400/40 rounded-t-md h-[85%]">
-                                </div>
-                                <div
-                                    class="w-1/6 bg-gradient-to-t from-fuchsia-500 to-fuchsia-400/40 rounded-t-md h-[60%]">
-                                </div>
-                                <div class="w-1/6 bg-gradient-to-t from-cyan-400 to-cyan-300/40 rounded-t-md h-[95%]">
-                                </div>
-                            </div>
-                            <div
-                                class="rounded-xl bg-white/[0.04] border border-white/10 p-4 flex flex-col justify-between">
-                                <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-violet-500"></div>
-                                <div>
-                                    <div class="h-2 w-3/4 bg-white/20 rounded-full mb-2"></div>
-                                    <div class="h-2 w-1/2 bg-white/10 rounded-full"></div>
-                                </div>
+               </div>
+          <div
+      class="w-1/6 bg-gradient-to-t from-fuchsia-500 to-fuchsia-400/40 rounded-t-md h-[60%]">
+          </div>
+             <div class="w-1/6 bg-gradient-to-t from-cyan-400 to-cyan-300/40 rounded-t-md h-[95%]">
+         </div>
+             </div>
+             <div
+             class="rounded-xl bg-white/[0.04] border border-white/10 p-4 flex flex-col justify-between">
+                 <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-violet-500"></div>
+                     <div>
+                         <div class="h-2 w-3/4 bg-white/20 rounded-full mb-2"></div>
+                     <div class="h-2 w-1/2 bg-white/10 rounded-full"></div>
+                </div>
                             </div>
                         </div>
                         <div class="grid grid-cols-3 gap-4 mt-4">
@@ -367,7 +367,7 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
                             <div class="rounded-xl bg-white/[0.04] border border-white/10 p-3 h-16"></div>
                             <div class="rounded-xl bg-white/[0.04] border border-white/10 p-3 h-16"></div>
                         </div>
-                        <!-- floating glass stat cards -->
+                        <!-- floating glass stat cards rounded-xl px-4 py-3  -->
                         <div
                             class="hidden sm:block absolute -left-10 top-10 glass-strong rounded-xl px-4 py-3 shadow-[0_10px_40px_rgba(0,0,0,0.5)] animate-float">
                             <p class="text-[11px] text-white/50 font-medium">Team velocity</p>
@@ -379,15 +379,15 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
                             <p class="text-lg font-bold font-display text-white">99.98%</p>
                         </div>
                         <div
-                            class="hidden sm:block absolute -bottom-8 left-1/4 glass-strong rounded-xl px-4 py-3 shadow-[0_10px_40px_rgba(0,0,0,0.5)] animate-float-slow">
-                            <p class="text-[11px] text-white/50 font-medium">Tasks automated</p>
-                            <p class="text-lg font-bold font-display text-white">12.4k</p>
-                        </div>
-                    </div>
-                </div>
+        class="hidden sm:block absolute -bottom-8 left-1/4 glass-strong rounded-xl px-4 py-3 shadow-[0_10px_40px_rgba(0,0,0,0.5)] animate-float-slow">
+         <p class="text-[11px] text-white/50 font-medium">Tasks automated</p>
+          <p class="text-lg font-bold font-display text-white">12.4k</p>
+         </div>
+      </div>
+      </div>
             </div>
         </div>
-        <!-- scroll indicator -->
+        <!-- scroll indicator  abolute bottom-8 lef-1/2 -translate-x-1/2 -->
         <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60">
             <span class="text-[11px] tracking-widest uppercase text-white/50">Scroll</span>
             <div class="w-5 h-9 rounded-full border border-white/25 flex justify-center pt-2">
@@ -406,7 +406,7 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
                     keep everyone moving in the same direction.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-5 auto-rows-[minmax(140px,auto)]">
-      <!-- -->
+      <!-- md:col-span-2 md:row-span-2 -->
      <div
       class="reveal group relative md:col-span-2 md:row-span-2 rounded-2xl p-8 flex flex-col justify-between overflow-hidden bg-gradient-to-br from-violet-600/25 via-space-800 to-space-800 border border-white/10 hover:border-violet-400/40 shadow-[0_0_0_rgba(0,0,0,0)] hover:shadow-[0_0_50px_rgba(139,92,246,0.25)] transition-all duration-500 hover:-translate-y-1">
           <div
@@ -434,7 +434,7 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
        workflows</span>
        </div>
      </div>
-     <!-- Lightning Fast -->
+     <!-- Lightning Fast  , border-white/10 hover:border-cyan-400/40-->
          <div
           class="reveal group relative rounded-2xl p-6 bg-space-800 border border-white/10 hover:border-cyan-400/40 hover:shadow-[0_0_40px_rgba(34,211,238,0.2)] transition-all duration-500 hover:-translate-y-1 hover:scale-[1.02]">
           <div
@@ -447,7 +447,7 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
          <p class="text-sm text-white/55 leading-relaxed">Sub-second load times, everywhere your team works.
              </p>
            </div>
-     <!-- Bank-Level Security -->
+     <!-- Bank-Level Security  p-6 bg-space-800 border border-white/10 -->
       <div
       class="reveal group relative rounded-2xl p-6 bg-space-800 border border-white/10 hover:border-emerald-400/40 hover:shadow-[0_0_40px_rgba(52,211,153,0.2)] transition-all duration-500 hover:-translate-y-1 hover:scale-[1.02]">
       <div
@@ -461,37 +461,37 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
                     <p class="text-sm text-white/55 leading-relaxed">End-to-end encryption and SOC 2 Type II compliance.
                     </p>
                 </div>
-                <!-- Advanced Analytics -->
+                <!-- Advanced Analytics  bg-space-800 border border-white/10  -->
                 <div
-                    class="reveal group relative rounded-2xl p-6 bg-space-800 border border-white/10 hover:border-fuchsia-400/40 hover:shadow-[0_0_40px_rgba(232,121,249,0.2)] transition-all duration-500 hover:-translate-y-1 hover:scale-[1.02]">
+                    class="reveal group    relative rounded-2xl p-6 bg-space-800 border border-white/10 hover:border-fuchsia-400/40 hover:shadow-[0_0_40px_rgba(232,121,249,0.2)] transition-all duration-500 hover:-translate-y-1 hover:scale-[1.02]">
                     <div
-           class="w-10 h-10 rounded-lg bg-gradient-to-br from-fuchsia-400 to-fuchsia-600 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500 shadow-[0_0_16px_rgba(232,121,249,0.5)]">
+           class="w-10 h-10    rounded-lg bg-gradient-to-br from-fuchsia-400 to-fuchsia-600 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-500 shadow-[0_0_16px_rgba(232,121,249,0.5)]">
              <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none">
                <path d="M4 20V10M12 20V4M20 20v-7" stroke="currentColor" stroke-width="1.8"
                    stroke-linecap="round" />
            </svg>
          </div>
-              <h3 class="font-display font-semibold text-white mb-1.5">Advanced Analytics</h3>
-          <p class="text-sm text-white/55 leading-relaxed">Real-time dashboards that surface what matters.</p>
+              <h3 class=" font-display font-semibold text-white mb-1.5">Advanced Analytics</h3>
+          <p class="text-sm text-white/55    leading-relaxed  ">Real-time dashboards that surface what matters.</p>
           </div>
          <!-- Real-time Sync + Team Collaboration (wide row) -->
      <div
-       class="reveal group relative md:col-span-2 rounded-2xl p-6 bg-space-800 border border-white/10 hover:border-violet-400/40 hover:shadow-[0_0_40px_rgba(139,92,246,0.2)] transition-all duration-500 hover:-translate-y-1 flex items-center gap-5">
+       class="reveal group relative    md:col-span-2 rounded-2xl p-6 bg-space-800 border border-white/10 hover:border-violet-400/40 hover:shadow-[0_0_40px_rgba(139,92,246,0.2)] transition-all duration-500 hover:-translate-y-1 flex items-center gap-5">
       <div
-           class="w-12 h-12 flex-shrink-0 rounded-lg bg-gradient-to-br from-violet-400 to-violet-600 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 shadow-[0_0_16px_rgba(139,92,246,0.5)]">
-       <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none">
+           class="w-12    h-12 flex-shrink-0 rounded-lg bg-gradient-to-br from-violet-400 to-violet-600 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 shadow-[0_0_16px_rgba(139,92,246,0.5)]">
+       <svg class="w-6 h-6 text-white"    viewBox="0 0 24 24" fill="none">
           <path d="M17 2.1 21 6l-4 3.9M3 12h18M7 21.9 3 18l4-3.9M21 12H3" stroke="currentColor"
       stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
           </div>
          <div>
-          <h3 class="font-display font-semibold text-white mb-1">Real-time Sync</h3>
-          <p class="text-sm text-white/55 leading-relaxed">Every change, everywhere, instantly — no
+          <h3 class="font-display    font-semibold text-white mb-1">Real-time Sync</h3>
+          <p class="   text-sm text-white/55 leading-relaxed">Every change, everywhere, instantly — no
               refresh needed.</p>
           </div>
      </div>
      <div
-      class="reveal group relative md:col-span-2 rounded-2xl p-6 bg-space-800 border border-white/10 hover:border-cyan-400/40 hover:shadow-[0_0_40px_rgba(34,211,238,0.2)] transition-all duration-500 hover:-translate-y-1 flex items-center gap-5">
+      class="reveal group relative    md:col-span-2 rounded-2xl p-6 bg-space-800 border border-white/10 hover:border-cyan-400/40 hover:shadow-[0_0_40px_rgba(34,211,238,0.2)] transition-all duration-500 hover:-translate-y-1 flex items-center gap-5">
      <div
      class="w-12 h-12 flex-shrink-0 rounded-lg bg-gradient-to-br from-cyan-400 to-violet-500 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 shadow-[0_0_16px_rgba(34,211,238,0.5)]">
          <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none">
@@ -517,10 +517,10 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
         <div
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40rem] h-[40rem] rounded-full bg-violet-600/10 blur-[120px] pointer-events-none">
         </div>
-        <div class="relative max-w-6xl mx-auto">
-            <div class="reveal max-w-2xl mx-auto text-center mb-16">
-                <p class="text-xs font-semibold tracking-widest uppercase text-cyan-400 mb-3">Reviews</p>
-                <h2 class="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-white tracking-tight">Loved by
+        <div class="relative max-w-6xl    mx-auto">
+            <div class="reveal max-w-2xl mx-auto text-center    mb-16">
+                <p class="text-xs font-semibold tracking-widest    uppercase text-cyan-400 mb-3">Reviews</p>
+                <h2 class="font-display    font-bold text-3xl sm:text-4xl md:text-5xl text-white tracking-tight">Loved by
                     teams that ship</h2>
                 <p class="mt-4 text-white/55 leading-relaxed">Product, engineering, and ops teams use FlowApp to move
                     faster without losing alignment.</p>
@@ -553,7 +553,7 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
                             class="w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center text-sm font-semibold text-white">
                             MR</div>
                         <div>
-                            <p class="text-sm font-semibold text-white">Maya Reyes</p>
+                            <!--   hello  <p class="text-sm font-semibold text-white">Maya Reyes</p> -->
                             <p class="text-xs text-white/50">Head of Product, Norrit</p>
                         </div>
                     </div>
@@ -590,7 +590,6 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
                         </div>
                     </div>
                 </div>
-
                 <!-- Card 3 -->
                 <div
                     class="reveal group glass rounded-2xl p-7 hover:scale-[1.03] hover:bg-white/[0.07] transition-all duration-500 shadow-[0_10px_40px_rgba(0,0,0,0.3)]">
@@ -608,21 +607,21 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
                             <path d="m12 2 3.1 6.5 7.1.9-5.2 4.9 1.4 7-6.4-3.5L5.6 21l1.4-7-5.2-4.9 7.1-.9L12 2Z" />
                         </svg>
                         <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="m12 2 3.1 6.5 7.1.9-5.2 4.9 1.4 7-6.4-3.5L5.6 21l1.4-7-5.2-4.9 7.1-.9L12 2Z" />
-                        </svg>
-                    </div>
+          <path d="m12 2 3.1 6.5 7.1.9-5.2 4.9 1.4 7-6.4-3.5L5.6 21l1.4-7-5.2-4.9 7.1-.9L12 2Z" />
+         </svg>
+         </div>
                     <p class="text-white/75 leading-relaxed mb-6">"Security review took a single afternoon. Between the
                         compliance docs and audit logs, our infosec team had zero follow-up questions."</p>
                     <div class="flex items-center gap-3">
-                        <div
-                            class="w-10 h-10 rounded-full bg-gradient-to-br from-fuchsia-500 to-amber-400 flex items-center justify-center text-sm font-semibold text-white">
-                            SP</div>
-                        <div>
-                            <p class="text-sm font-semibold text-white">Sara Patel</p>
+              <div
+              class="w-10 h-10 rounded-full bg-gradient-to-br from-fuchsia-500 to-amber-400 flex items-center justify-center text-sm font-semibold text-white">
+                  SP</div>
+              <div>
+           <p class="text-sm font-semibold text-white">Sara Patel</p>
              <p class="text-xs text-white/50">VP Operations, Ledgerline</p>
-                        </div>
-                    </div>
-                </div>
+       </div>
+     </div>
+     </div>
             </div>
         </div>
     </section>
@@ -639,38 +638,35 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
                 <div
                     class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-white/5 blur-3xl">
                 </div>
-
                 <div class="relative reveal">
                     <h2
                         class="font-display font-bold text-3xl sm:text-4xl md:text-5xl text-white tracking-tight max-w-2xl mx-auto">
                         Ready to transform your workflow?</h2>
                     <p class="mt-5 text-white/85 max-w-xl mx-auto leading-relaxed">Join thousands of teams already
                         building faster with FlowApp. Set up takes minutes, not weeks.</p>
-
                     <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <a href="#"
-                            class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-violet-700 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.45)] hover:-translate-y-0.5 hover:scale-[1.03] transition-all duration-300">
-                            Start Free Trial
-                        </a>
-                        <a href="#"
-                            class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white border border-white/40 hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300">
-                            Schedule Demo
-                        </a>
-                    </div>
-
-                    <p class="mt-6 text-sm text-white/70">No credit card required · Free 14-day trial · Cancel anytime
-                    </p>
-                </div>
-            </div>
+            <a href="#"
+              class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-violet-700 bg-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.45)] hover:-translate-y-0.5 hover:scale-[1.03] transition-all duration-300">
+             Start Free Trial
+             </a>
+               <a href="#"
+        class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white border border-white/40 hover:bg-white/10 hover:-translate-y-0.5 transition-all duration-300">
+                Schedule Demo
+            </a>
+          </div>
+        <p class="mt-6 text-sm text-white/70">No credit card required · Free 14-day trial · Cancel anytime
+    </p>
+    </div>
+    </div>
         </div>
     </section>
-    <!-- footer here -->
+    <!-- footer here   relative bg-space-950 border-t border-white/10 -->
     <footer class="relative bg-space-950 border-t border-white/10 pt-16 pb-8 px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-10 pb-12">
-                <!-- Brand -->
-                <div class="col-span-2">
-                    <a href="#" class="flex items-center gap-2.5 mb-4">
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-10 pb-12">
+       <!-- Brand -->
+ <div class="col-span-2">
+         <a href="#" class="flex items-center gap-2.5 mb-4">
       <span
      class="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 flex items-center justify-center shadow-[0_0_20px_rgba(139,92,246,0.4)]">
      <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5 text-white">
@@ -720,7 +716,7 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
                         </li>
                         <li><a href="#pricing" class="hover:text-white transition-colors duration-200">Pricing</a></li>
                         <li><a href="#" class="hover:text-white transition-colors duration-200">Integrations</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors duration-200">Changelog</a></li>
+         <!--    hello  <li><a href="#" class="hover:text-white transition-colors duration-200">Changelog</a></li> -->
                     </ul>
                 </div>
                 <!-- Company -->
