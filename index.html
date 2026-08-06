@@ -16,54 +16,54 @@
     <!-- here write javascript  -->
     <script>
         tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        space: {
-                            950: '#0770d',
-                            900: '#0c0c6',
-                            850: '#111120',
-                            800: '#15126',
-                            700: '#1cc30',
+     theme: {
+      extend: {
+          colors: {
+              space: {
+             950: '#0770d',
+             900: '#0c0c6',
+             850: '#111120',
+             800: '#15126',
+         700: '#1cc30',
                         },
-                        violet: {
-                            450: '#8b56',
-                        },
-                    },
-                    fontFamily: {
-                        display: ['Outfit', 'sans-serif'],
-                        body: ['Inter', 'sans-serif'],
+                  violet: {
+                  450: '#8b56',
+            },
+             },
+          fontFamily: {
+             display: ['Outfit', 'sans-serif'],
+             body: ['Inter', 'sans-serif'],
                     },
                     keyframes: {
-                        'slide-up': {
-                            '0%': { opacity: '0', transform: 'translateY(36px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                'slide-up': {
+                 '0%': { opacity: '0', transform: 'translateY(36px)' },
+             '100%': { opacity: '1', transform: 'translateY(0)' },
                         },
-                        'slide-in-left': {
-                            '0%': { opacity: '0', transform: 'translateX(-48px)' },
-                            '100%': { opacity: '1', transform: 'translateX(0)' },
+            'slide-in-left': {
+                 '0%': { opacity: '0', transform: 'translateX(-48px)' },
+                 '100%': { opacity: '1', transform: 'translateX(0)' },
                         },
                         'slide-in-right': {
-                            '0%': { opacity: '0', transform: 'translateX(48px)' },
-                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                      '0%': { opacity: '0', transform: 'translateX(48px)' },
+          '100%': { opacity: '1', transform: 'translateX(0)' },
                         },
                         'scale-in': {
-                            '0%': { opacity: '0', transform: 'scale(0.9)' },
-                            '100%': { opacity: '1', transform: 'scale(1)' },
+              '0%': { opacity: '0', transform: 'scale(0.9)' },
+                '100%': { opacity: '1', transform: 'scale(1)' },
                         },
                         'rotate-slow': {
-                            '0%': { transform: 'rotate(0deg)' },
+                '0%': { transform: 'rotate(0deg)' },
                             '100%': { transform: 'rotate(360deg)' },
                         },
                         'morph': {
-                            '0%, 100%': { borderRadius: '42% 58% 65% 35% / 45% 45% 55% 55%', transform: 'rotate(0deg) scale(1)' },
-                            '25%': { borderRadius: '58% 42% 35% 65% / 55% 62% 38% 45%', transform: 'rotate(8deg) scale(1.03)' },
-                            '50%': { borderRadius: '50% 50% 33% 67% / 55% 27% 73% 45%', transform: 'rotate(-4deg) scale(0.98)' },
-                            '75%': { borderRadius: '33% 67% 58% 42% / 63% 40% 60% 37%', transform: 'rotate(4deg) scale(1.02)' },
+                '0%, 100%': { borderRadius: '42% 58% 65% 35% / 45% 45% 55% 55%', transform: 'rotate(0deg) scale(1)' },
+                '25%': { borderRadius: '58% 42% 35% 65% / 55% 62% 38% 45%', transform: 'rotate(8deg) scale(1.03)' },
+                     '50%': { borderRadius: '50% 50% 33% 67% / 55% 27% 73% 45%', transform: 'rotate(-4deg) scale(0.98)' },
+                 '75%': { borderRadius: '33% 67% 58% 42% / 63% 40% 60% 37%', transform: 'rotate(4deg) scale(1.02)' },
                         },
                         'float': {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-18px)' },
+              '0%, 100%': { transform: 'translateY(0px)' },
+                  '50%': { transform: 'translateY(-18px)' },
                         },
                         'glow-pulse': {
                             '0%, 100%': { opacity: '0.55' },
@@ -75,7 +75,7 @@
                         },
                         'orb-drift': {
                             '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
-                            '33%': { transform: 'translate(30px, -40px) scale(1.08)' },
+                            '35%': { transform: 'translate(30px, -40px) scale(1.08)' },
                             '66%': { transform: 'translate(-24px, 20px) scale(0.95)' },
                         },
                     },
@@ -94,9 +94,9 @@
                         'gradient-move': 'gradient-move 4s ease infinite',
                         'orb-drift': 'orb-drift 14s ease-in-out infinite',
                         'orb-drift-slow': 'orb-drift 20s ease-in-out infinite',
-                    },
-                },
-            },
+        },
+     },
+     },
         };
     </script>
     <style>
@@ -126,7 +126,7 @@
         }
         /* Gradient text */
         .text-gradient {
-            background: linear-gradient(90deg, #a78bfa, #f472b6, #22d3ee, #a78bfa);
+            background: linear-gradient(90deg, #a78bfa, #f472b6, #22d3ee, #9f83f6);
             background-size: 300% auto;
             -webkit-background-clip: text;
             background-clip: text;
@@ -135,20 +135,21 @@
         /* Grid background */
         .bg-grid {
             background-image:
-                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+                linear-gradient(rgba(255, 255, 255,  ) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, ) 1px, transparent 1px);
             background-size: 56px 56px;
-            mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 40%, transparent 100%);
-            -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 40%, transparent 100%);
+            mask-image: radial-gradient(ellipse 80% 60% at 50%  black 40%, transparent 100%);
+            -webkit-mask-image: radial-gradient
+            (ellipse 80% 60% at 50% 30%, black 40%, transparent 100%);
         }
-        /* Perspective for dashboard */
+        /* Perspective for dashboard dasbord title style transition: transform  */
         .perspective-container {
             perspective: 1600px;
         }
         .dashboard-tilt {
             transform: rotateX(10deg) rotateY(-12deg) rotateZ(1deg);
             transform-style: preserve-3d;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.6s cubic-bezier(0.16,1, , 1);
         }
         .perspective-container:hover .dashboard-tilt {
             transform: rotateX(4deg) rotateY(-4deg) rotateZ(0.5deg) scale(1.02);
@@ -157,15 +158,16 @@
         .reveal {
             opacity: 0;
             transform: translateY(32px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: opacity 0.8s cubic-bezier(0.16, 0.3, 1),
+             transform 0.8s cubic-bezier(0.16, , 0.3, 1);
         }
         .reveal.in-view {
             opacity: 1;
             transform: translateY(0);
         }
-        /* CTA animated gradient background */
+        /* CTA animated gradient background  uesr four coulor and font size */
         .cta-gradient-bg {
-            background: linear-gradient(115deg, #6d28d9, #a21caf, #0891b2, #7c3aed);
+            background: linear-gradient(115deg, #6d28d9, #a21caf, #1aa3c5, #7733ed);
             background-size: 300% 300%;
         }
         /* Custom scrollbar */
@@ -173,14 +175,13 @@
             width: 10px;
         }
         ::-webkit-scrollbar-track {
-            background: #07070d;
+            background: #19192d;
         }
-
         ::-webkit-scrollbar-thumb {
-            background: #2a2a42;
+            background: #212133;
             border-radius: 8px;
         }
-
+        /* here use media quri  */
         @media (prefers-reduced-motion: reduce) {
             *,
             *::before,
@@ -204,11 +205,11 @@
     <header class="fixed top-0 inset-x-0 z-50">
         <nav class="mx-auto max-w-7xl px-6 mt-4">
             <div
-                class="glass rounded-2xl px-5 py-3.5 flex items-center justify-between shadow-[0_8px_32px_rgba(0,0,0,0.35)]">
+         class="glass rounded-2xl px-5 py-3.5 flex items-center justify-between shadow-[0_8px_rgba(0,0.35)]">
                 <!-- Logo  set items-center gap-2.5 -->
                 <a href="#" class="flex items-center gap-2.5 group">
                     <span
-class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 flex items-center justify-center shadow-[0_0_20px_rgba(139,92,246,0.55)] group-hover:shadow-[0_0_28px_rgba(139,92,246,0.8)] transition-shadow duration-300">
+class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 flex items-center justify-center shadow-[0_0_20px_rgba(139,92,,0.55)] group-hover:shadow-[0_0_28px_rgba(139,92,246,0.8)] transition-shadow duration-300">
 <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5 text-white">
 <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" fill="currentColor" />
 </svg>
@@ -221,12 +222,12 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
           <a href="#pricing" class="hover:text-white transition-colors duration-200">Pricing</a>
       <a href="#testimonials" class="hover:text-white transition-colors duration-200">Reviews</a>
       </div>
-                <!-- CTA + mobile toggle -->
+     <!-- CTA + mobile toggle -->
                 <div class="flex items-center gap-3">
-                    <a href="#cta"
-                        class="hidden md:inline-flex relative items-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 shadow-[0_0_16px_rgba(168,85,247,0.5)] hover:shadow-[0_0_28px_rgba(168,85,247,0.85)] hover:scale-[1.04] active:scale-[0.98] transition-all duration-300">
-                        Get Started
-                    </a>
+          <a href="#cta"
+             class="hidden md:inline-flex relative items-center px-5 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r from-violet-500 to-fuchsia-500 shadow-[0_0_16px_rgba(168,85,247,0.5)] hover:shadow-[0_0_28px_rgba(168,85,247,0.85)] hover:scale-[1.04] active:scale-[0.98] transition-all duration-300">
+              Get Started
+         </a>
          <button id="menuBtn" aria-label="Toggle menu" aria-expanded="false"
       class="md:hidden w-9 h-9 flex items-center justify-center rounded-lg text-white/80 hover:text-white hover:bg-white/10 transition-colors">
      <svg id="iconOpen" viewBox="0 0 24 24" fill="none" class="w-5 h-5">
@@ -294,24 +295,26 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
                 </h1>
                 <!-- subtext -->
                 <p
-                    class="opacity-0 animate-slide-up [animation-delay:380ms] mt-6 text-base sm:text-lg text-white/60 max-w-xl leading-relaxed">
-                    FlowApp brings AI-powered automation, real-time collaboration, and advanced analytics into one
-                    workspace — so your team can ship faster, together.
-                </p>
-                <!-- CTAs -->
-                <div
-                    class="opacity-0 animate-slide-up [animation-delay:520ms] mt-9 flex flex-col sm:flex-row items-center gap-4">
-                    <a href="#cta"
-                        class="group relative inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white overflow-hidden bg-gradient-to-r from-violet-500 to-fuchsia-500 shadow-[0_0_24px_rgba(168,85,247,0.5)] hover:shadow-[0_0_38px_rgba(168,85,247,0.85)] transition-all duration-300 hover:-translate-y-0.5">
-                        <span
-                            class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                        <span class="relative">Start Free Trial</span>
-                        <svg class="relative w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                            viewBox="0 0 24 24" fill="none">
-                            <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"
+        class="opacity-0 animate-slide-up [animation-delay:380ms] mt-6 text-base sm:text-lg text-white/60 max-w-xl leading-relaxed">
+     FlowApp brings AI-powered automation, real-time collaboration, and advanced analytics into one
+        workspace — so your team can ship faster, together.
+    </p>
+    <!-- CTAs -->
+    <div
+       class="opacity-0 animate-slide-up [animation-delay:520ms] mt-9 flex flex-col sm:flex-row items-center gap-4">
+         <a href="#cta"
+              class="group relative inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white overflow-hidden bg-gradient-to-r from-violet-500 to-fuchsia-500 
+               hover:shadow-[0_0_38px_rgba(168,85,247,0.85)] transition-all duration-300 hover:-translate-y-0.5">
+              <span
+             class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-violet-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  <span class="relative">Start Free Trial</span>
+             <svg class="relative w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                 viewBox="0 0 24 24" fill="none">
+             <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2"
                stroke-linecap="round" stroke-linejoin="round" />
           </svg>
                     </a>
+                    <!-- here use link thsi watch demo  -->
                     <a href="#"
          class="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-semibold text-white/85 glass hover:bg-white/[0.09] hover:text-white transition-all duration-300 hover:-translate-y-0.5">
              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
@@ -335,8 +338,8 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
                         <!-- mock dashboard body  grid-cols-3 -->
                         <div class="grid grid-cols-3 gap-4">
                             <div
-                                class="col-span-2 rounded-xl bg-white/[0.04] border border-white/10 p-4 h-48 flex items-end gap-2">
-                                <div
+                     class="col-span-2 rounded-xl bg-white/[0.04] border border-white/10 p-4 h-48 flex items-end gap-2">
+                 <div
           class="w-1/6 bg-gradient-to-t from-violet-500 to-violet-400/40 rounded-t-md h-[40%]">
                 </div>
                  <div
@@ -391,7 +394,7 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
         <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-60">
             <span class="text-[11px] tracking-widest uppercase text-white/50">Scroll</span>
             <div class="w-5 h-9 rounded-full border border-white/25 flex justify-center pt-2">
-                <span class="w-1 h-1.5 rounded-full bg-white/70 animate-float"></span>
+    <span class="w-1 h-1.5 rounded-full bg-white/70 animate-float"></span>
             </div>
         </div>
     </section>
@@ -408,13 +411,15 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
             <div class="grid grid-cols-1 md:grid-cols-4 gap-5 auto-rows-[minmax(140px,auto)]">
       <!-- md:col-span-2 md:row-span-2 -->
      <div
-      class="reveal group relative md:col-span-2 md:row-span-2 rounded-2xl p-8 flex flex-col justify-between overflow-hidden bg-gradient-to-br from-violet-600/25 via-space-800 to-space-800 border border-white/10 hover:border-violet-400/40 shadow-[0_0_0_rgba(0,0,0,0)] hover:shadow-[0_0_50px_rgba(139,92,246,0.25)] transition-all duration-500 hover:-translate-y-1">
+      class="reveal group relative md: col-span-2 md:row-span-2 rounded-2xl p-8 flex flex-col justify-between overflow-hidden  from-violet-600/25 via-space-800 to-space-800 border border-white/10 hover:border-violet-400/40 shadow-[0_0_0_rgba(0,0,0,0)] hover:shadow-[0_0_50px_rgba(139,92,246,0.25)] transition-all duration-500 hover:-translate-y-1">
           <div
-          class="absolute -right-16 -top-16 w-56 h-56 rounded-full bg-violet-500/20 blur-3xl group-hover:bg-violet-500/30 transition-colors duration-500">
+          class="absolute -right-16 -top-16 w-56 h-56 rounded-full bg-violet-500/20 blur-3xl
+           group-hover:bg-violet-500/30 transition-colors duration-500">
           </div>
          <div class="relative">
           <div
-       class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center mb-6 shadow-[0_0_20px_rgba(139,92,246,0.5)] group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
+       class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center mb-6  group-hover:scale-110 group-hover:rotate-6 
+       transition-transform duration-500">
           <svg class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none">
           <path
                   d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"
@@ -526,7 +531,8 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
                     faster without losing alignment.</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-                <!-- Card 1 -->
+                <!-- Card 1  
+                 use icone svg and make style  -->
                 <div
                     class="reveal group glass rounded-2xl p-7 hover:scale-[1.03] hover:bg-white/[0.07] transition-all duration-500 shadow-[0_10px_40px_rgba(0,0,0,0.3)]">
                     <div class="flex gap-1 mb-4 text-amber-400">
@@ -550,12 +556,13 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
                         automation quietly does the busywork so standups are actually useful again."</p>
                     <div class="flex items-center gap-3">
                         <div
-                            class="w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center text-sm font-semibold text-white">
-                            MR</div>
-                        <div>
-                            <!--   hello  <p class="text-sm font-semibold text-white">Maya Reyes</p> -->
-                            <p class="text-xs text-white/50">Head of Product, Norrit</p>
-                        </div>
+               class="w-10 h-10 rounded-full bg-gradient-to-br from-violet-500 to-fuchsia-500 flex
+                items-center justify-center text-sm font-semibold text-white">
+                MR</div>
+            <div>
+             <!--   hello  <p class="text-sm font-semibold text-white">Maya Reyes</p> -->
+             <p class="text-xs text-white/50">Head of Product, Norrit</p>
+         </div>
                     </div>
                 </div>
                 <!-- Card 2 (offset) -->
@@ -664,11 +671,11 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
     <footer class="relative bg-space-950 border-t border-white/10 pt-16 pb-8 px-6">
         <div class="max-w-7xl mx-auto">
           <div class="grid grid-cols-2 md:grid-cols-5 gap-10 pb-12">
-       <!-- Brand -->
+       <!-- Brand bg-gradient-to-br -->
  <div class="col-span-2">
          <a href="#" class="flex items-center gap-2.5 mb-4">
       <span
-     class="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 flex items-center justify-center shadow-[0_0_20px_rgba(139,92,246,0.4)]">
+     class="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 flex items-center justify-center ">
      <svg viewBox="0 0 24 24" fill="none" class="w-5 h-5 text-white">
  <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z" fill="currentColor" />
  </svg>
@@ -708,7 +715,7 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
              </a>
                     </div>
                 </div>
-                <!-- Product -->
+                <!-- Product use order and unorder lint hover:text-white  -->
                 <div>
                     <h4 class="font-display font-semibold text-white text-sm mb-4">Product</h4>
                     <ul class="space-y-3 text-sm text-white/50">
@@ -721,9 +728,9 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
                 </div>
                 <!-- Company -->
                 <div>
-                    <h4 class="font-display font-semibold text-white text-sm mb-4">Company</h4>
-                    <ul class="space-y-3 text-sm text-white/50">
-                        <li><a href="#" class="hover:text-white transition-colors duration-200">About</a></li>
+             <h4 class="font-display font-semibold text-white text-sm mb-4">Company</h4>
+         <ul class="space-y-3 text-sm text-white/50">
+                <li><a href="#" class="hover:text-white transition-colors duration-200">About</a></li>
                         <li><a href="#" class="hover:text-white transition-colors duration-200">Blog</a></li>
                         <li><a href="#" class="hover:text-white transition-colors duration-200">Careers</a></li>
                         <li><a href="#" class="hover:text-white transition-colors duration-200">Contact</a></li>
@@ -733,10 +740,10 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
                 <div>
                     <h4 class="font-display font-semibold text-white text-sm mb-4">Legal</h4>
                     <ul class="space-y-3 text-sm text-white/50">
-                        <li><a href="#" class="hover:text-white transition-colors duration-200">Privacy</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors duration-200">Terms</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors duration-200">Security</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors duration-200">Cookies</a></li>
+            <li><a href="#" class="hover:text-white transition-colors duration-200">Privacy</a></li>
+        <li><a href="#" class="hover:text-white transition-colors duration-200">Terms</a></li>
+     <li><a href="#" class="hover:text- white    transition-colors duration-200">Security</a></li>
+             <li><a href="#" class="hover:text-white transition-colors duration-200">Cookies</a></li>
                     </ul>
                 </div>
             </div>
@@ -763,10 +770,10 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
 
         mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                iconOpen.classList.remove('hidden');
-                iconClose.classList.add('hidden');
-                menuBtn.setAttribute('aria-expanded', 'false');
+     mobileMenu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+iconClose.classList.add('hidden');
+menuBtn.setAttribute('aria-expanded, 'false');
             });
         });
 
@@ -776,18 +783,17 @@ class="relative w-9 h-9 rounded-xl bg-gradient-to-br from-violet-500 via-fuchsia
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('in-view');
-                    io.unobserve(entry.target);
+         io.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
         revealEls.forEach(el => io.observe(el));
-
         // Stagger reveal delays within bento grid / testimonials
         document.querySelectorAll('#features .grid > div').forEach((el, i) => {
-            el.style.transitionDelay = `${Math.min(i * 80, 320)}ms`;
+    el.style.transitionDelay = `${Math.min(i * 80, 320)}ms`;
         });
         document.querySelectorAll('#testimonials .grid > div').forEach((el, i) => {
-            el.style.transitionDelay = `${i * 100}ms`;
+el.style.transitionDelay = `${i * 100}ms`;
         });
     </script>
 </body>
