@@ -1,0 +1,1 @@
+FlowApp Landing Page: Designed and built an animation-focused, single-page promotional site for FlowApp—a SaaS application focused on AI-driven automation, analytics, and real-time team collaboration—using HTML5 and Tailwind CSS.
